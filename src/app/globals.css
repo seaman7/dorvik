@@ -1,85 +1,108 @@
+@import url('https://fonts.googleapis.com/css2?family=Fragment+Mono&family=Geist+Mono:wght@400;500;600;700&family=Inter:wght@300;400;500;600;700;800&family=Newsreader:ital,opsz,wght@1,6..72,400;1,6..72,500&display=swap');
 @import "tailwindcss";
 
 @layer base {
   :root {
-    --bg-primary: #F7F7F3;
-    --surface-white: #FFFFFF;
-    --text-primary: #111111;
-    --text-muted: #6B6B6B;
-    --text-subtle: #8E8E88;
-    --border-color: #DEDED8;
-    --border-subtle: #E8E8E2;
-    --dark-bg: #111111;
-    --dark-surface: #171717;
-    --dark-surface-elevated: #1F1F1F;
-    --dark-border: #262626;
-    --dark-text: #F7F7F3;
-    --dark-muted: #9E9E98;
-    --accent: #1D4ED8;
-    --accent-hover: #1E40AF;
-    --accent-soft: rgba(29, 78, 216, 0.08);
+    --bg-page: #FFFFFF;
+    --bg-subtle: #F9FAFB;
+    --bg-card: #FFFFFF;
+    --border-light: rgba(0, 0, 0, 0.08);
+    --border-subtle: #E5E7EB;
+    --text-main: #0E1015;
+    --text-muted: #5E6470;
+    --text-dim: #8C93A0;
+    
+    /* HackerRank Dark Surfaces */
+    --dark-bg: #0A0B0E;
+    --dark-surface: #111318;
+    --dark-card: #161922;
+    --dark-border: rgba(255, 255, 255, 0.1);
+    --dark-text: #FFFFFF;
+    --dark-muted: #9EABB8;
+    
+    /* HackerRank Accent Palette */
+    --accent-emerald: #00EA64;
+    --accent-emerald-dark: #008738;
+    --accent-emerald-soft: rgba(0, 234, 100, 0.12);
+    --accent-blue: #1D4ED8;
+    --accent-blue-soft: rgba(29, 78, 216, 0.1);
   }
 
   html {
-    background-color: var(--bg-primary);
-    color: var(--text-primary);
+    background-color: var(--bg-page);
+    color: var(--text-main);
     scroll-behavior: smooth;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
-    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
   }
 
   body {
-    background-color: var(--bg-primary);
-    color: var(--text-primary);
+    background-color: var(--bg-page);
+    color: var(--text-main);
     overflow-x: hidden;
     min-height: 100vh;
   }
 
   ::selection {
-    background: #111111;
-    color: #F7F7F3;
+    background: #00EA64;
+    color: #0E1015;
   }
 
-  /* Custom Focus outline for accessibility */
+  /* Focus rings */
   a:focus-visible,
   button:focus-visible,
   input:focus-visible,
   textarea:focus-visible {
-    outline: 2px solid var(--accent);
+    outline: 2px solid var(--accent-emerald-dark);
     outline-offset: 2px;
   }
 }
 
-/* Engineering grid pattern utility */
-.tech-grid-pattern {
+/* HackerRank Editorial Serif Accent */
+.font-serif-italic {
+  font-family: 'Newsreader', Georgia, serif;
+  font-style: italic;
+  font-weight: 400;
+}
+
+/* HackerRank Monospace Font */
+.font-mono-code {
+  font-family: 'Geist Mono', 'Fragment Mono', monospace;
+}
+
+/* Tech grid background */
+.hr-grid-pattern {
   background-size: 32px 32px;
   background-image: 
     linear-gradient(to right, rgba(0, 0, 0, 0.04) 1px, transparent 1px),
     linear-gradient(to bottom, rgba(0, 0, 0, 0.04) 1px, transparent 1px);
 }
 
-.tech-grid-pattern-dark {
+.hr-grid-pattern-dark {
   background-size: 32px 32px;
   background-image: 
-    linear-gradient(to right, rgba(255, 255, 255, 0.06) 1px, transparent 1px),
-    linear-gradient(to bottom, rgba(255, 255, 255, 0.06) 1px, transparent 1px);
+    linear-gradient(to right, rgba(255, 255, 255, 0.05) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(255, 255, 255, 0.05) 1px, transparent 1px);
 }
 
-/* Subtle dot pattern */
-.tech-dots-dark {
-  background-image: radial-gradient(rgba(255, 255, 255, 0.12) 1px, transparent 1px);
-  background-size: 24px 24px;
-}
+/* Code highlight tokens */
+.code-keyword { color: #FF7B72; }
+.code-fn { color: #D2A8FF; }
+.code-string { color: #A5D6FF; }
+.code-comment { color: #8B949E; font-style: italic; }
+.code-number { color: #79C0FF; }
+.code-accent { color: #00EA64; }
 
-/* Respect reduced motion preference */
-@media (prefers-reduced-motion: reduce) {
-  *,
-  *::before,
-  *::after {
-    animation-duration: 0.01ms !important;
-    animation-iteration-count: 1 !important;
-    transition-duration: 0.01ms !important;
-    scroll-behavior: auto !important;
-  }
+/* Custom scrollbars for code panels */
+.code-scroll::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+.code-scroll::-webkit-scrollbar-thumb {
+  background: rgba(255, 255, 255, 0.15);
+  border-radius: 3px;
+}
+.code-scroll::-webkit-scrollbar-track {
+  background: transparent;
 }

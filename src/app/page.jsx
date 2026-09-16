@@ -1,43 +1,43 @@
 import React from "react";
-import { Hero } from "@/components/home/Hero";
-import { ValueStatement } from "@/components/home/ValueStatement";
-import { ServicesSection } from "@/components/home/ServicesSection";
-import { FeaturedWork } from "@/components/home/FeaturedWork";
-import { AiWorkflowSection } from "@/components/home/AiWorkflowSection";
-import { CapabilitiesSection } from "@/components/home/CapabilitiesSection";
-import { IndustriesSection } from "@/components/home/IndustriesSection";
-import { HowWeWork } from "@/components/home/HowWeWork";
-import { FinalCta } from "@/components/home/FinalCta";
+import { HackerRankHero } from "@/components/home/HackerRankHero";
+import { TrustTicker } from "@/components/home/TrustTicker";
+import { HackerRankPillars } from "@/components/home/HackerRankPillars";
+import { DualProductShowcase } from "@/components/home/DualProductShowcase";
+import { WorkflowTimeline } from "@/components/home/WorkflowTimeline";
+import { FeaturedWorkHackerRank } from "@/components/home/FeaturedWorkHackerRank";
+import { PersonaTabs } from "@/components/home/PersonaTabs";
+import { CommunityHighlight } from "@/components/home/CommunityHighlight";
+import { HackerRankFinalCta } from "@/components/home/HackerRankFinalCta";
 
 export default function HomePage() {
   return (
     <main id="main-content" className="flex flex-col min-h-screen">
-      {/* 2. Hero section */}
-      <Hero />
+      {/* 1. Hero with Interactive Agentic IDE */}
+      <HackerRankHero />
 
-      {/* 3. Value statement */}
-      <ValueStatement />
+      {/* 2. Trust Ticker */}
+      <TrustTicker />
 
-      {/* 4. Services section */}
-      <ServicesSection />
+      {/* 3. Three-Pillar Interactive Capabilities */}
+      <HackerRankPillars />
 
-      {/* 5. Featured work */}
-      <FeaturedWork />
+      {/* 4. Dual Core Engines Showcase ("One Platform. Two Products" style) */}
+      <DualProductShowcase />
 
-      {/* 6. AI workflow section (Dark) */}
-      <AiWorkflowSection />
+      {/* 5. 5-Phase Interactive AI Workflow */}
+      <WorkflowTimeline />
 
-      {/* 7. Engineering capabilities */}
-      <CapabilitiesSection />
+      {/* 6. Selected Work (WareTwin, Drone Vision, AcademicOS) */}
+      <FeaturedWorkHackerRank />
 
-      {/* 8. Industries section */}
-      <IndustriesSection />
+      {/* 7. Dual Persona Engagement (Startups vs Enterprises) */}
+      <PersonaTabs />
 
-      {/* 9. How we work */}
-      <HowWeWork />
+      {/* 8. "One more thing…" Engineering Labs Banner */}
+      <CommunityHighlight />
 
-      {/* 10. Final CTA */}
-      <FinalCta />
+      {/* 9. Final High-Impact CTA Card */}
+      <HackerRankFinalCta />
     </main>
   );
 }
