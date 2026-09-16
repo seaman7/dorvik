@@ -66,7 +66,7 @@ export function AiWorkflowSection() {
 
           {/* Grid Layout: Horizontal on Desktop, Vertical on Mobile */}
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-6 lg:gap-4 relative z-10">
-            {WORKFLOW_STEPS.map((item, idx) => {
+            {WORKFLOW_STEPS.map((item) => {
               const Icon = item.icon;
               return (
                 <div

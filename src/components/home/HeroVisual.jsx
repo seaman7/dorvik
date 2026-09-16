@@ -57,25 +57,21 @@ export function HeroVisual() {
           <line x1="470" y1="325" x2="470" y2="335" stroke="#111111" strokeWidth="1.5" />
 
           {/* Connected Data Flow Paths */}
-          {/* Path 1: Input to Center */}
           <path
             d="M 100 110 C 160 110, 180 180, 250 180"
             stroke="#DEDED8"
             strokeWidth="1.5"
           />
-          {/* Path 2: Vision Input to Center */}
           <path
             d="M 100 250 C 160 250, 180 180, 250 180"
             stroke="#DEDED8"
             strokeWidth="1.5"
           />
-          {/* Path 3: Center to Inference */}
           <path
             d="M 250 180 C 320 180, 340 110, 400 110"
             stroke="#DEDED8"
             strokeWidth="1.5"
           />
-          {/* Path 4: Center to Cloud API */}
           <path
             d="M 250 180 C 320 180, 340 250, 400 250"
             stroke="#DEDED8"

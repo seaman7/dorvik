@@ -1,15 +1,14 @@
-import type { Metadata, Viewport } from "next";
 import "./globals.css";
 import { Navbar } from "@/components/layout/Navbar";
 import { Footer } from "@/components/layout/Footer";
 
-export const viewport: Viewport = {
+export const viewport = {
   themeColor: "#F7F7F3",
   width: "device-width",
   initialScale: 1,
 };
 
-export const metadata: Metadata = {
+export const metadata = {
   title: {
     default: "DORVIK — Intelligent Software, AI Systems & Digital Engineering",
     template: "%s | DORVIK",
@@ -59,11 +58,7 @@ export const metadata: Metadata = {
   },
 };
 
-export default function RootLayout({
-  children,
-}: Readonly<{
-  children: React.ReactNode;
-}>) {
+export default function RootLayout({ children }) {
   return (
     <html lang="en" className="scroll-smooth">
       <body className="min-h-screen bg-[#F7F7F3] text-[#111111] antialiased selection:bg-[#111111] selection:text-[#F7F7F3]">

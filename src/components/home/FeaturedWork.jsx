@@ -1,8 +1,7 @@
 "use client";
 
 import React, { useState } from "react";
-import Image from "next/image";
-import { ArrowUpRight, ExternalLink, Sparkles } from "lucide-react";
+import { ArrowUpRight } from "lucide-react";
 import { Container } from "@/components/ui/Container";
 import { SectionHeading } from "@/components/ui/SectionHeading";
 
@@ -47,8 +46,6 @@ const PROJECTS = [
 ];
 
 export function FeaturedWork() {
-  const [selectedProject, setSelectedProject] = useState<string | null>(null);
-
   return (
     <section id="work" className="py-20 sm:py-28 border-b border-[#DEDED8] bg-[#F7F7F3]">
       <Container size="wide">

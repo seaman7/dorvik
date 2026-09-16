@@ -23,7 +23,7 @@ const CAPABILITY_GROUPS = [
     category: "PRODUCT & SOFTWARE",
     description: "Robust frontends, full-stack systems, and intuitive user experiences.",
     skills: [
-      "TypeScript",
+      "TypeScript / JavaScript",
       "React",
       "Next.js",
       "Node.js",

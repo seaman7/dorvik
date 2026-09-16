@@ -1,7 +1,7 @@
 "use client";
 
 import React, { useState } from "react";
-import { ArrowUpRight, Check, Send, Mail } from "lucide-react";
+import { ArrowUpRight, Check } from "lucide-react";
 import { Container } from "@/components/ui/Container";
 
 export function FinalCta() {
@@ -13,9 +13,8 @@ export function FinalCta() {
     message: "",
   });
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = (e) => {
     e.preventDefault();
-    // Simulate submission state
     setFormSubmitted(true);
   };
 

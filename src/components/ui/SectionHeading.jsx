@@ -1,15 +1,6 @@
 import React from "react";
 import { cn } from "@/lib/utils";
 
-interface SectionHeadingProps {
-  eyebrow?: string;
-  heading: string;
-  description?: string;
-  className?: string;
-  align?: "left" | "center";
-  theme?: "light" | "dark";
-}
-
 export function SectionHeading({
   eyebrow,
   heading,
@@ -17,7 +8,7 @@ export function SectionHeading({
   className,
   align = "left",
   theme = "light",
-}: SectionHeadingProps) {
+}) {
   const isDark = theme === "dark";
 
   return (

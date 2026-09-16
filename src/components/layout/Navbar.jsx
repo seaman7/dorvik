@@ -30,7 +30,7 @@ export function Navbar() {
 
   // Close mobile menu on Escape key press
   useEffect(() => {
-    const handleKeyDown = (e: KeyboardEvent) => {
+    const handleKeyDown = (e) => {
       if (e.key === "Escape" && mobileMenuOpen) {
         setMobileMenuOpen(false);
       }
