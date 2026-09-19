@@ -72,7 +72,7 @@ export function DorvikNavbar() {
         <div className="flex items-center gap-3">
           <Link
             href="/bizos#waitlist"
-            className="hidden sm:inline-flex px-3.5 py-1.5 rounded-md bg-white text-black hover:bg-neutral-200 font-semibold text-xs tracking-tight transition-colors"
+            className="hidden sm:inline-flex px-3.5 py-1.5 rounded-md btn-light-refined text-xs tracking-tight"
           >
             Request Demo
           </Link>
@@ -151,7 +151,7 @@ export function DorvikNavbar() {
             <Link
               href="/bizos#waitlist"
               onClick={() => setMobileMenuOpen(false)}
-              className="block w-full text-center py-2.5 rounded-md bg-white text-black font-semibold"
+              className="block w-full text-center py-2.5 rounded-md btn-light-refined text-xs"
             >
               Request Demo
             </Link>

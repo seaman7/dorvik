@@ -113,7 +113,7 @@ export default function BizOSPage() {
           <div className="mt-8 flex flex-wrap items-center gap-3">
             <a
               href="#sandbox"
-              className="px-6 py-3 rounded-xl bg-white text-black hover:bg-neutral-200 font-semibold text-xs tracking-tight transition-colors shadow-md"
+              className="px-6 py-3 rounded-lg btn-light-refined text-xs tracking-tight shadow-sm"
             >
               Try AI Builder Demo &darr;
             </a>
@@ -202,7 +202,7 @@ export default function BizOSPage() {
               />
               <button
                 type="submit"
-                className="absolute right-3 bottom-3 px-4 py-1.5 rounded-lg bg-white text-black hover:bg-neutral-200 font-semibold text-xs transition-colors flex items-center gap-1.5 shadow-sm"
+                className="absolute right-3 bottom-3 px-4 py-1.5 rounded-md btn-light-refined text-xs flex items-center gap-1.5"
               >
                 <span>Generate Workspace</span>
                 <span>&rarr;</span>
@@ -582,11 +582,11 @@ export default function BizOSPage() {
                 <button
                   type="submit"
                   disabled={formStatus === "submitting"}
-                  className="w-full py-3 rounded-xl bg-white text-black hover:bg-neutral-200 font-semibold text-xs transition-colors shadow-md"
+                  className="w-full py-3 rounded-lg btn-light-refined text-xs shadow-sm"
                 >
                   {formStatus === "submitting"
                     ? "Submitting Workspace Request..."
-                    : "Request BizOS Workspace Setup &rarr;"}
+                    : "Request BizOS Workspace Setup \u2192"}
                 </button>
               </div>
             </form>

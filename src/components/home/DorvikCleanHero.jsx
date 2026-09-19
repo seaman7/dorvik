@@ -47,7 +47,7 @@ export function DorvikCleanHero() {
           <div className="mt-9 flex flex-col sm:flex-row items-center justify-center gap-3">
             <Link
               href="/bizos#waitlist"
-              className="w-full sm:w-auto px-6 py-3 rounded-lg bg-white text-black hover:bg-neutral-200 font-medium text-xs tracking-tight transition-colors flex items-center justify-center gap-2 shadow-sm"
+              className="w-full sm:w-auto px-6 py-3 rounded-lg btn-light-refined text-xs tracking-tight flex items-center justify-center gap-2"
             >
               <span>Request Early Access Workspace</span>
               <span>&rarr;</span>
@@ -184,7 +184,7 @@ export function DorvikCleanHero() {
                     <div className="px-2.5 py-1 rounded bg-[#15151b] border border-[#252530] text-[11px] font-mono text-neutral-300">
                       All Outlets (3)
                     </div>
-                    <button className="px-3 py-1 rounded bg-white text-black font-semibold text-[11px] hover:bg-neutral-200 transition-colors">
+                    <button className="px-3 py-1 rounded btn-light-refined text-[11px]">
                       + New Entry
                     </button>
                   </div>

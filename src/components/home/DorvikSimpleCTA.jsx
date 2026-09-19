@@ -20,12 +20,12 @@ export function DorvikSimpleCTA() {
         </p>
 
         <div className="mt-8 flex flex-col sm:flex-row items-center justify-center gap-3">
-          <Link
-            href="/bizos#waitlist"
-            className="w-full sm:w-auto px-6 py-3 rounded-lg bg-white text-black hover:bg-neutral-200 font-semibold text-xs tracking-tight transition-colors shadow-sm"
-          >
-            Request Dedicated Workspace &rarr;
-          </Link>
+            <Link
+              href="/bizos#waitlist"
+              className="w-full sm:w-auto px-6 py-3 rounded-lg btn-light-refined text-xs tracking-tight transition-colors shadow-sm"
+            >
+              Request Dedicated Workspace &rarr;
+            </Link>
 
           <Link
             href="/contact"

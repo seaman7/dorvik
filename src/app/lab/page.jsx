@@ -34,7 +34,7 @@ export default function DorvikLabPage() {
           <div className="mt-8 flex flex-wrap gap-3">
             <a
               href="#editor"
-              className="px-6 py-3 rounded-xl bg-white text-black hover:bg-neutral-200 font-semibold text-xs tracking-tight transition-colors shadow-md flex items-center gap-2"
+              className="px-6 py-3 rounded-lg btn-light-refined text-xs tracking-tight flex items-center gap-2 shadow-sm"
             >
               <span>Watch Live Agent In Action</span>
               <span>&darr;</span>
@@ -144,7 +144,7 @@ export default function DorvikLabPage() {
           </p>
           <Link
             href="/contact"
-            className="px-7 py-3 rounded-xl bg-white text-black hover:bg-neutral-200 font-semibold text-xs transition-colors shadow-md"
+            className="px-7 py-3 rounded-lg btn-light-refined text-xs shadow-sm inline-flex items-center gap-2"
           >
             Schedule Technical Briefing &rarr;
           </Link>
