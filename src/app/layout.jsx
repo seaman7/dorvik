@@ -1,4 +1,5 @@
 import "./globals.css";
+import { ThemeProvider } from "@/components/theme/ThemeProvider";
 import { DorvikNavbar } from "@/components/home/DorvikNavbar";
 import { DorvikFooter } from "@/components/home/DorvikFooter";
 
@@ -57,25 +58,27 @@ export const metadata = {
 export default function RootLayout({ children }) {
   return (
     <html lang="en" className="scroll-smooth">
-      <body className="min-h-screen bg-[#08080A] text-neutral-200 antialiased selection:bg-cyan-500 selection:text-black font-sans">
-        {/* Accessible Skip Link */}
-        <a
-          href="#editor"
-          className="sr-only focus:not-sr-only focus:fixed focus:top-4 focus:left-4 focus:z-50 focus:px-4 focus:py-2 focus:bg-cyan-400 focus:text-purple-950 focus:outline-none font-bold"
-        >
-          Skip to editor
-        </a>
+      <body className="min-h-screen bg-[#08080A] text-neutral-200 antialiased selection:bg-cyan-500 selection:text-black font-sans transition-colors duration-200">
+        <ThemeProvider>
+          {/* Accessible Skip Link */}
+          <a
+            href="#main-content"
+            className="sr-only focus:not-sr-only focus:fixed focus:top-4 focus:left-4 focus:z-50 focus:px-4 focus:py-2 focus:bg-white focus:text-black focus:outline-none font-bold"
+          >
+            Skip to content
+          </a>
 
-        {/* Dorvik Navigation Bar */}
-        <DorvikNavbar />
+          {/* Dorvik Navigation Bar */}
+          <DorvikNavbar />
 
-        {/* Main Content */}
-        <main id="main-content" className="relative z-10 min-h-screen flex flex-col">
-          {children}
-        </main>
+          {/* Main Content */}
+          <main id="main-content" className="relative z-10 min-h-screen flex flex-col">
+            {children}
+          </main>
 
-        {/* Dorvik Footer */}
-        <DorvikFooter />
+          {/* Dorvik Footer */}
+          <DorvikFooter />
+        </ThemeProvider>
       </body>
     </html>
   );

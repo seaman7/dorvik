@@ -3,6 +3,7 @@
 import React, { useState } from "react";
 import Link from "next/link";
 import Image from "next/image";
+import { ThemeToggle } from "@/components/theme/ThemeToggle";
 
 export function DorvikNavbar() {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
@@ -69,7 +70,9 @@ export function DorvikNavbar() {
         </nav>
 
         {/* Right Actions */}
-        <div className="flex items-center gap-3">
+        <div className="flex items-center gap-2.5">
+          <ThemeToggle />
+
           <Link
             href="/bizos#waitlist"
             className="hidden sm:inline-flex px-3.5 py-1.5 rounded-md btn-light-refined text-xs tracking-tight"
@@ -147,14 +150,15 @@ export function DorvikNavbar() {
           >
             Contact
           </Link>
-          <div className="pt-2">
+          <div className="pt-2 flex items-center justify-between gap-3">
             <Link
               href="/bizos#waitlist"
               onClick={() => setMobileMenuOpen(false)}
-              className="block w-full text-center py-2.5 rounded-md btn-light-refined text-xs"
+              className="flex-1 text-center py-2.5 rounded-md btn-light-refined text-xs"
             >
               Request Demo
             </Link>
+            <ThemeToggle />
           </div>
         </div>
       )}
