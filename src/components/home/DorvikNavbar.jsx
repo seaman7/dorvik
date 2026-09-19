@@ -40,6 +40,14 @@ export function DorvikNavbar() {
         </Link>
 
         <Link
+          href="/careers"
+          className="inline-flex items-center gap-1.5 text-xs md:text-sm font-bold text-purple-200 hover:text-cyan-400 px-2.5 py-1.5 transition-colors border border-transparent hover:border-purple-600 font-mono"
+        >
+          <span>Careers</span>
+          <span className="text-[9px] bg-emerald-500/20 text-emerald-400 px-1.5 py-0.5 rounded border border-emerald-500/30 font-mono leading-none">HIRING</span>
+        </Link>
+
+        <Link
           href="/#projects"
           className="hidden lg:inline-flex items-center text-xs md:text-sm font-bold text-purple-200 hover:text-white px-2.5 py-1.5 transition-colors border border-transparent hover:border-purple-600 font-mono"
         >

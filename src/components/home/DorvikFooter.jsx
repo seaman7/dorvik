@@ -72,6 +72,11 @@ export function DorvikFooter() {
             </Link>
           </li>
           <li>
+            <Link href="/careers" className="hover:text-cyan-400 transition-colors text-purple-200">
+              Careers <span className="text-[10px] text-emerald-400 font-bold">(Hiring)</span>
+            </Link>
+          </li>
+          <li>
             <Link href="/contact" className="hover:text-cyan-400 transition-colors font-bold text-fuchsia-300">
               Contact Us
             </Link>
