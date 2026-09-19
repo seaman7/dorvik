@@ -1,32 +1,33 @@
 import "./globals.css";
-import { HackerRankNavbar } from "@/components/home/HackerRankNavbar";
-import { HackerRankFooter } from "@/components/home/HackerRankFooter";
+import { DorvikNavbar } from "@/components/home/DorvikNavbar";
+import { DorvikFooter } from "@/components/home/DorvikFooter";
 
 export const viewport = {
-  themeColor: "#FFFFFF",
+  themeColor: "#1D0245",
   width: "device-width",
   initialScale: 1,
 };
 
 export const metadata = {
   title: {
-    default: "DORVIK — Software & AI Systems for the Agentic Era",
+    default: "DORVIK — Autonomous AI & Cloud Infrastructure Agent",
     template: "%s | DORVIK",
   },
   description:
-    "DORVIK builds intelligent software, applied AI systems, computer vision solutions, and scalable cloud infrastructure for ambitious businesses.",
+    "Dorvik is an autonomous AI & infrastructure agent that handles the complex cloud, GPU, and engineering tasks you don't want to do.",
   keywords: [
     "DORVIK",
-    "Agentic Era",
-    "intelligent software",
-    "computer vision",
-    "OpenCV",
-    "AI systems",
-    "data annotation",
-    "digital engineering",
-    "cloud infrastructure",
+    "Autonomous Agent",
+    "Dorvik",
+    "AI Agent",
+    "GPU Orchestration",
+    "WareTwin",
+    "H100 Clusters",
+    "Cloud Infrastructure",
+    "Gemini 3 Pro",
+    "Claude 3.7",
   ],
-  authors: [{ name: "DORVIK Engineering Team" }],
+  authors: [{ name: "DORVIK Engineering Labs" }],
   creator: "DORVIK",
   publisher: "DORVIK",
   metadataBase: new URL("https://dorvik.com"),
@@ -34,9 +35,9 @@ export const metadata = {
     canonical: "https://dorvik.com",
   },
   openGraph: {
-    title: "DORVIK — Software & AI Systems for the Agentic Era",
+    title: "DORVIK — Autonomous AI & Cloud Infrastructure Agent",
     description:
-      "DORVIK builds intelligent software, applied AI systems, computer vision solutions, and scalable cloud infrastructure for ambitious businesses.",
+      "Autonomous agent for high-throughput GPU orchestration, digital twin simulations, and automated code migrations.",
     url: "https://dorvik.com",
     siteName: "DORVIK",
     locale: "en_US",
@@ -44,35 +45,37 @@ export const metadata = {
   },
   twitter: {
     card: "summary_large_image",
-    title: "DORVIK — Software & AI Systems for the Agentic Era",
+    title: "DORVIK — Autonomous AI & Cloud Infrastructure Agent",
     description:
-      "Software & AI systems engineered for the Agentic Era.",
+      "Dorvik handles the complex engineering tasks you don't want to do.",
   },
   icons: {
-    icon: "/favicon.svg",
+    icon: "/dorvik-logo.png",
   },
 };
 
 export default function RootLayout({ children }) {
   return (
     <html lang="en" className="scroll-smooth">
-      <body className="min-h-screen bg-[#FFFFFF] text-[#0E1015] antialiased selection:bg-[#00EA64] selection:text-[#0E1015]">
+      <body className="min-h-screen bg-[#1D0245] text-purple-100 antialiased selection:bg-cyan-400 selection:text-[#09051c] font-mono">
         {/* Accessible Skip Link */}
         <a
-          href="#main-content"
-          className="sr-only focus:not-sr-only focus:fixed focus:top-4 focus:left-4 focus:z-50 focus:px-4 focus:py-2 focus:bg-[#0E1015] focus:text-white focus:outline-none"
+          href="#editor"
+          className="sr-only focus:not-sr-only focus:fixed focus:top-4 focus:left-4 focus:z-50 focus:px-4 focus:py-2 focus:bg-cyan-400 focus:text-purple-950 focus:outline-none font-bold"
         >
-          Skip to main content
+          Skip to editor
         </a>
 
-        {/* HackerRank Style Navigation Bar */}
-        <HackerRankNavbar />
+        {/* Dorvik Navigation Bar */}
+        <DorvikNavbar />
 
         {/* Main Content */}
-        {children}
+        <main id="main-content" className="relative z-10 min-h-screen flex flex-col">
+          {children}
+        </main>
 
-        {/* HackerRank Style Footer */}
-        <HackerRankFooter />
+        {/* Dorvik Footer */}
+        <DorvikFooter />
       </body>
     </html>
   );

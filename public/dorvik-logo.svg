@@ -1,0 +1,84 @@
+<!-- 
+  Dorvik Logo SVG
+  Segmented "D" with 3 speed/motion diagonal stripes on the left spine.
+  White on transparent. Use on dark backgrounds.
+-->
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 200" fill="none">
+  <defs>
+    <!-- Clip mask to cut diagonal stripes through the D -->
+    <clipPath id="d-stripe-clip">
+      <!-- The full D shape -->
+      <path d="
+        M60 28
+        L100 28
+        C148 28 178 64 178 100
+        C178 136 148 172 100 172
+        L60 172
+        Z
+      "/>
+    </clipPath>
+  </defs>
+
+  <!-- 
+    Full D body (white) then cut diagonal gaps through it.
+    Build the D as a thick ring on the right + solid left bar,
+    then overlay transparent diagonal slashes.
+  -->
+
+  <!-- Outer D arc + body -->
+  <path
+    fill="white"
+    d="
+      M60 28
+      L100 28
+      C150 28 180 64 180 100
+      C180 136 150 172 100 172
+      L60 172
+      Z
+    "
+  />
+
+  <!-- Inner cutout (hollow the D) -->
+  <path
+    fill="black"
+    d="
+      M72 52
+      L98 52
+      C132 52 154 74 154 100
+      C154 126 132 148 98 148
+      L72 148
+      Z
+    "
+  />
+
+  <!-- 
+    Re-fill the left vertical bar portion of the D 
+    (so hollow only on the curved right side) 
+  -->
+  <rect fill="white" x="60" y="28" width="36" height="144"/>
+
+  <!-- 
+    Now cut diagonal speed stripes through the left bar.
+    Two angled gaps that slice the vertical bar into 3 segments.
+    Each gap is a thin diagonal parallelogram (rotated ~-15 deg).
+  -->
+
+  <!-- Gap 1 — upper stripe cut -->
+  <polygon
+    fill="black"
+    points="52,82  100,74  100,86  52,94"
+  />
+
+  <!-- Gap 2 — lower stripe cut -->
+  <polygon
+    fill="black"
+    points="52,118  100,110  100,122  52,130"
+  />
+
+  <!-- Trim left of the bar to give the diagonal leading edge -->
+  <!-- Top segment left edge: angled -->
+  <polygon fill="black" points="52,28  96,28  52,82"/>
+  <!-- Bottom segment left edge: angled -->
+  <polygon fill="black" points="52,130  96,172  52,172"/>
+
+</svg>

@@ -1,0 +1,55 @@
+# Dorvik BugFixer — Ollama Modelfile
+#
+# This file packages your QLoRA fine-tuned model into Ollama.
+#
+# STEP 1: Fine-tune the model
+#   python3 training/train_qlora.py --merge_and_save
+#
+# STEP 2: Convert merged weights to GGUF
+#   bash training/convert_to_gguf.sh
+#
+# STEP 3: Update the FROM path below to your GGUF file, then:
+#   ollama create dorvik-bugfixer -f training/Modelfile
+#
+# STEP 4: Test locally
+#   ollama run dorvik-bugfixer
+#   > Fix this React useState bug: ...
+#
+# STEP 5: Serve via API (Dorvik will call http://localhost:11434)
+#   ollama serve  (runs automatically in background after install)
+
+FROM ./training/output/dorvik-bugfixer-merged-Q4_K_M.gguf
+
+SYSTEM """
+You are Dorvik BugFixer, an autonomous software engineering agent trained exclusively on real-world bug-fix commit pairs.
+
+Your capabilities:
+1. Identify the exact root cause of bugs from broken code + stack traces
+2. Produce unified diff patches (--- a/file, +++ b/file format)
+3. Write regression tests in the project's existing test framework
+4. Never hallucinate function names or APIs that don't exist in the provided code
+5. Support JavaScript/TypeScript, Python, Go, Rust, and SQL
+
+Output format (always):
+### Root Cause
+[Precise technical explanation]
+
+### Patch
+```diff
+[Exact unified diff]
+```
+
+### Regression Test
+```[language]
+[Complete test that would have caught this bug]
+```
+"""
+
+# Inference parameters tuned for precise code generation
+PARAMETER temperature    0.1   # Low randomness for deterministic diffs
+PARAMETER top_p          0.9
+PARAMETER top_k          40
+PARAMETER repeat_penalty 1.1   # Prevent repetitive output
+PARAMETER num_ctx        4096  # Context window (increase to 8192 if VRAM allows)
+PARAMETER stop           "<|im_end|>"
+PARAMETER stop           "<|endoftext|>"
