@@ -218,26 +218,81 @@
 }
 
 /* ========================================================
-   DAY / LIGHT THEME SYSTEM & BUTTON COLOR ADAPTATION
+   DAY / LIGHT THEME SYSTEM & ACCESSIBLE TYPOGRAPHY
    ======================================================== */
 
 html.light,
-html[data-theme="light"] {
-  background-color: #FAFAFC !important;
-  color: #18181B !important;
-}
-
+html[data-theme="light"],
 html.light body,
 html[data-theme="light"] body {
   background-color: #FAFAFC !important;
+  color: #09090B !important;
+}
+
+/* Universal Light-Mode Text Contrast Enforcers (Fixes invisible text) */
+html.light .text-white,
+html[data-theme="light"] .text-white {
+  color: #09090B !important;
+}
+
+html.light .text-neutral-100,
+html.light .text-neutral-200,
+html.light .text-neutral-300,
+html[data-theme="light"] .text-neutral-100,
+html[data-theme="light"] .text-neutral-200,
+html[data-theme="light"] .text-neutral-300 {
   color: #18181B !important;
 }
 
-/* Header & Navigation in Light Mode */
+html.light .text-neutral-400,
+html.light .text-slate-400,
+html[data-theme="light"] .text-neutral-400,
+html[data-theme="light"] .text-slate-400 {
+  color: #3F3F46 !important; /* High-contrast readable charcoal */
+}
+
+html.light .text-neutral-500,
+html.light .text-slate-500,
+html[data-theme="light"] .text-neutral-500,
+html[data-theme="light"] .text-slate-500 {
+  color: #52525B !important;
+}
+
+html.light .text-cyan-400,
+html.light .text-cyan-300,
+html[data-theme="light"] .text-cyan-400,
+html[data-theme="light"] .text-cyan-300 {
+  color: #0369A1 !important; /* Accessible deep cyan-blue on white */
+}
+
+html.light .text-emerald-400,
+html[data-theme="light"] .text-emerald-400 {
+  color: #047857 !important; /* Accessible deep forest emerald */
+}
+
+html.light .text-amber-400,
+html.light .text-amber-300,
+html[data-theme="light"] .text-amber-400,
+html[data-theme="light"] .text-amber-300 {
+  color: #B45309 !important; /* Accessible deep amber */
+}
+
+html.light h1, html.light h2, html.light h3, html.light h4, html.light h5, html.light h6,
+html[data-theme="light"] h1, html[data-theme="light"] h2, html[data-theme="light"] h3,
+html[data-theme="light"] h4, html[data-theme="light"] h5, html[data-theme="light"] h6 {
+  color: #09090B !important;
+}
+
+html.light p, html[data-theme="light"] p {
+  color: #3F3F46 !important;
+}
+
+/* Opaque Solid Navbar in Light Mode so content never shines through */
 html.light header,
 html[data-theme="light"] header {
-  background-color: rgba(255, 255, 255, 0.9) !important;
-  border-color: #E4E4E7 !important;
+  background-color: rgba(255, 255, 255, 0.98) !important;
+  border-bottom: 1px solid #E4E4E7 !important;
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.04) !important;
 }
 
 html.light nav a,
@@ -248,30 +303,6 @@ html[data-theme="light"] nav a {
 html.light nav a:hover,
 html[data-theme="light"] nav a:hover {
   color: #09090B !important;
-}
-
-/* Sections & Text in Light Mode */
-html.light section,
-html[data-theme="light"] section {
-  background-color: #FAFAFC !important;
-  border-color: #E4E4E7 !important;
-  color: #18181B !important;
-}
-
-html.light h1,
-html.light h2,
-html.light h3,
-html.light h4,
-html[data-theme="light"] h1,
-html[data-theme="light"] h2,
-html[data-theme="light"] h3,
-html[data-theme="light"] h4 {
-  color: #09090B !important;
-}
-
-html.light p,
-html[data-theme="light"] p {
-  color: #52525B !important;
 }
 
 /* Surface Cards in Light Mode */
@@ -369,6 +400,7 @@ html[data-theme="light"] button[aria-label="Toggle Night/Day Theme"] {
   border-color: #D4D4D8 !important;
   color: #18181B !important;
 }
+
 
 
 

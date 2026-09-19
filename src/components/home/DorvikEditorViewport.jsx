@@ -1,91 +1,91 @@
 "use client";
 
-import React, { useState, useEffect, useRef } from "react";
+import React, { useState, useEffect } from "react";
 
-// Dorvik's 4 live agent scenarios — real SWE bug types Dorvik fixes autonomously
+// Dorvik's 4 real-world SWE agent scenarios
 const SCENARIOS = [
   {
     id: "state-machine",
-    category: "State Machine",
-    categoryBadge: "bg-fuchsia-400 text-fuchsia-950 border-fuchsia-600",
-    buttonLabel: "Bug Fixing",
-    objective: "// Objective: Change UserOnboarding to use a state machine for steps",
-    file: "src/auth/UserOnboarding.js",
+    title: "State Machine Refactor",
+    category: "Architecture",
+    file: "src/auth/UserOnboarding.ts",
+    objective: "Refactor multi-step onboarding into a deterministic finite state machine",
     initialLines: [
-      { num: 1, text: "// Objective: Change UserOnboarding to use a state machine for steps", type: "comment" },
-      { num: 2, text: "", type: "normal" },
-      { num: 3, text: "class UserOnboarding {", type: "normal" },
-      { num: 4, text: "  constructor(user) {", type: "normal" },
-      { num: 5, text: "    this.user = user;", type: "normal" },
-      { num: 6, text: "    this.steps = {", type: "normal" },
-      { num: 7, text: "      welcome: { next: 'profile_setup' },", type: "normal" },
-      { num: 8, text: "    }", type: "normal" },
-      { num: 9, text: "", type: "normal" },
-      { num: 10, text: "    this.currentStep = 0;", type: "normal" },
-      { num: 11, text: "  }", type: "normal" },
-      { num: 12, text: "", type: "normal" },
-      { num: 13, text: "  async nextStep() {", type: "normal" },
-      { num: 14, text: "    if (this.currentStep < this.steps.length - 1) {", type: "normal" },
-      { num: 15, text: "      this.currentStep++;", type: "normal" },
-      { num: 16, text: "      // TODO: Trigger analytics", type: "comment" },
-      { num: 17, text: "      return this.steps[this.currentStep];", type: "normal" },
+      { num: 1, text: "// Objective: Refactor UserOnboarding into a typed StateMachine", type: "comment" },
+      { num: 2, text: "import { createMachine, interpret } from 'xstate';", type: "normal" },
+      { num: 3, text: "", type: "normal" },
+      { num: 4, text: "export class UserOnboarding {", type: "normal" },
+      { num: 5, text: "  private user: UserRecord;", type: "normal" },
+      { num: 6, text: "  private currentStep: number = 0;", type: "normal" },
+      { num: 7, text: "  private legacySteps: Record<string, string>;", type: "normal" },
+      { num: 8, text: "", type: "normal" },
+      { num: 9, text: "  constructor(user: UserRecord) {", type: "normal" },
+      { num: 10, text: "    this.user = user;", type: "normal" },
+      { num: 11, text: "    this.legacySteps = { welcome: 'profile_setup' };", type: "normal" },
+      { num: 12, text: "  }", type: "normal" },
+      { num: 13, text: "", type: "normal" },
+      { num: 14, text: "  async proceedNext(): Promise<string> {", type: "normal" },
+      { num: 15, text: "    if (this.currentStep < 3) {", type: "normal" },
+      { num: 16, text: "      this.currentStep++;", type: "normal" },
+      { num: 17, text: "      return this.legacySteps['welcome'];", type: "normal" },
       { num: 18, text: "    }", type: "normal" },
-      { num: 19, text: "    return \"done\";", type: "normal" },
+      { num: 19, text: "    return 'completed';", type: "normal" },
       { num: 20, text: "  }", type: "normal" },
       { num: 21, text: "", type: "normal" },
-      { num: 22, text: "  // Old method - to be removed", type: "comment" },
-      { num: 23, text: "  legacyNotification() {", type: "normal" },
-      { num: 24, text: "    alert(\"Welcome aboard, \" + this.user.name);", type: "normal" },
-      { num: 25, text: "  }", type: "normal" },
-      { num: 26, text: "}", type: "normal" },
-      { num: 27, text: "", type: "normal" },
-      { num: 28, text: "const newUser = { name: \"David\", id: \"usr_123\" };", type: "normal" },
-      { num: 29, text: "const onboardingProcess = new UserOnboarding(newUser);", type: "normal" },
-      { num: 30, text: "onboardingProcess.nextStep();", type: "normal" },
+      { num: 22, text: "  legacyAlert(): void {", type: "normal" },
+      { num: 23, text: "    alert('Welcome ' + this.user.name);", type: "normal" },
+      { num: 24, text: "  }", type: "normal" },
+      { num: 25, text: "}", type: "normal" },
     ],
-    // The sequence of agent autonomous actions
     edits: [
       {
-        targetLineIndex: 6, // line 7
-        thought: "Converting step object to XState-compatible transition map...",
-        statusText: "Dorvik Agent: Injecting OnboardingStateMachine state map...",
+        targetLineIndex: 6,
+        thought: "Injecting deterministic StateMachine configuration & state schema...",
+        statusText: "AST Synthesis: Binding XState machine transitions...",
         replacementLines: [
-          { num: 7, text: "+     this.machine = new StateMachine({", type: "add" },
-          { num: 8, text: "+       initial: 'welcome',", type: "add" },
-          { num: 9, text: "+       states: { welcome: { on: { NEXT: 'profile_setup' } } }", type: "add" },
-          { num: 10, text: "+     });", type: "add" },
-        ]
+          { num: 7, text: "+   private machine = createMachine({", type: "add" },
+          { num: 8, text: "+     id: 'onboarding',", type: "add" },
+          { num: 9, text: "+     initial: 'welcome',", type: "add" },
+          { num: 10, text: "+     states: { welcome: { on: { NEXT: 'profile_setup' } } }", type: "add" },
+          { num: 11, text: "+   });", type: "add" },
+        ],
       },
       {
-        targetLineIndex: 16, // line 17
-        thought: "Adding async analytics emitter and transition guard...",
-        statusText: "Dorvik Agent: Synthesizing transition telemetry event...",
+        targetLineIndex: 16,
+        thought: "Replacing untyped index lookup with state machine transition guard...",
+        statusText: "Control Flow: Injecting typed transition telemetry...",
         replacementLines: [
-          { num: 17, text: "+     await sendTelemetry('step_transition', { user: this.user.id });", type: "add" },
-          { num: 18, text: "+     return this.machine.transition('NEXT');", type: "add" },
-        ]
+          { num: 17, text: "+     await telemetry.track('step_advance', { uid: this.user.id });", type: "add" },
+          { num: 18, text: "+     return this.machine.transition('NEXT').value as string;", type: "add" },
+        ],
       },
       {
-        targetLineIndex: 23, // line 24
-        thought: "Removing deprecated legacy alert method...",
-        statusText: "Dorvik Agent: Purging legacy window.alert calls...",
+        targetLineIndex: 22,
+        thought: "Purging synchronous window.alert to unblock main browser thread...",
+        statusText: "Clean-up: Replacing legacy alert with NotificationBroker...",
         replacementLines: [
-          { num: 24, text: "-   // legacyNotification removed by Dorvik AI Agent", type: "delete" },
-          { num: 25, text: "+   // Handled via modern PushNotificationService", type: "add" },
-        ]
-      }
-    ]
+          { num: 23, text: "-     alert('Welcome ' + this.user.name);", type: "delete" },
+          { num: 24, text: "+     NotificationBroker.sendWelcome(this.user.id);", type: "add" },
+        ],
+      },
+    ],
+    logs: [
+      "[0.04s] AST Parser: Indexed 48 syntax nodes in src/auth/UserOnboarding.ts",
+      "[0.18s] Diagnostic: Detected state mutation race condition in proceedNext()",
+      "[0.35s] Patch: Injected XState finite state schema with guard rules",
+      "[0.62s] Sandbox: MicroVM isolated runner executed Jest harness",
+      "[0.88s] Verification: 5/5 unit tests passed. Regression rate: 0.0%",
+    ],
   },
   {
     id: "version-bump",
-    category: "Version Bump",
-    categoryBadge: "bg-cyan-400 text-cyan-950 border-cyan-500",
-    buttonLabel: "Version Bump",
-    objective: "// Objective: Bump Next.js to v16 & convert dependencies",
+    title: "Next.js 16 Upgrade",
+    category: "Dependency Migration",
     file: "package.json",
+    objective: "Migrate dependencies to Next.js 16, React 19, and Tailwind CSS v4",
     initialLines: [
       { num: 1, text: "{", type: "normal" },
-      { num: 2, text: "  \"name\": \"dorvik-saas-web\",", type: "normal" },
+      { num: 2, text: "  \"name\": \"dorvik-production-web\",", type: "normal" },
       { num: 3, text: "  \"version\": \"1.4.0\",", type: "normal" },
       { num: 4, text: "  \"dependencies\": {", type: "normal" },
       { num: 5, text: "    \"next\": \"14.2.3\",", type: "normal" },
@@ -97,449 +97,270 @@ const SCENARIOS = [
       { num: 11, text: "    \"tailwindcss\": \"^3.4.1\",", type: "normal" },
       { num: 12, text: "    \"postcss\": \"^8.4.31\"", type: "normal" },
       { num: 13, text: "  }", type: "normal" },
-      { num: 14, text: "}", type: "normal" }
+      { num: 14, text: "}", type: "normal" },
     ],
     edits: [
       {
-        targetLineIndex: 4, // line 5
-        thought: "Upgrading Next.js to 16.3.5 with Turbopack...",
-        statusText: "Dorvik Agent: Resolving peer dependencies for React 19...",
+        targetLineIndex: 4,
+        thought: "Bumping React core and Next.js to latest stable release...",
+        statusText: "Dependency Solver: Resolving peer dependency matrix...",
         replacementLines: [
           { num: 5, text: "-   \"next\": \"14.2.3\",", type: "delete" },
           { num: 6, text: "-   \"react\": \"18.2.0\",", type: "delete" },
           { num: 7, text: "-   \"react-dom\": \"18.2.0\",", type: "delete" },
-          { num: 8, text: "+   \"next\": \"16.3.5\",", type: "add" },
-          { num: 9, text: "+   \"react\": \"19.2.8\",", type: "add" },
-          { num: 10, text: "+   \"react-dom\": \"19.2.8\",", type: "add" }
-        ]
+          { num: 8, text: "+   \"next\": \"16.0.2\",", type: "add" },
+          { num: 9, text: "+   \"react\": \"19.1.0\",", type: "add" },
+          { num: 10, text: "+   \"react-dom\": \"19.1.0\",", type: "add" },
+        ],
       },
       {
-        targetLineIndex: 10, // line 11
-        thought: "Migrating Tailwind v3 to Tailwind CSS v4...",
-        statusText: "Dorvik Agent: Replacing legacy tailwind.config with @tailwindcss/postcss...",
+        targetLineIndex: 10,
+        thought: "Upgrading Tailwind CSS v3 compiler to @tailwindcss/postcss v4...",
+        statusText: "PostCSS Engine: Replacing legacy config with native CSS cascade...",
         replacementLines: [
           { num: 11, text: "-   \"tailwindcss\": \"^3.4.1\",", type: "delete" },
           { num: 12, text: "+   \"@tailwindcss/postcss\": \"^4.0.0\",", type: "add" },
-          { num: 13, text: "+   \"tailwindcss\": \"^4.0.0\"", type: "add" }
-        ]
-      }
-    ]
-  },
-  {
-    id: "tests",
-    category: "Tests",
-    categoryBadge: "bg-amber-400 text-amber-950 border-amber-500",
-    buttonLabel: "Tests",
-    objective: "// Objective: Synthesize comprehensive Jest/Vitest unit tests",
-    file: "tests/auth.test.js",
-    initialLines: [
-      { num: 1, text: "import { describe, it, expect } from 'vitest';", type: "normal" },
-      { num: 2, text: "import { UserOnboarding } from '../src/auth/UserOnboarding';", type: "normal" },
-      { num: 3, text: "", type: "normal" },
-      { num: 4, text: "describe('UserOnboarding Workflow', () => {", type: "normal" },
-      { num: 5, text: "  // TODO: Add tests for edge cases and state machine", type: "comment" },
-      { num: 6, text: "  it('should initialize correctly', () => {", type: "normal" },
-      { num: 7, text: "    const p = new UserOnboarding({ name: 'Alice' });", type: "normal" },
-      { num: 8, text: "    expect(p).toBeDefined();", type: "normal" },
-      { num: 9, text: "  });", type: "normal" },
-      { num: 10, text: "});", type: "normal" }
+          { num: 13, text: "+   \"tailwindcss\": \"^4.0.0\"", type: "add" },
+        ],
+      },
     ],
-    edits: [
-      {
-        targetLineIndex: 8, // line 9
-        thought: "Synthesizing full transition coverage for all states...",
-        statusText: "Dorvik Agent: Synthesizing automated test suite...",
-        replacementLines: [
-          { num: 9, text: "+   it('should transition from welcome to profile_setup', async () => {", type: "add" },
-          { num: 10, text: "+     const p = new UserOnboarding({ name: 'Alice', id: 'usr_99' });", type: "add" },
-          { num: 11, text: "+     const next = await p.nextStep();", type: "add" },
-          { num: 12, text: "+     expect(next.value).toBe('profile_setup');", type: "add" },
-          { num: 13, text: "+   });", type: "add" },
-        ]
-      }
-    ]
+    logs: [
+      "[0.03s] Dependency Graph: Parsed 14 manifest entries",
+      "[0.15s] Solver: Verified React 19 forward-ref deprecation compatibility",
+      "[0.41s] Bundle Analyzer: Turbopack compilation succeeded with 0 warnings",
+      "[0.72s] Verification: Build artifact validated in clean container",
+    ],
   },
   {
     id: "memory-leak",
-    category: "Memory Leak",
-    categoryBadge: "bg-purple-400 text-purple-950 border-purple-500",
-    buttonLabel: "Memory Leak",
-    objective: "// Objective: Fix React useEffect memory leak on unmounted component",
-    file: "src/hooks/useRealtimeData.js",
+    title: "React useEffect Memory Leak",
+    category: "Performance",
+    file: "src/hooks/useDataStream.ts",
+    objective: "Fix dangling WebSocket listener and missing AbortController teardown",
     initialLines: [
-      { num: 1, text: "// Bug: setState called after component unmounts → memory leak", type: "comment" },
-      { num: 2, text: "export function useRealtimeData(endpoint) {", type: "normal" },
-      { num: 3, text: "  const [data, setData] = useState(null);", type: "normal" },
-      { num: 4, text: "  useEffect(() => {", type: "normal" },
-      { num: 5, text: "    fetchStream(endpoint, (chunk) => {", type: "normal" },
-      { num: 6, text: "      setData(chunk); // crashes if unmounted!", type: "comment" },
-      { num: 7, text: "    });", type: "normal" },
-      { num: 8, text: "  }, [endpoint]);", type: "normal" },
-      { num: 9, text: "  return data;", type: "normal" },
-      { num: 10, text: "}", type: "normal" }
+      { num: 1, text: "import { useEffect, useState } from 'react';", type: "normal" },
+      { num: 2, text: "", type: "normal" },
+      { num: 3, text: "export function useDataStream(streamUrl: string) {", type: "normal" },
+      { num: 4, text: "  const [data, setData] = useState<any[]>([]);", type: "normal" },
+      { num: 5, text: "", type: "normal" },
+      { num: 6, text: "  useEffect(() => {", type: "normal" },
+      { num: 7, text: "    const socket = new WebSocket(streamUrl);", type: "normal" },
+      { num: 8, text: "    socket.onmessage = (e) => setData(JSON.parse(e.data));", type: "normal" },
+      { num: 9, text: "    // Bug: Missing teardown/cleanup listener on unmount", type: "comment" },
+      { num: 10, text: "  }, [streamUrl]);", type: "normal" },
+      { num: 11, text: "", type: "normal" },
+      { num: 12, text: "  return { data };", type: "normal" },
+      { num: 13, text: "}", type: "normal" },
     ],
     edits: [
       {
-        targetLineIndex: 3,
-        thought: "Adding isMounted cleanup guard to cancel async callbacks on unmount...",
-        statusText: "Dorvik Agent: Injecting useEffect cleanup to prevent memory leak...",
+        targetLineIndex: 8,
+        thought: "Detecting unclosed socket connection causing browser memory exhaustion...",
+        statusText: "AST Inspection: Synthesizing return cleanup function...",
         replacementLines: [
-          { num: 4, text: "-   useEffect(() => {", type: "delete" },
-          { num: 5, text: "+   useEffect(() => {", type: "add" },
-          { num: 6, text: "+     let isMounted = true;", type: "add" },
-          { num: 7, text: "+     fetchStream(endpoint, (chunk) => {", type: "add" },
-          { num: 8, text: "+       if (isMounted) setData(chunk);", type: "add" },
-          { num: 9, text: "+     });", type: "add" },
-          { num: 10, text: "+     return () => { isMounted = false; }; // cleanup", type: "add" }
-        ]
-      }
-    ]
-  }
+          { num: 9, text: "+   return () => {", type: "add" },
+          { num: 10, text: "+     socket.close(1000, 'Component unmounted');", type: "add" },
+          { num: 11, text: "+     socket.onmessage = null;", type: "add" },
+          { num: 12, text: "+   };", type: "add" },
+        ],
+      },
+    ],
+    logs: [
+      "[0.05s] Memory Profiler: Detected active listener retention after unmount",
+      "[0.22s] Taint Analysis: Variable socket escapes useEffect closure scope",
+      "[0.38s] Patch Synthesized: Injected clean idempotent teardown handler",
+      "[0.68s] Memory Stress Test: Heap usage normalized to 14MB baseline",
+    ],
+  },
 ];
 
 export function DorvikEditorViewport() {
-  const [selectedScenarioIndex, setSelectedScenarioIndex] = useState(0);
-  const scenario = SCENARIOS[selectedScenarioIndex];
+  const [selectedIdx, setSelectedIdx] = useState(0);
+  const [currentLines, setCurrentLines] = useState(SCENARIOS[0].initialLines);
+  const [activeStep, setActiveStep] = useState(0);
+  const [thought, setThought] = useState("");
+  const [statusMsg, setStatusMsg] = useState("Agent Standby");
+  const [activeTab, setActiveTab] = useState("editor"); // 'editor' | 'terminal'
 
-  // Dynamic code editor state
-  const [currentLines, setCurrentLines] = useState(scenario.initialLines);
-  const [currentEditStep, setCurrentEditStep] = useState(0);
-  const [agentState, setAgentState] = useState("idle"); // moving, thinking, editing, idle
-  const [thoughtText, setThoughtText] = useState("");
-  const [activeLineNum, setActiveLineNum] = useState(6);
-  const [statusMsg, setStatusMsg] = useState("Dorvik Agent ready to execute tasks.");
+  const scenario = SCENARIOS[selectedIdx];
 
-  // When user clicks a scenario button, reset and trigger sequence
   useEffect(() => {
-    setCurrentLines(scenario.initialLines);
-    setCurrentEditStep(0);
-    setAgentState("idle");
-    setThoughtText("");
-    setActiveLineNum(scenario.edits[0]?.targetLineIndex || 4);
-    setStatusMsg(`Dorvik Agent initialized on ${scenario.file}`);
-
     let isMounted = true;
+    setCurrentLines(scenario.initialLines);
+    setActiveStep(0);
+    setThought("Analyzing repository abstract syntax tree...");
+    setStatusMsg("Dorvik Agent: Parsing AST...");
 
-    // Run the multi-step animation sequence
-    const runSequence = async () => {
-      // Small initial delay
+    const runEdits = async () => {
       await new Promise((r) => setTimeout(r, 600));
       if (!isMounted) return;
 
       for (let i = 0; i < scenario.edits.length; i++) {
         const edit = scenario.edits[i];
-        
-        // 1. Move character to line
-        setAgentState("moving");
-        setActiveLineNum(edit.targetLineIndex);
-        setStatusMsg(`Dorvik Agent moving to line ${edit.targetLineIndex + 1}...`);
-        await new Promise((r) => setTimeout(r, 700));
         if (!isMounted) return;
 
-        // 2. Think with thought bubble
-        setAgentState("thinking");
-        setThoughtText(edit.thought);
+        setActiveStep(i + 1);
+        setThought(edit.thought);
         setStatusMsg(edit.statusText);
-        await new Promise((r) => setTimeout(r, 1200));
-        if (!isMounted) return;
 
-        // 3. Edit / Apply code lines
-        setAgentState("editing");
-        await new Promise((r) => setTimeout(r, 300));
+        await new Promise((r) => setTimeout(r, 1100));
         if (!isMounted) return;
 
         setCurrentLines((prev) => {
           const next = [...prev];
           next.splice(edit.targetLineIndex, 1, ...edit.replacementLines);
-          // Re-index line numbers
           return next.map((l, idx) => ({ ...l, num: idx + 1 }));
         });
 
-        await new Promise((r) => setTimeout(r, 1000));
+        await new Promise((r) => setTimeout(r, 800));
         if (!isMounted) return;
       }
 
-      // Finish sequence
-      setAgentState("idle");
-      setThoughtText("");
-      setStatusMsg(`✓ Task Complete: ${scenario.file} verified with 0 errors.`);
+      setThought("");
+      setStatusMsg("✓ Verified: Patch compiles cleanly in isolated MicroVM container");
     };
 
-    runSequence();
+    runEdits();
 
     return () => {
       isMounted = false;
     };
-  }, [selectedScenarioIndex]);
-
-  // Calculate character vertical position based on active line
-  // 24px per line + 48px header padding
-  const characterY = Math.max(50, 48 + (activeLineNum * 24));
+  }, [selectedIdx]);
 
   return (
-    <section id="editor" className="w-full max-w-screen-xl mx-auto px-4 md:px-8 py-6 relative">
-      <div className="w-full relative">
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-6 items-start">
-          
-          {/* Main Code Editor Viewport (Left 8-9 cols) */}
-          <div className="lg:col-span-8 xl:col-span-8 w-full relative z-10">
-            {/* Tab selection for mobile or direct file browsing */}
-            <div className="flex items-center justify-between mb-2 font-mono text-xs">
-              <div className="flex items-center gap-2">
-                <span className="text-cyan-400 font-bold">{scenario.file}</span>
-                <span className="text-purple-500">•</span>
-                <span className="text-purple-300 hidden sm:inline">{scenario.objective}</span>
-              </div>
-              <div className="flex items-center gap-2 text-[11px] text-cyan-300">
-                <span className="animate-pulse text-cyan-400">●</span>
-                <span>AGENT LIVE</span>
-              </div>
-            </div>
-
-            {/* Dorvik Agent Editor — live diff view */}
-            <div className="pattern-square-light p-3 md:p-5 rounded-pixel-lg bg-[#22074f] border-2 border-purple-800 shadow-2xl relative">
-              <div className="bg-[#09051c] rounded-pixel-sm border-2 border-purple-900 overflow-hidden relative min-h-[520px] flex flex-col justify-between">
-                
-                {/* Editor Header Bar */}
-                <div className="flex items-center justify-between px-4 py-2.5 bg-[#130825] border-b border-purple-800/60 font-mono text-xs">
-                  <div className="flex items-center gap-2">
-                    <span className="w-3 h-3 bg-fuchsia-500 inline-block"></span>
-                    <span className="w-3 h-3 bg-amber-400 inline-block"></span>
-                    <span className="w-3 h-3 bg-cyan-400 inline-block"></span>
-                    <span className="text-purple-200 font-bold ml-2">{scenario.file}</span>
-                  </div>
-                  <span className="text-[11px] text-purple-400 font-mono">
-                    AUTONOMOUS PATCH STREAM
-                  </span>
-                </div>
-
-                {/* Editor Code Canvas with Line Numbers & Moving Character */}
-                <div className="p-4 md:p-6 font-mono text-xs md:text-sm leading-6 overflow-x-auto flex-1 relative">
-                  
-                  {/* DORVIK Pixel Bot — moves through lines as agent edits code */}
-                  <div
-                    className="absolute left-2 md:left-4 pointer-events-none z-30 transition-all duration-700 ease-in-out flex items-center"
-                    style={{
-                      transform: `translateY(${characterY}px)`,
-                      top: 0,
-                    }}
-                  >
-                    {/* Dynamic Thought Bubble */}
-                    {thoughtText && (
-                      <div className="absolute -top-9 left-6 md:left-8 px-2.5 py-1 bg-white text-purple-950 text-[10px] font-black rounded-pixel-sm shadow-xl border-b-2 border-fuchsia-400 whitespace-nowrap animate-pulse flex items-center gap-1.5 z-40">
-                        <span className="w-1.5 h-1.5 bg-fuchsia-600 inline-block"></span>
-                        <span>{thoughtText}</span>
-                      </div>
-                    )}
-
-                    {/* Dorvik Bot SVG Mascot */}
-                    <div
-                      className={`w-10 h-10 md:w-12 md:h-12 shrink-0 ${
-                        agentState === "thinking"
-                          ? "animate-agent-thinking"
-                          : agentState === "editing"
-                          ? "animate-pulse"
-                          : "animate-agent-idle"
-                      }`}
-                      style={{ imageRendering: "pixelated" }}
-                    >
-                       <svg
-                        xmlns="http://www.w3.org/2000/svg"
-                        viewBox="0 0 32 32"
-                        className="w-full h-full drop-shadow-[0_2px_12px_rgba(0,210,239,0.6)] dorvik-fox-svg"
-                        shapeRendering="crispEdges"
-                        style={{ imageRendering: "pixelated" }}
-                       >
-                        {/* DORVIK PIXEL FOX — 32×32 crisp pixel art */}
-                        {/* Left ear */}
-                        <rect fill="#f97316" x="4"  y="0" width="6" height="7" />
-                        <rect fill="#fff7ed" x="5"  y="1" width="3" height="4" />
-                        {/* Right ear */}
-                        <rect fill="#f97316" x="22" y="0" width="6" height="7" />
-                        <rect fill="#fff7ed" x="23" y="1" width="3" height="4" />
-                        {/* Head */}
-                        <rect fill="#f97316" x="4"  y="6" width="24" height="12" />
-                        {/* Left eye white */}
-                        <rect fill="#ffffff" x="7"  y="8" width="6" height="5" />
-                        {/* Right eye white */}
-                        <rect fill="#ffffff" x="19" y="8" width="6" height="5" />
-                        {/* Left pupil — cyan AI glow */}
-                        <rect fill="#00D2EF" x="9"  y="9" width="3" height="3" />
-                        {/* Right pupil */}
-                        <rect fill="#00D2EF" x="21" y="9" width="3" height="3" />
-                        {/* Left iris dot */}
-                        <rect fill="#09051c" x="10" y="10" width="1" height="1" />
-                        {/* Right iris dot */}
-                        <rect fill="#09051c" x="22" y="10" width="1" height="1" />
-                        {/* Muzzle left */}
-                        <rect fill="#fff7ed" x="7"  y="14" width="7" height="5" />
-                        {/* Muzzle right */}
-                        <rect fill="#fff7ed" x="18" y="14" width="7" height="5" />
-                        {/* Nose */}
-                        <rect fill="#1e1b4b" x="14" y="14" width="4" height="2" />
-                        {/* Body */}
-                        <rect fill="#ea580c" x="6"  y="18" width="20" height="10" />
-                        {/* Belly */}
-                        <rect fill="#fff7ed" x="11" y="19" width="10" height="8" />
-                        {/* Left tail */}
-                        <rect fill="#f97316" x="0"  y="18" width="6" height="10" />
-                        <rect fill="#fff7ed" x="0"  y="26" width="6" height="2" />
-                        {/* Right tail */}
-                        <rect fill="#f97316" x="26" y="18" width="6" height="10" />
-                        <rect fill="#fff7ed" x="26" y="26" width="6" height="2" />
-                        {/* Legs */}
-                        <rect fill="#ea580c" x="8"  y="28" width="5" height="4" />
-                        <rect fill="#ea580c" x="19" y="28" width="5" height="4" />
-                       </svg>
-                    </div>
-                  </div>
-
-                  {/* Code Lines Display */}
-                  <div className="space-y-0 pl-10 md:pl-12">
-                    {currentLines.map((line, idx) => {
-                      const isDel = line.type === "delete";
-                      const isAdd = line.type === "add";
-                      const isComment = line.type === "comment";
-                      const isActive = activeLineNum === idx && agentState === "editing";
-
-                      return (
-                        <div
-                          key={idx}
-                          className={`flex items-center font-mono py-0.5 px-2 transition-colors ${
-                            isActive
-                              ? "bg-purple-700/40 border-l-2 border-cyan-400"
-                              : isDel
-                              ? "bg-fuchsia-950/40 text-fuchsia-300 border-l-2 border-fuchsia-500"
-                              : isAdd
-                              ? "bg-cyan-950/40 text-cyan-300 border-l-2 border-cyan-400 font-semibold"
-                              : isComment
-                              ? "text-purple-400 italic"
-                              : "text-purple-100 hover:bg-purple-900/30"
-                          }`}
-                        >
-                          {/* Line Number */}
-                          <span className="w-8 select-none text-right pr-3 text-purple-600 shrink-0 text-[11px]">
-                            {line.num}
-                          </span>
-                          
-                          {/* Diff symbol */}
-                          <span className="w-4 select-none font-bold text-center shrink-0">
-                            {isDel ? "-" : isAdd ? "+" : " "}
-                          </span>
-
-                          {/* Code string */}
-                          <span className="ml-2 break-all whitespace-pre-wrap">
-                            {line.text}
-                          </span>
-                        </div>
-                      );
-                    })}
-                  </div>
-
-                </div>
-
-                {/* Dorvik Agent Status Bar */}
-                <div className="bg-[#642cc2] px-4 py-2.5 text-white flex items-center justify-between text-xs md:text-sm font-bold border-t-2 border-purple-700">
-                  <div className="flex items-center gap-2.5 truncate">
-                    <div className="w-6 h-6 bg-purple-900 border border-cyan-400 flex items-center justify-center shrink-0">
-                      <span className="text-cyan-400 text-xs">▲</span>
-                    </div>
-                    <span className="truncate">{statusMsg}</span>
-                  </div>
-                  <span className="hidden sm:inline-block px-2 py-0.5 bg-purple-950 text-cyan-300 text-[10px] font-mono border border-cyan-400/40">
-                    AST ACTIVE
-                  </span>
-                </div>
-
-              </div>
-            </div>
+    <div className="w-full bg-[#0B0C10] border border-[#1F2128] rounded-xl shadow-2xl overflow-hidden font-sans">
+      {/* Top Chrome: File Tabs & Agent Telemetry */}
+      <div className="h-11 bg-[#101116] border-b border-[#1F2128] px-4 flex items-center justify-between">
+        <div className="flex items-center gap-3">
+          {/* macOS controls */}
+          <div className="flex items-center gap-1.5">
+            <span className="w-2.5 h-2.5 rounded-full bg-[#2B2D35]" />
+            <span className="w-2.5 h-2.5 rounded-full bg-[#2B2D35]" />
+            <span className="w-2.5 h-2.5 rounded-full bg-[#2B2D35]" />
           </div>
 
-          {/* Dorvik Right Panel — task selector */}
-          <div className="lg:col-span-4 xl:col-span-4 w-full">
-            <div className="pattern-square-light p-3 pb-4 rounded-pixel-lg bg-[#22074f] border-2 border-purple-800">
-              <div className="p-6 md:p-8 rounded-pixel-sm bg-[#130825] border-4 border-purple-700 text-purple-200 flex flex-col items-center text-center">
-                
-                {/* Dorvik Pixel Fox Icon */}
-                <div className="w-14 h-14 bg-purple-900/80 border-2 border-purple-500 rounded-pixel-sm flex items-center justify-center mb-5 text-purple-300 shadow-md">
-                  <svg
-                    xmlns="http://www.w3.org/2000/svg"
-                    viewBox="0 0 32 32"
-                    className="w-10 h-10"
-                    shapeRendering="crispEdges"
-                    style={{ imageRendering: "pixelated" }}
-                  >
-                    {/* Left ear */}
-                    <rect fill="#f97316" x="4"  y="0" width="6" height="7" />
-                    <rect fill="#fff7ed" x="5"  y="1" width="3" height="4" />
-                    {/* Right ear */}
-                    <rect fill="#f97316" x="22" y="0" width="6" height="7" />
-                    <rect fill="#fff7ed" x="23" y="1" width="3" height="4" />
-                    {/* Head */}
-                    <rect fill="#f97316" x="4"  y="6" width="24" height="12" />
-                    {/* Eye whites */}
-                    <rect fill="#ffffff" x="7"  y="8" width="6" height="5" />
-                    <rect fill="#ffffff" x="19" y="8" width="6" height="5" />
-                    {/* Cyan pupils */}
-                    <rect fill="#00D2EF" x="9"  y="9" width="3" height="3" />
-                    <rect fill="#00D2EF" x="21" y="9" width="3" height="3" />
-                    {/* Iris dots */}
-                    <rect fill="#09051c" x="10" y="10" width="1" height="1" />
-                    <rect fill="#09051c" x="22" y="10" width="1" height="1" />
-                    {/* Muzzle */}
-                    <rect fill="#fff7ed" x="7"  y="14" width="7" height="5" />
-                    <rect fill="#fff7ed" x="18" y="14" width="7" height="5" />
-                    <rect fill="#1e1b4b" x="14" y="14" width="4" height="2" />
-                    {/* Body */}
-                    <rect fill="#ea580c" x="6"  y="18" width="20" height="9" />
-                    <rect fill="#fff7ed" x="11" y="19" width="10" height="7" />
-                  </svg>
-                </div>
+          <div className="h-4 w-[1px] bg-[#22242D] mx-1" />
 
-                <p className="text-white text-base md:text-lg mb-6 leading-snug font-bold font-mono">
-                  Dorvik does coding tasks you{" "}
-                  <span className="font-black border-b-3 pb-0.5 border-purple-400 text-purple-200">
-                    don&apos;t want
-                  </span>{" "}
-                  to do.
-                </p>
-
-                {/* 4 Dorvik Agent Task Buttons */}
-                <div className="flex flex-wrap justify-center gap-2.5 my-2 w-full font-mono">
-                  {SCENARIOS.map((sc, sIdx) => {
-                    const isSelected = selectedScenarioIndex === sIdx;
-                    return (
-                      <button
-                        key={sc.id}
-                        onClick={() => setSelectedScenarioIndex(sIdx)}
-                        className={`text-xs md:text-sm font-bold px-3 py-2 border-b-2 transition-transform active:translate-y-0.5 cursor-pointer shadow-sm ${sc.categoryBadge} ${
-                          isSelected ? "ring-2 ring-white scale-105" : "opacity-90 hover:opacity-100"
-                        }`}
-                      >
-                        {sc.buttonLabel}
-                      </button>
-                    );
-                  })}
-                </div>
-
-                <div className="w-full mt-6 pt-4 border-t border-purple-800/80 flex flex-col gap-2 font-mono">
-                  <span className="text-[11px] text-purple-300">
-                    Click any task above to watch the agent navigate, think, and patch lines in real time.
-                  </span>
-                  <a
-                    href="/contact"
-                    className="inline-flex items-center justify-center gap-1 text-xs font-bold text-cyan-300 hover:text-white underline mt-2"
-                  >
-                    Deploy Dorvik AI Bug Fixer on your repo →
-                  </a>
-                </div>
-
-              </div>
-            </div>
+          {/* Active File Tab */}
+          <div className="flex items-center gap-2 px-3 py-1 rounded bg-[#16181F] border border-[#262833] text-xs font-mono text-white">
+            <span className="text-cyan-400 font-bold">TS</span>
+            <span>{scenario.file}</span>
+            <span className="w-1.5 h-1.5 rounded-full bg-cyan-400" />
           </div>
+        </div>
 
+        {/* Live Agent Status */}
+        <div className="flex items-center gap-3 text-xs font-mono text-neutral-400">
+          <span className="hidden sm:inline-flex items-center gap-1.5 text-emerald-400">
+            <span className="w-1.5 h-1.5 rounded-full bg-emerald-400" />
+            <span>Sandbox Active</span>
+          </span>
+          <span className="text-neutral-600 hidden sm:inline">|</span>
+          <span className="text-neutral-400">Dorvik SWE Agent v2.4</span>
         </div>
       </div>
-    </section>
+
+      {/* Main Grid: Code Editor on Left, Agent Diagnostics on Right */}
+      <div className="grid grid-cols-1 lg:grid-cols-12 min-h-[500px]">
+        {/* Code Diff Canvas (Left 8 cols) */}
+        <div className="lg:col-span-8 bg-[#090A0E] p-4 sm:p-6 border-b lg:border-b-0 lg:border-r border-[#1F2128] flex flex-col justify-between">
+          <div>
+            {/* Live Agent Reasoning Toast */}
+            {thought && (
+              <div className="mb-4 p-2.5 rounded-lg bg-[#14161F] border border-cyan-500/30 flex items-center justify-between text-xs font-mono text-cyan-300 shadow-lg">
+                <div className="flex items-center gap-2">
+                  <span className="font-bold text-white uppercase text-[10px] bg-cyan-500/20 px-1.5 py-0.5 rounded">
+                    Step {activeStep}/{scenario.edits.length}
+                  </span>
+                  <span>{thought}</span>
+                </div>
+                <span className="text-[10px] text-neutral-400">Autonomous AST Transform</span>
+              </div>
+            )}
+
+            {/* Monaco-style Code Diff Canvas */}
+            <div className="font-mono text-xs sm:text-[13px] leading-6 overflow-x-auto select-text">
+              {currentLines.map((line) => (
+                <div
+                  key={`${line.num}-${line.text}`}
+                  className={`flex items-center px-2 py-0.5 rounded-sm transition-colors ${
+                    line.type === "add"
+                      ? "bg-emerald-950/30 text-emerald-300 border-l-2 border-emerald-400"
+                      : line.type === "delete"
+                      ? "bg-red-950/30 text-red-400 border-l-2 border-red-500 line-through opacity-70"
+                      : line.type === "comment"
+                      ? "text-neutral-500 italic"
+                      : "text-neutral-300 hover:bg-white/[0.02]"
+                  }`}
+                >
+                  <span className="w-8 shrink-0 text-right pr-4 text-neutral-600 select-none text-[11px]">
+                    {line.num}
+                  </span>
+                  <span className="whitespace-pre">{line.text}</span>
+                </div>
+              ))}
+            </div>
+          </div>
+
+          {/* Bottom Status Ribbon */}
+          <div className="mt-6 pt-3 border-t border-[#1C1D24] flex items-center justify-between text-xs font-mono text-neutral-400">
+            <span className="truncate">{statusMsg}</span>
+            <span className="shrink-0 text-neutral-500">UTF-8 &bull; TypeScript</span>
+          </div>
+        </div>
+
+        {/* Right Side: Scenario Selector & Live Agent Execution Trace (4 cols) */}
+        <div className="lg:col-span-4 bg-[#0D0E13] p-5 flex flex-col justify-between">
+          <div>
+            <div className="text-[11px] font-mono text-neutral-400 uppercase tracking-wider font-semibold mb-3">
+              Select Bug Scenario
+            </div>
+
+            <div className="space-y-2 mb-6">
+              {SCENARIOS.map((sc, idx) => (
+                <button
+                  key={sc.id}
+                  onClick={() => setSelectedIdx(idx)}
+                  className={`w-full text-left p-3 rounded-lg border transition-all text-xs ${
+                    selectedIdx === idx
+                      ? "bg-[#181A22] border-cyan-500/40 text-white shadow-sm"
+                      : "bg-[#101116] border-[#1F2128] text-neutral-400 hover:text-white hover:border-[#2C2E3A]"
+                  }`}
+                >
+                  <div className="flex items-center justify-between mb-1">
+                    <span className="font-semibold text-white">{sc.title}</span>
+                    <span className="text-[10px] font-mono text-cyan-400">{sc.category}</span>
+                  </div>
+                  <p className="text-[11px] text-neutral-400 line-clamp-1">{sc.objective}</p>
+                </button>
+              ))}
+            </div>
+
+            {/* Execution Trace Logs */}
+            <div className="border-t border-[#1F2128] pt-4">
+              <div className="flex items-center justify-between text-[11px] font-mono text-neutral-400 uppercase tracking-wider mb-2 font-semibold">
+                <span>MicroVM Execution Trace</span>
+                <span className="text-emerald-400">Isolated</span>
+              </div>
+
+              <div className="p-3 bg-[#08090C] border border-[#1A1C22] rounded-lg space-y-1.5 text-[11px] font-mono text-neutral-300">
+                {scenario.logs.map((log, lIdx) => (
+                  <div key={lIdx} className="leading-relaxed">
+                    <span className="text-cyan-400">{log.split(" ")[0]}</span>{" "}
+                    <span className="text-neutral-300">{log.substring(log.indexOf(" ") + 1)}</span>
+                  </div>
+                ))}
+              </div>
+            </div>
+          </div>
+
+          {/* Micro Telemetry Footer */}
+          <div className="mt-6 pt-3 border-t border-[#1F2128] flex items-center justify-between text-[11px] font-mono text-neutral-400">
+            <span>Deterministic AST Engine</span>
+            <span className="text-emerald-400 font-semibold">Zero Regressions</span>
+          </div>
+        </div>
+      </div>
+    </div>
   );
 }
