@@ -1,6 +1,7 @@
 "use client";
 
 import React, { useState, useEffect } from "react";
+import { useTheme } from "@/components/theme/ThemeProvider";
 
 // Dorvik Pixel Fox mascot SVG (pixel-perfect, crispEdges)
 export function DorvikPixelFox({ className = "w-8 h-8" }) {
@@ -46,186 +47,198 @@ export function DorvikPixelFox({ className = "w-8 h-8" }) {
   );
 }
 
-// Dorvik's 3 real-world SWE agent scenarios
+// Dorvik AI Engineering Lab: 3 Real-World Python AI Model / Fine-Tuning Scenarios
 const SCENARIOS = [
   {
-    id: "state-machine",
-    title: "State Machine Refactor",
-    category: "Architecture",
-    file: "src/auth/UserOnboarding.ts",
-    objective: "Refactor multi-step onboarding into a deterministic finite state machine",
+    id: "lora-sft",
+    title: "PyTorch LoRA SFT & Attention Mask",
+    category: "Model Fine-Tuning",
+    file: "train_lora_qwen.py",
+    language: "Python",
+    badgeLang: "PY",
+    objective: "Resolve flash-attention padded tensor mask mismatch & gradient accumulation scaling in LoRA adapter",
     initialLines: [
-      { num: 1, text: "// Objective: Refactor UserOnboarding into a typed StateMachine", type: "comment" },
-      { num: 2, text: "import { createMachine, interpret } from 'xstate';", type: "normal" },
-      { num: 3, text: "", type: "normal" },
-      { num: 4, text: "export class UserOnboarding {", type: "normal" },
-      { num: 5, text: "  private user: UserRecord;", type: "normal" },
-      { num: 6, text: "  private currentStep: number = 0;", type: "normal" },
-      { num: 7, text: "  private legacySteps: Record<string, string>;", type: "normal" },
-      { num: 8, text: "", type: "normal" },
-      { num: 9, text: "  constructor(user: UserRecord) {", type: "normal" },
-      { num: 10, text: "    this.user = user;", type: "normal" },
-      { num: 11, text: "    this.legacySteps = { welcome: 'profile_setup' };", type: "normal" },
-      { num: 12, text: "  }", type: "normal" },
-      { num: 13, text: "", type: "normal" },
-      { num: 14, text: "  async proceedNext(): Promise<string> {", type: "normal" },
-      { num: 15, text: "    if (this.currentStep < 3) {", type: "normal" },
-      { num: 16, text: "      this.currentStep++;", type: "normal" },
-      { num: 17, text: "      return this.legacySteps['welcome'];", type: "normal" },
-      { num: 18, text: "    }", type: "normal" },
-      { num: 19, text: "    return 'completed';", type: "normal" },
-      { num: 20, text: "  }", type: "normal" },
-      { num: 21, text: "", type: "normal" },
-      { num: 22, text: "  legacyAlert(): void {", type: "normal" },
-      { num: 23, text: "    alert('Welcome ' + this.user.name);", type: "normal" },
-      { num: 24, text: "  }", type: "normal" },
-      { num: 25, text: "}", type: "normal" },
-    ],
-    edits: [
-      {
-        targetLineIndex: 6,
-        thought: "Injecting deterministic StateMachine schema & transition guards...",
-        statusText: "AST Synthesis: Binding XState machine transitions...",
-        replacementLines: [
-          { num: 7, text: "+   private machine = createMachine({", type: "add" },
-          { num: 8, text: "+     id: 'onboarding',", type: "add" },
-          { num: 9, text: "+     initial: 'welcome',", type: "add" },
-          { num: 10, text: "+     states: { welcome: { on: { NEXT: 'profile_setup' } } }", type: "add" },
-          { num: 11, text: "+   });", type: "add" },
-        ],
-      },
-      {
-        targetLineIndex: 16,
-        thought: "Replacing untyped dictionary lookup with state machine transition...",
-        statusText: "Control Flow: Injecting typed transition telemetry...",
-        replacementLines: [
-          { num: 17, text: "+     await telemetry.track('step_advance', { uid: this.user.id });", type: "add" },
-          { num: 18, text: "+     return this.machine.transition('NEXT').value as string;", type: "add" },
-        ],
-      },
-      {
-        targetLineIndex: 22,
-        thought: "Purging synchronous alert() to eliminate main thread blocking...",
-        statusText: "Clean-up: Replacing legacy alert with NotificationBroker...",
-        replacementLines: [
-          { num: 23, text: "-     alert('Welcome ' + this.user.name);", type: "delete" },
-          { num: 24, text: "+     NotificationBroker.sendWelcome(this.user.id);", type: "add" },
-        ],
-      },
-    ],
-    logs: [
-      "[0.04s] AST Parser: Indexed 48 syntax nodes in src/auth/UserOnboarding.ts",
-      "[0.18s] Diagnostic: Detected state mutation race condition in proceedNext()",
-      "[0.35s] Patch: Injected XState finite state schema with guard rules",
-      "[0.62s] Sandbox: MicroVM isolated runner executed Jest harness",
-      "[0.88s] Verification: 5/5 unit tests passed. Regression rate: 0.0%",
-    ],
-  },
-  {
-    id: "version-bump",
-    title: "Next.js 16 Upgrade",
-    category: "Dependency Migration",
-    file: "package.json",
-    objective: "Migrate dependencies to Next.js 16, React 19, and Tailwind CSS v4",
-    initialLines: [
-      { num: 1, text: "{", type: "normal" },
-      { num: 2, text: "  \"name\": \"dorvik-production-web\",", type: "normal" },
-      { num: 3, text: "  \"version\": \"1.4.0\",", type: "normal" },
-      { num: 4, text: "  \"dependencies\": {", type: "normal" },
-      { num: 5, text: "    \"next\": \"14.2.3\",", type: "normal" },
-      { num: 6, text: "    \"react\": \"18.2.0\",", type: "normal" },
-      { num: 7, text: "    \"react-dom\": \"18.2.0\",", type: "normal" },
-      { num: 8, text: "    \"lucide-react\": \"^0.350.0\"", type: "normal" },
-      { num: 9, text: "  },", type: "normal" },
-      { num: 10, text: "  \"devDependencies\": {", type: "normal" },
-      { num: 11, text: "    \"tailwindcss\": \"^3.4.1\",", type: "normal" },
-      { num: 12, text: "    \"postcss\": \"^8.4.31\"", type: "normal" },
-      { num: 13, text: "  }", type: "normal" },
-      { num: 14, text: "}", type: "normal" },
-    ],
-    edits: [
-      {
-        targetLineIndex: 4,
-        thought: "Bumping React core and Next.js to latest stable release...",
-        statusText: "Dependency Solver: Resolving peer dependency matrix...",
-        replacementLines: [
-          { num: 5, text: "-   \"next\": \"14.2.3\",", type: "delete" },
-          { num: 6, text: "-   \"react\": \"18.2.0\",", type: "delete" },
-          { num: 7, text: "-   \"react-dom\": \"18.2.0\",", type: "delete" },
-          { num: 8, text: "+   \"next\": \"16.0.2\",", type: "add" },
-          { num: 9, text: "+   \"react\": \"19.1.0\",", type: "add" },
-          { num: 10, text: "+   \"react-dom\": \"19.1.0\",", type: "add" },
-        ],
-      },
-      {
-        targetLineIndex: 10,
-        thought: "Upgrading Tailwind CSS v3 compiler to @tailwindcss/postcss v4...",
-        statusText: "PostCSS Engine: Replacing legacy config with native CSS cascade...",
-        replacementLines: [
-          { num: 11, text: "-   \"tailwindcss\": \"^3.4.1\",", type: "delete" },
-          { num: 12, text: "+   \"@tailwindcss/postcss\": \"^4.0.0\",", type: "add" },
-          { num: 13, text: "+   \"tailwindcss\": \"^4.0.0\"", type: "add" },
-        ],
-      },
-    ],
-    logs: [
-      "[0.03s] Dependency Graph: Parsed 14 manifest entries",
-      "[0.15s] Solver: Verified React 19 forward-ref deprecation compatibility",
-      "[0.41s] Bundle Analyzer: Turbopack compilation succeeded with 0 warnings",
-      "[0.72s] Verification: Build artifact validated in clean container",
-    ],
-  },
-  {
-    id: "memory-leak",
-    title: "React useEffect Memory Leak",
-    category: "Performance",
-    file: "src/hooks/useDataStream.ts",
-    objective: "Fix dangling WebSocket listener and missing AbortController teardown",
-    initialLines: [
-      { num: 1, text: "import { useEffect, useState } from 'react';", type: "normal" },
-      { num: 2, text: "", type: "normal" },
-      { num: 3, text: "export function useDataStream(streamUrl: string) {", type: "normal" },
-      { num: 4, text: "  const [data, setData] = useState<any[]>([]);", type: "normal" },
+      { num: 1, text: "# Dorvik AI Lab: LoRA Fine-Tuning Pipeline for Qwen-2.5-Coder", type: "comment" },
+      { num: 2, text: "import torch", type: "keyword" },
+      { num: 3, text: "from peft import LoraConfig, get_peft_model, TaskType", type: "keyword" },
+      { num: 4, text: "from transformers import AutoModelForCausalLM, TrainingArguments", type: "keyword" },
       { num: 5, text: "", type: "normal" },
-      { num: 6, text: "  useEffect(() => {", type: "normal" },
-      { num: 7, text: "    const socket = new WebSocket(streamUrl);", type: "normal" },
-      { num: 8, text: "    socket.onmessage = (e) => setData(JSON.parse(e.data));", type: "normal" },
-      { num: 9, text: "    // Bug: Missing teardown/cleanup listener on unmount", type: "comment" },
-      { num: 10, text: "  }, [streamUrl]);", type: "normal" },
-      { num: 11, text: "", type: "normal" },
-      { num: 12, text: "  return { data };", type: "normal" },
-      { num: 13, text: "}", type: "normal" },
+      { num: 6, text: "def build_lora_trainer(model_id: str, target_rank: int = 16):", type: "def" },
+      { num: 7, text: "    print(f'Loading base checkpoint: {model_id}')", type: "normal" },
+      { num: 8, text: "    base_model = AutoModelForCausalLM.from_pretrained(", type: "normal" },
+      { num: 9, text: "        model_id,", type: "normal" },
+      { num: 10, text: "        torch_dtype=torch.bfloat16,", type: "normal" },
+      { num: 11, text: "        attn_implementation='flash_attention_2',", type: "normal" },
+      { num: 12, text: "        device_map='auto'", type: "normal" },
+      { num: 13, text: "    )", type: "normal" },
+      { num: 14, text: "    ", type: "normal" },
+      { num: 15, text: "    # Bug: Restricting LoRA to q/v only causes rank collapse & poor alignment", type: "comment" },
+      { num: 16, text: "    lora_config = LoraConfig(", type: "normal" },
+      { num: 17, text: "        r=target_rank,", type: "normal" },
+      { num: 18, text: "        lora_alpha=target_rank * 2,", type: "normal" },
+      { num: 19, text: "        target_modules=['q_proj', 'v_proj'],", type: "normal" },
+      { num: 20, text: "        bias='none',", type: "normal" },
+      { num: 21, text: "        task_type=TaskType.CAUSAL_LM", type: "normal" },
+      { num: 22, text: "    )", type: "normal" },
+      { num: 23, text: "    ", type: "normal" },
+      { num: 24, text: "    model = get_peft_model(base_model, lora_config)", type: "normal" },
+      { num: 25, text: "    return model", type: "keyword" },
     ],
     edits: [
       {
-        targetLineIndex: 8,
-        thought: "Detecting unclosed socket connection causing browser memory leak...",
-        statusText: "AST Inspection: Synthesizing return cleanup function...",
+        targetLineIndex: 18,
+        thought: "Expanding LoRA target modules to include k_proj, o_proj & MLP gates to prevent rank collapse...",
+        statusText: "AST Patch: Injecting full-rank projection modules [q, k, v, o, gate, up, down]...",
         replacementLines: [
-          { num: 9, text: "+   return () => {", type: "add" },
-          { num: 10, text: "+     socket.close(1000, 'Component unmounted');", type: "add" },
-          { num: 11, text: "+     socket.onmessage = null;", type: "add" },
-          { num: 12, text: "+   };", type: "add" },
+          { num: 19, text: "+       target_modules=['q_proj', 'k_proj', 'v_proj', 'o_proj', 'gate_proj', 'up_proj', 'down_proj'],", type: "add" },
+          { num: 20, text: "+       lora_dropout=0.05,", type: "add" },
+        ],
+      },
+      {
+        targetLineIndex: 23,
+        thought: "Enabling gradient checkpointing with non-reentrant autograd to eliminate CUDA OOM...",
+        statusText: "Autograd Optimizer: Enabling memory-efficient gradient checkpointing...",
+        replacementLines: [
+          { num: 24, text: "+   model.gradient_checkpointing_enable(gradient_checkpointing_kwargs={'use_reentrant': False})", type: "add" },
+          { num: 25, text: "+   model.enable_input_require_grads()", type: "add" },
         ],
       },
     ],
     logs: [
-      "[0.05s] Memory Profiler: Detected active listener retention after unmount",
-      "[0.22s] Taint Analysis: Variable socket escapes useEffect closure scope",
-      "[0.38s] Patch Synthesized: Injected clean idempotent teardown handler",
-      "[0.68s] Memory Stress Test: Heap usage normalized to 14MB baseline",
+      "[0.02s] AST Analyzer: Indexed PyTorch training graph in train_lora_qwen.py",
+      "[0.14s] Telemetry: Detected LoRA parameter coverage bottleneck (only 0.08% trainable)",
+      "[0.31s] Patch: Expanded adapter projections across all self-attention & MLP layers (0.42%)",
+      "[0.55s] MicroVM CUDA Runner: Simulated forward-backward pass [B=4, SeqLen=4096]",
+      "[0.78s] Verification: Zero NaN gradients. Peak VRAM stabilized at 18.4GB on A100-80GB",
+    ],
+  },
+  {
+    id: "nf4-quantization",
+    title: "vLLM 4-Bit NF4 Quantization",
+    category: "Model Optimization",
+    file: "quantize_vllm_engine.py",
+    language: "Python",
+    badgeLang: "PY",
+    objective: "Resolve BitsAndBytes 4-bit compute dtype fallback to FP32 and double-quantization VRAM leak",
+    initialLines: [
+      { num: 1, text: "# Objective: 4-bit NF4 Quantization & vLLM PagedAttention KV Cache Loader", type: "comment" },
+      { num: 2, text: "import torch", type: "keyword" },
+      { num: 3, text: "from transformers import BitsAndBytesConfig, AutoModelForCausalLM", type: "keyword" },
+      { num: 4, text: "", type: "normal" },
+      { num: 5, text: "class QuantizedModelEngine:", type: "def" },
+      { num: 6, text: "    def __init__(self, checkpoint_path: str):", type: "def" },
+      { num: 7, text: "        self.model_id = checkpoint_path", type: "normal" },
+      { num: 8, text: "        self.device = 'cuda' if torch.cuda.is_available() else 'cpu'", type: "normal" },
+      { num: 9, text: "        ", type: "normal" },
+      { num: 10, text: "    def load_compressed_checkpoint(self):", type: "def" },
+      { num: 11, text: "        # Bug: Default compute dtype falls back to float32 causing CUDA OOM", type: "comment" },
+      { num: 12, text: "        bnb_config = BitsAndBytesConfig(", type: "normal" },
+      { num: 13, text: "            load_in_4bit=True,", type: "normal" },
+      { num: 14, text: "            bnb_4bit_quant_type='nf4',", type: "normal" },
+      { num: 15, text: "        )", type: "normal" },
+      { num: 16, text: "        ", type: "normal" },
+      { num: 17, text: "        model = AutoModelForCausalLM.from_pretrained(", type: "normal" },
+      { num: 18, text: "            self.model_id,", type: "normal" },
+      { num: 19, text: "            quantization_config=bnb_config,", type: "normal" },
+      { num: 20, text: "            device_map='auto'", type: "normal" },
+      { num: 21, text: "        )", type: "normal" },
+      { num: 22, text: "        return model", type: "keyword" },
+    ],
+    edits: [
+      {
+        targetLineIndex: 14,
+        thought: "Injecting bnb_4bit_compute_dtype=bfloat16 and nested double quantization...",
+        statusText: "Quantization Solver: Configuring NF4 tensor scale packing...",
+        replacementLines: [
+          { num: 15, text: "+           bnb_4bit_use_double_quant=True,", type: "add" },
+          { num: 16, text: "+           bnb_4bit_compute_dtype=torch.bfloat16,", type: "add" },
+        ],
+      },
+      {
+        targetLineIndex: 20,
+        thought: "Binding flash-attention 2 kernel and tying word embeddings to avoid memory duplication...",
+        statusText: "Kernel Binding: Activating FlashAttention-2 compute graph...",
+        replacementLines: [
+          { num: 21, text: "+           attn_implementation='flash_attention_2',", type: "add" },
+          { num: 22, text: "+           torch_dtype=torch.bfloat16,", type: "add" },
+        ],
+      },
+    ],
+    logs: [
+      "[0.03s] Profiler: Detected FP32 de-quantization fallback in BitsAndBytes configuration",
+      "[0.17s] Patch: Injected double-quantization & native bfloat16 tensor compute backend",
+      "[0.42s] MicroVM Runner: 70B parameter model footprint reduced from 140GB to 38GB VRAM",
+      "[0.69s] Validation: Perplexity baseline verified at 4.88. Zero degradation on GSM8K",
+    ],
+  },
+  {
+    id: "dpo-alignment",
+    title: "DPO Alignment & Reference Graph Detach",
+    category: "RLHF & Alignment",
+    file: "dpo_alignment_trainer.py",
+    language: "Python",
+    badgeLang: "PY",
+    objective: "Detach reference model log-probabilities to prevent autograd graph memory explosion during preference optimization",
+    initialLines: [
+      { num: 1, text: "# Objective: Direct Preference Optimization (DPO) Loss & Implicit Reward Modeling", type: "comment" },
+      { num: 2, text: "import torch", type: "keyword" },
+      { num: 3, text: "import torch.nn.functional as F", type: "keyword" },
+      { num: 4, text: "", type: "normal" },
+      { num: 5, text: "def compute_dpo_loss(", type: "def" },
+      { num: 6, text: "    policy_chosen_logps: torch.Tensor,", type: "normal" },
+      { num: 7, text: "    policy_rejected_logps: torch.Tensor,", type: "normal" },
+      { num: 8, text: "    reference_chosen_logps: torch.Tensor,", type: "normal" },
+      { num: 9, text: "    reference_rejected_logps: torch.Tensor,", type: "normal" },
+      { num: 10, text: "    beta: float = 0.1", type: "normal" },
+      { num: 11, text: ") -> torch.Tensor:", type: "normal" },
+      { num: 12, text: "    pi_logratios = policy_chosen_logps - policy_rejected_logps", type: "normal" },
+      { num: 13, text: "    # Bug: Missing .detach() preserves computation graph of frozen reference model", type: "comment" },
+      { num: 14, text: "    ref_logratios = reference_chosen_logps - reference_rejected_logps", type: "normal" },
+      { num: 15, text: "    ", type: "normal" },
+      { num: 16, text: "    logits = pi_logratios - ref_logratios", type: "normal" },
+      { num: 17, text: "    losses = -F.logsigmoid(beta * logits)", type: "normal" },
+      { num: 18, text: "    return losses.mean()", type: "keyword" },
+    ],
+    edits: [
+      {
+        targetLineIndex: 13,
+        thought: "Detaching reference model log-probabilities tensor to free backward graph memory...",
+        statusText: "Autograd Optimizer: Freeing reference model computation graph...",
+        replacementLines: [
+          { num: 14, text: "-   ref_logratios = reference_chosen_logps - reference_rejected_logps", type: "delete" },
+          { num: 15, text: "+   ref_logratios = (reference_chosen_logps - reference_rejected_logps).detach()", type: "add" },
+        ],
+      },
+      {
+        targetLineIndex: 17,
+        thought: "Injecting reward margin telemetry to monitor implicit policy drift...",
+        statusText: "Telemetry: Adding implicit reward margin tracking...",
+        replacementLines: [
+          { num: 18, text: "+   reward_margin = (pi_logratios - ref_logratios).mean().item()", type: "add" },
+          { num: 19, text: "+   torch.cuda.empty_cache()", type: "add" },
+        ],
+      },
+    ],
+    logs: [
+      "[0.02s] Computational Graph: Found active backward gradient leaf on frozen reference model",
+      "[0.19s] Patch Synthesized: Injected tensor detachment on reference log-ratio baseline",
+      "[0.48s] MicroVM Sandbox: Autograd graph memory allocated reduced from 16.4GB to 2.2GB",
+      "[0.74s] Verification: Reward accuracy 84.6% achieved on UltraFeedback benchmark",
     ],
   },
 ];
 
 export function DorvikEditorViewport() {
+  const { theme } = useTheme();
+  const isLight = theme === "light";
+
   const [selectedIdx, setSelectedIdx] = useState(0);
   const [currentLines, setCurrentLines] = useState(SCENARIOS[0].initialLines);
   const [activeStep, setActiveStep] = useState(0);
   const [activeLineNum, setActiveLineNum] = useState(1);
   const [agentState, setAgentState] = useState("thinking"); // 'thinking' | 'editing' | 'idle'
-  const [thought, setThought] = useState("");
-  const [statusMsg, setStatusMsg] = useState("Dorvik Fox: Parsing repository AST...");
+  const [thought, setThought] = useState("Analyzing PyTorch computation graph & attention masks...");
+  const [statusMsg, setStatusMsg] = useState("Dorvik Fox: Parsing PyTorch AST graph...");
 
   const scenario = SCENARIOS[selectedIdx];
 
@@ -235,8 +248,8 @@ export function DorvikEditorViewport() {
     setActiveStep(0);
     setActiveLineNum(1);
     setAgentState("thinking");
-    setThought("Analyzing repository abstract syntax tree...");
-    setStatusMsg("Dorvik Fox: Parsing AST...");
+    setThought("Analyzing PyTorch tensor shapes and computational graph...");
+    setStatusMsg(`Dorvik Fox: Inspecting ${scenario.file}...`);
 
     const runEdits = async () => {
       await new Promise((r) => setTimeout(r, 600));
@@ -252,7 +265,7 @@ export function DorvikEditorViewport() {
         setThought(edit.thought);
         setStatusMsg(edit.statusText);
 
-        await new Promise((r) => setTimeout(r, 1100));
+        await new Promise((r) => setTimeout(r, 1200));
         if (!isMounted) return;
 
         setAgentState("editing");
@@ -267,8 +280,8 @@ export function DorvikEditorViewport() {
       }
 
       setAgentState("idle");
-      setThought("");
-      setStatusMsg("✓ Verified: Patch compiles cleanly in isolated MicroVM container");
+      setThought("✓ Optimization verified: 0 errors | Model weights ready for checkpoint export");
+      setStatusMsg("✓ Verified: PyTorch forward-backward pass passed in MicroVM container");
     };
 
     runEdits();
@@ -282,49 +295,83 @@ export function DorvikEditorViewport() {
   const characterY = Math.max(12, 16 + activeLineNum * 24);
 
   return (
-    <div className="w-full bg-[#0B0C10] border border-[#1F2128] rounded-xl shadow-2xl overflow-hidden font-sans">
+    <div
+      className={`dorvik-ide-root w-full rounded-xl shadow-2xl overflow-hidden font-sans border transition-colors duration-200 ${
+        isLight
+          ? "bg-white border-[#E2E8F0] shadow-[0_12px_40px_rgba(0,0,0,0.08)]"
+          : "bg-[#0B0C10] border-[#1F2128]"
+      }`}
+    >
       {/* Top Chrome: File Tabs & Agent Telemetry */}
-      <div className="h-11 bg-[#101116] border-b border-[#1F2128] px-4 flex items-center justify-between">
+      <div
+        className={`h-11 px-4 flex items-center justify-between border-b transition-colors ${
+          isLight
+            ? "bg-[#F8FAFC] border-[#E2E8F0]"
+            : "bg-[#101116] border-[#1F2128]"
+        }`}
+      >
         <div className="flex items-center gap-3">
           {/* macOS controls */}
           <div className="flex items-center gap-1.5">
-            <span className="w-2.5 h-2.5 rounded-full bg-[#2B2D35]" />
-            <span className="w-2.5 h-2.5 rounded-full bg-[#2B2D35]" />
-            <span className="w-2.5 h-2.5 rounded-full bg-[#2B2D35]" />
+            <span className={`w-2.5 h-2.5 rounded-full ${isLight ? "bg-[#CBD5E1]" : "bg-[#2B2D35]"}`} />
+            <span className={`w-2.5 h-2.5 rounded-full ${isLight ? "bg-[#CBD5E1]" : "bg-[#2B2D35]"}`} />
+            <span className={`w-2.5 h-2.5 rounded-full ${isLight ? "bg-[#CBD5E1]" : "bg-[#2B2D35]"}`} />
           </div>
 
-          <div className="h-4 w-[1px] bg-[#22242D] mx-1" />
+          <div className={`h-4 w-[1px] mx-1 ${isLight ? "bg-[#E2E8F0]" : "bg-[#22242D]"}`} />
 
           {/* Active File Tab with Dorvik Fox emblem */}
-          <div className="flex items-center gap-2 px-2.5 py-1 rounded bg-[#16181F] border border-[#262833] text-xs font-mono text-white">
+          <div
+            className={`flex items-center gap-2 px-2.5 py-1 rounded text-xs font-mono border shadow-sm transition-colors ${
+              isLight
+                ? "bg-white border-[#CBD5E1] text-[#0F172A]"
+                : "bg-[#16181F] border-[#262833] text-white"
+            }`}
+          >
             <div className="w-4 h-4 shrink-0">
               <DorvikPixelFox className="w-full h-full" />
             </div>
-            <span className="text-cyan-400 font-bold">TS</span>
-            <span>{scenario.file}</span>
-            <span className="w-1.5 h-1.5 rounded-full bg-cyan-400 animate-pulse" />
+            <span className={isLight ? "text-blue-600 font-bold" : "text-cyan-400 font-bold"}>
+              {scenario.badgeLang}
+            </span>
+            <span className="font-semibold">{scenario.file}</span>
+            <span className="w-1.5 h-1.5 rounded-full bg-emerald-500 animate-pulse" />
           </div>
         </div>
 
         {/* Live Agent Status */}
-        <div className="flex items-center gap-3 text-xs font-mono text-neutral-400">
-          <span className="hidden sm:inline-flex items-center gap-1.5 text-emerald-400">
-            <span className="w-1.5 h-1.5 rounded-full bg-emerald-400" />
-            <span>MicroVM Active</span>
+        <div className="flex items-center gap-3 text-xs font-mono">
+          <span className="hidden sm:inline-flex items-center gap-1.5 text-emerald-600 dark:text-emerald-400 font-semibold">
+            <span className="w-1.5 h-1.5 rounded-full bg-emerald-500" />
+            <span>CUDA MicroVM Active</span>
           </span>
-          <span className="text-neutral-600 hidden sm:inline">|</span>
-          <span className="text-neutral-300 font-semibold flex items-center gap-1.5">
-            <span className="text-orange-400">Dorvik Pixel Fox</span>
-            <span className="text-cyan-400 text-[10px] px-1.5 py-0.5 rounded bg-cyan-950/60 border border-cyan-500/30">v2.4</span>
+          <span className="text-neutral-300 dark:text-neutral-600 hidden sm:inline">|</span>
+          <span className="font-semibold flex items-center gap-1.5 text-neutral-800 dark:text-neutral-300">
+            <span className="text-orange-500">Dorvik Pixel Fox</span>
+            <span
+              className={`text-[10px] px-1.5 py-0.5 rounded border ${
+                isLight
+                  ? "bg-blue-50 text-blue-700 border-blue-200"
+                  : "bg-cyan-950/60 text-cyan-400 border-cyan-500/30"
+              }`}
+            >
+              v2.4
+            </span>
           </span>
         </div>
       </div>
 
       {/* Main Grid: Code Editor on Left, Agent Diagnostics on Right */}
-      <div className="grid grid-cols-1 lg:grid-cols-12 min-h-[520px]">
+      <div className="grid grid-cols-1 lg:grid-cols-12 min-h-[540px]">
         {/* Code Diff Canvas (Left 8 cols) */}
-        <div className="lg:col-span-8 bg-[#090A0E] p-4 sm:p-6 border-b lg:border-b-0 lg:border-r border-[#1F2128] flex flex-col justify-between relative overflow-hidden">
-          <div className="relative min-h-[440px]">
+        <div
+          className={`lg:col-span-8 p-4 sm:p-6 border-b lg:border-b-0 lg:border-r flex flex-col justify-between relative overflow-hidden transition-colors ${
+            isLight
+              ? "bg-[#FAFAFD] border-[#E2E8F0]"
+              : "bg-[#090A0E] border-[#1F2128]"
+          }`}
+        >
+          <div className="relative min-h-[460px]">
             {/* DORVIK PIXEL FOX MASCOT — Smoothly glides along lines in the left gutter */}
             <div
               className="absolute left-1 sm:left-2 z-30 pointer-events-none transition-all duration-700 ease-out flex items-center"
@@ -346,14 +393,22 @@ export function DorvikEditorViewport() {
                   <DorvikPixelFox className="w-full h-full" />
                 </div>
 
-                {/* Floating Thought / Reasoning Bubble */}
+                {/* Floating Thought / Reasoning Bubble — ALWAYS VISIBLE WITH HIGH CONTRAST */}
                 {thought && (
-                  <div className="ml-2.5 px-3 py-1.5 rounded-lg bg-[#141622] border border-cyan-500/50 shadow-2xl text-xs font-mono text-cyan-300 flex items-center gap-2 whitespace-nowrap z-40 backdrop-blur-md">
+                  <div
+                    className={`ml-2.5 px-3 py-1.5 rounded-lg shadow-2xl text-xs font-mono flex items-center gap-2 whitespace-nowrap z-40 backdrop-blur-md border ${
+                      isLight
+                        ? "bg-[#0F172A] text-white border-blue-400 shadow-xl"
+                        : "bg-[#141622] text-cyan-300 border-cyan-500/50"
+                    }`}
+                  >
                     <span className="w-2 h-2 rounded-full bg-cyan-400 animate-ping shrink-0" />
                     <span className="font-semibold text-white">{thought}</span>
-                    <span className="text-[10px] text-cyan-400/80 border-l border-cyan-500/30 pl-2">
-                      Step {activeStep}/{scenario.edits.length}
-                    </span>
+                    {activeStep > 0 && (
+                      <span className="text-[10px] text-cyan-300/80 border-l border-cyan-500/30 pl-2">
+                        Step {activeStep}/{scenario.edits.length}
+                      </span>
+                    )}
                   </div>
                 )}
               </div>
@@ -363,25 +418,46 @@ export function DorvikEditorViewport() {
             <div className="font-mono text-xs sm:text-[13px] leading-6 overflow-x-auto select-text pl-12 sm:pl-14">
               {currentLines.map((line, idx) => {
                 const isActive = activeLineNum === idx && agentState !== "idle";
+
+                // High-contrast color mapping for Day Mode and Night Mode
+                let lineBg = "";
+                let lineText = "";
+                let lineBorder = "";
+
+                if (isActive) {
+                  lineBg = isLight ? "bg-blue-50" : "bg-cyan-950/40";
+                  lineBorder = isLight ? "border-l-2 border-blue-600" : "border-l-2 border-cyan-400";
+                } else if (line.type === "add") {
+                  lineBg = isLight ? "bg-[#DCFCE7]" : "bg-emerald-950/40";
+                  lineText = isLight ? "text-[#14532D] font-bold" : "text-emerald-300 font-bold";
+                  lineBorder = isLight ? "border-l-2 border-emerald-600" : "border-l-2 border-emerald-400";
+                } else if (line.type === "delete") {
+                  lineBg = isLight ? "bg-[#FEE2E2]" : "bg-red-950/40";
+                  lineText = isLight ? "text-[#991B1B] line-through opacity-80" : "text-red-400 line-through opacity-70";
+                  lineBorder = isLight ? "border-l-2 border-red-600" : "border-l-2 border-red-500";
+                } else if (line.type === "comment") {
+                  lineText = isLight ? "text-[#64748B] italic" : "text-neutral-500 italic";
+                } else if (line.type === "keyword") {
+                  lineText = isLight ? "text-[#7C3AED] font-semibold" : "text-[#C084FC] font-semibold";
+                } else if (line.type === "def") {
+                  lineText = isLight ? "text-[#0284C7] font-semibold" : "text-[#38BDF8] font-semibold";
+                } else {
+                  lineText = isLight ? "text-[#0F172A]" : "text-neutral-200";
+                }
+
                 return (
                   <div
                     key={`${line.num}-${line.text}`}
-                    className={`flex items-center px-2 py-0.5 rounded-sm transition-colors ${
-                      isActive
-                        ? "bg-cyan-950/30 border-l-2 border-cyan-400"
-                        : line.type === "add"
-                        ? "bg-emerald-950/30 text-emerald-300 border-l-2 border-emerald-400"
-                        : line.type === "delete"
-                        ? "bg-red-950/30 text-red-400 border-l-2 border-red-500 line-through opacity-70"
-                        : line.type === "comment"
-                        ? "text-neutral-500 italic"
-                        : "text-neutral-300 hover:bg-white/[0.02]"
-                    }`}
+                    className={`flex items-center px-2 py-0.5 rounded-sm transition-colors ${lineBg} ${lineBorder} ${lineText}`}
                   >
-                    <span className="w-8 shrink-0 text-right pr-4 text-neutral-600 select-none text-[11px]">
+                    <span
+                      className={`w-8 shrink-0 text-right pr-4 select-none text-[11px] font-mono ${
+                        isLight ? "text-[#94A3B8]" : "text-neutral-600"
+                      }`}
+                    >
                       {line.num}
                     </span>
-                    <span className="whitespace-pre">{line.text}</span>
+                    <span className="whitespace-pre font-mono">{line.text}</span>
                   </div>
                 );
               })}
@@ -389,77 +465,154 @@ export function DorvikEditorViewport() {
           </div>
 
           {/* Bottom Status Ribbon */}
-          <div className="mt-4 pt-3 border-t border-[#1C1D24] flex items-center justify-between text-xs font-mono text-neutral-400">
+          <div
+            className={`mt-4 pt-3 border-t flex items-center justify-between text-xs font-mono transition-colors ${
+              isLight
+                ? "border-[#E2E8F0] text-[#334155]"
+                : "border-[#1C1D24] text-neutral-400"
+            }`}
+          >
             <div className="flex items-center gap-2 truncate">
-              <span className="w-2 h-2 rounded-full bg-cyan-400" />
-              <span className="truncate text-neutral-300">{statusMsg}</span>
+              <span className={`w-2 h-2 rounded-full ${isLight ? "bg-blue-600" : "bg-cyan-400"}`} />
+              <span className={`truncate font-medium ${isLight ? "text-[#0F172A]" : "text-neutral-200"}`}>
+                {statusMsg}
+              </span>
             </div>
-            <span className="shrink-0 text-neutral-500 hidden sm:inline">UTF-8 &bull; TypeScript AST</span>
+            <span className={`shrink-0 hidden sm:inline ${isLight ? "text-[#64748B]" : "text-neutral-500"}`}>
+              UTF-8 &bull; PyTorch AST Graph &bull; CUDA 12.4
+            </span>
           </div>
         </div>
 
         {/* Right Side: Fox Agent Card, Scenario Selector & Live Agent Execution Trace */}
-        <div className="lg:col-span-4 bg-[#0D0E13] p-5 flex flex-col justify-between">
+        <div
+          className={`lg:col-span-4 p-5 flex flex-col justify-between transition-colors ${
+            isLight
+              ? "bg-[#F8FAFC]"
+              : "bg-[#0D0E13]"
+          }`}
+        >
           <div>
             {/* Dorvik Pixel Fox Agent Engine Badge */}
-            <div className="p-3.5 mb-5 rounded-xl bg-[#12131C] border border-[#222534] flex items-center gap-3.5 shadow-lg">
-              <div className="w-12 h-12 p-1.5 rounded-xl bg-gradient-to-br from-orange-500/20 to-cyan-500/10 border border-orange-500/40 shrink-0 flex items-center justify-center shadow-inner">
+            <div
+              className={`p-3.5 mb-5 rounded-xl border flex items-center gap-3.5 shadow-md transition-colors ${
+                isLight
+                  ? "bg-white border-[#E2E8F0]"
+                  : "bg-[#12131C] border-[#222534]"
+              }`}
+            >
+              <div
+                className={`w-12 h-12 p-1.5 rounded-xl shrink-0 flex items-center justify-center shadow-inner border ${
+                  isLight
+                    ? "bg-orange-50 border-orange-200"
+                    : "bg-gradient-to-br from-orange-500/20 to-cyan-500/10 border-orange-500/40"
+                }`}
+              >
                 <DorvikPixelFox className="w-9 h-9" />
               </div>
               <div className="min-w-0 flex-1 font-mono">
                 <div className="flex items-center justify-between">
-                  <span className="text-xs font-bold text-white tracking-wide">Dorvik Pixel Fox</span>
-                  <span className="text-[10px] text-cyan-400 px-1.5 py-0.5 rounded bg-cyan-950/60 border border-cyan-500/30">SWE Agent</span>
+                  <span className={`text-xs font-bold tracking-wide ${isLight ? "text-[#0F172A]" : "text-white"}`}>
+                    Dorvik Pixel Fox
+                  </span>
+                  <span
+                    className={`text-[10px] px-1.5 py-0.5 rounded border font-semibold ${
+                      isLight
+                        ? "bg-blue-50 text-blue-700 border-blue-200"
+                        : "bg-cyan-950/60 text-cyan-400 border-cyan-500/30"
+                    }`}
+                  >
+                    AI Agent
+                  </span>
                 </div>
-                <div className="flex items-center gap-1.5 mt-1 text-[11px] text-neutral-400">
-                  <span className="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-pulse" />
-                  <span className="truncate">
+                <div className={`flex items-center gap-1.5 mt-1 text-[11px] ${isLight ? "text-[#475569]" : "text-neutral-400"}`}>
+                  <span className="w-1.5 h-1.5 rounded-full bg-emerald-500 animate-pulse" />
+                  <span className="truncate font-medium">
                     {agentState === "editing"
-                      ? "Patching AST node..."
+                      ? "Patching PyTorch AST..."
                       : agentState === "thinking"
-                      ? "Traversing AST graph..."
-                      : "Verified in MicroVM"}
+                      ? "Analyzing computational graph..."
+                      : "Verified in MicroVM Sandbox"}
                   </span>
                 </div>
               </div>
             </div>
 
-            <div className="text-[11px] font-mono text-neutral-400 uppercase tracking-wider font-semibold mb-3">
-              Select Bug Scenario
+            <div
+              className={`text-[11px] font-mono uppercase tracking-wider font-bold mb-3 ${
+                isLight ? "text-[#475569]" : "text-neutral-400"
+              }`}
+            >
+              Select AI Model Scenario
             </div>
 
             <div className="space-y-2 mb-6">
-              {SCENARIOS.map((sc, idx) => (
-                <button
-                  key={sc.id}
-                  onClick={() => setSelectedIdx(idx)}
-                  className={`w-full text-left p-3 rounded-lg border transition-all text-xs ${
-                    selectedIdx === idx
-                      ? "bg-[#181A22] border-cyan-500/40 text-white shadow-sm"
-                      : "bg-[#101116] border-[#1F2128] text-neutral-400 hover:text-white hover:border-[#2C2E3A]"
-                  }`}
-                >
-                  <div className="flex items-center justify-between mb-1">
-                    <span className="font-semibold text-white">{sc.title}</span>
-                    <span className="text-[10px] font-mono text-cyan-400">{sc.category}</span>
-                  </div>
-                  <p className="text-[11px] text-neutral-400 line-clamp-1">{sc.objective}</p>
-                </button>
-              ))}
+              {SCENARIOS.map((sc, idx) => {
+                const isSelected = selectedIdx === idx;
+                return (
+                  <button
+                    key={sc.id}
+                    onClick={() => setSelectedIdx(idx)}
+                    className={`w-full text-left p-3 rounded-lg border transition-all text-xs font-mono ${
+                      isSelected
+                        ? isLight
+                          ? "bg-blue-50/70 border-blue-500 shadow-sm ring-1 ring-blue-500/30"
+                          : "bg-[#181A22] border-cyan-500/50 text-white shadow-sm"
+                        : isLight
+                        ? "bg-white border-[#E2E8F0] text-[#334155] hover:border-[#CBD5E1] hover:bg-neutral-50"
+                        : "bg-[#101116] border-[#1F2128] text-neutral-400 hover:text-white hover:border-[#2C2E3A]"
+                    }`}
+                  >
+                    <div className="flex items-center justify-between mb-1">
+                      <span className={`font-bold ${isLight ? "text-[#0F172A]" : "text-white"}`}>
+                        {sc.title}
+                      </span>
+                      <span
+                        className={`text-[10px] font-mono font-semibold ${
+                          isLight ? "text-blue-700" : "text-cyan-400"
+                        }`}
+                      >
+                        {sc.category}
+                      </span>
+                    </div>
+                    <p
+                      className={`text-[11px] line-clamp-1 ${
+                        isLight ? "text-[#64748B]" : "text-neutral-400"
+                      }`}
+                    >
+                      {sc.objective}
+                    </p>
+                  </button>
+                );
+              })}
             </div>
 
             {/* Execution Trace Logs */}
-            <div className="border-t border-[#1F2128] pt-4">
-              <div className="flex items-center justify-between text-[11px] font-mono text-neutral-400 uppercase tracking-wider mb-2 font-semibold">
-                <span>MicroVM Execution Trace</span>
-                <span className="text-emerald-400">Isolated</span>
+            <div className={`border-t pt-4 ${isLight ? "border-[#E2E8F0]" : "border-[#1F2128]"}`}>
+              <div className="flex items-center justify-between text-[11px] font-mono uppercase tracking-wider mb-2 font-bold">
+                <span className={isLight ? "text-[#475569]" : "text-neutral-400"}>
+                  CUDA MicroVM Trace
+                </span>
+                <span className="text-emerald-600 dark:text-emerald-400 font-semibold">
+                  Isolated
+                </span>
               </div>
 
-              <div className="p-3 bg-[#08090C] border border-[#1A1C22] rounded-lg space-y-1.5 text-[11px] font-mono text-neutral-300">
+              <div
+                className={`p-3 rounded-lg space-y-1.5 text-[11px] font-mono border shadow-inner ${
+                  isLight
+                    ? "bg-white border-[#E2E8F0] text-[#1E293B]"
+                    : "bg-[#08090C] border-[#1A1C22] text-neutral-300"
+                }`}
+              >
                 {scenario.logs.map((log, lIdx) => (
-                  <div key={lIdx} className="leading-relaxed">
-                    <span className="text-cyan-400">{log.split(" ")[0]}</span>{" "}
-                    <span className="text-neutral-300">{log.substring(log.indexOf(" ") + 1)}</span>
+                  <div key={lIdx} className="leading-relaxed font-mono">
+                    <span className={isLight ? "text-blue-600 font-bold" : "text-cyan-400 font-bold"}>
+                      {log.split(" ")[0]}
+                    </span>{" "}
+                    <span className={isLight ? "text-[#1E293B] font-medium" : "text-neutral-200"}>
+                      {log.substring(log.indexOf(" ") + 1)}
+                    </span>
                   </div>
                 ))}
               </div>
@@ -467,9 +620,15 @@ export function DorvikEditorViewport() {
           </div>
 
           {/* Micro Telemetry Footer */}
-          <div className="mt-6 pt-3 border-t border-[#1F2128] flex items-center justify-between text-[11px] font-mono text-neutral-400">
-            <span>Deterministic AST Engine</span>
-            <span className="text-emerald-400 font-semibold">Zero Regressions</span>
+          <div
+            className={`mt-6 pt-3 border-t flex items-center justify-between text-[11px] font-mono ${
+              isLight
+                ? "border-[#E2E8F0] text-[#64748B]"
+                : "border-[#1F2128] text-neutral-400"
+            }`}
+          >
+            <span>Deterministic PyTorch AST Engine</span>
+            <span className="text-emerald-600 dark:text-emerald-400 font-bold">Zero Regressions</span>
           </div>
         </div>
       </div>

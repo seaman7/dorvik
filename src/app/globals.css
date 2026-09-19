@@ -401,6 +401,48 @@ html[data-theme="light"] button[aria-label="Toggle Night/Day Theme"] {
   color: #18181B !important;
 }
 
+/* ========================================================
+   DORVIK IDE CODE EDITOR SCOPED THEME CONTRAST
+   ======================================================== */
+html.light .dorvik-ide-root,
+html[data-theme="light"] .dorvik-ide-root {
+  background-color: #FFFFFF !important;
+  border-color: #E2E8F0 !important;
+}
+
+html.dark .dorvik-ide-root,
+html[data-theme="dark"] .dorvik-ide-root {
+  background-color: #0B0C10 !important;
+  border-color: #1F2128 !important;
+}
+
+/* Ensure code syntax colors in dark mode remain vibrant */
+html.dark .dorvik-ide-root .text-neutral-200,
+html[data-theme="dark"] .dorvik-ide-root .text-neutral-200 {
+  color: #E2E8F0 !important;
+}
+
+html.dark .dorvik-ide-root .text-neutral-300,
+html[data-theme="dark"] .dorvik-ide-root .text-neutral-300 {
+  color: #CBD5E1 !important;
+}
+
+html.dark .dorvik-ide-root .text-white,
+html[data-theme="dark"] .dorvik-ide-root .text-white {
+  color: #FFFFFF !important;
+}
+
+/* Ensure code syntax colors in light mode remain deep and crisp */
+html.light .dorvik-ide-root .text-neutral-200,
+html[data-theme="light"] .dorvik-ide-root .text-neutral-200 {
+  color: #0F172A !important;
+}
+
+html.light .dorvik-ide-root .text-neutral-300,
+html[data-theme="light"] .dorvik-ide-root .text-neutral-300 {
+  color: #1E293B !important;
+}
+
 
 
 

@@ -19,21 +19,21 @@ export default function DorvikLabPage() {
 
         {/* Lab Hero Header */}
         <div className="max-w-4xl mb-12">
-          <div className="inline-flex items-center gap-2.5 px-3.5 py-1.5 rounded-full bg-[#12131A] border border-[#222432] mb-5 text-xs font-mono text-neutral-300 shadow-sm">
+          <div className="inline-flex items-center gap-2.5 px-3.5 py-1.5 rounded-full bg-neutral-100 dark:bg-[#12131A] border border-neutral-200 dark:border-[#222432] mb-5 text-xs font-mono text-neutral-800 dark:text-neutral-300 shadow-sm">
             <div className="w-5 h-5 shrink-0">
               <DorvikPixelFox className="w-full h-full" />
             </div>
-            <span className="text-orange-400 font-bold">Dorvik Pixel Fox</span>
-            <span className="text-neutral-600">&bull;</span>
-            <span className="text-cyan-400">Autonomous SWE Agent v2.4</span>
+            <span className="text-orange-600 dark:text-orange-400 font-bold">Dorvik Pixel Fox</span>
+            <span className="text-neutral-400 dark:text-neutral-600">&bull;</span>
+            <span className="text-blue-600 dark:text-cyan-400 font-semibold">Autonomous AI &amp; Model Agent v2.4</span>
           </div>
 
-          <h1 className="text-4xl sm:text-5xl lg:text-6xl font-bold tracking-tight text-white leading-tight">
-            Autonomous SWE Agent: The AI Bug Fixer &amp; Code Builder
+          <h1 className="text-4xl sm:text-5xl lg:text-6xl font-bold tracking-tight text-neutral-900 dark:text-white leading-tight">
+            Autonomous SWE Agent: PyTorch Fine-Tuning &amp; Model Bug Fixer
           </h1>
 
-          <p className="mt-5 text-neutral-400 text-base sm:text-lg leading-relaxed max-w-3xl">
-            Welcome to Dorvik Lab. Here we engineer autonomous software engineering agents capable of reproducing, localizing, and patching complex bugs across production repositories without human intervention.
+          <p className="mt-5 text-neutral-600 dark:text-neutral-400 text-base sm:text-lg leading-relaxed max-w-3xl">
+            Welcome to Dorvik Lab. Here we engineer autonomous AI agents capable of reproducing, localizing, and patching complex bugs across PyTorch tensor graphs, LoRA fine-tuning pipelines, and distributed model architectures.
           </p>
 
           <div className="mt-8 flex flex-wrap items-center gap-3">
@@ -41,12 +41,12 @@ export default function DorvikLabPage() {
               href="#editor"
               className="px-6 py-3 rounded-lg btn-light-refined text-xs tracking-tight flex items-center gap-2 shadow-sm"
             >
-              <span>Watch Live Agent Stream</span>
+              <span>Watch Live Python Agent Stream</span>
               <span>&darr;</span>
             </a>
             <Link
               href="/agent-builder"
-              className="px-6 py-3 rounded-lg bg-[#141418] hover:bg-[#1a1a20] border border-[#262630] text-neutral-300 hover:text-white font-medium text-xs transition-colors"
+              className="px-6 py-3 rounded-lg bg-neutral-100 dark:bg-[#141418] hover:bg-neutral-200 dark:hover:bg-[#1a1a20] border border-neutral-300 dark:border-[#262630] text-neutral-800 dark:text-neutral-300 hover:text-black dark:hover:text-white font-medium text-xs transition-colors"
             >
               Launch Agent API Builder
             </Link>
@@ -54,34 +54,38 @@ export default function DorvikLabPage() {
 
           {/* High-Density Senior Engineering Benchmark Strip */}
           <div className="mt-10 grid grid-cols-2 sm:grid-cols-4 gap-3">
-            <div className="p-4 rounded-xl bg-[#0C0C10] border border-[#1e1e26]">
-              <span className="text-[10px] font-mono text-neutral-400 uppercase tracking-wider block">Benchmark Score</span>
-              <span className="text-base font-bold text-white font-mono mt-1 block">SWE-bench 78.4%</span>
+            <div className="p-4 rounded-xl bg-white dark:bg-[#0C0C10] border border-neutral-200 dark:border-[#1e1e26] shadow-sm">
+              <span className="text-[10px] font-mono text-neutral-500 dark:text-neutral-400 uppercase tracking-wider block">Benchmark Score</span>
+              <span className="text-base font-bold text-neutral-900 dark:text-white font-mono mt-1 block">SWE-bench 78.4%</span>
             </div>
-            <div className="p-4 rounded-xl bg-[#0C0C10] border border-[#1e1e26]">
-              <span className="text-[10px] font-mono text-neutral-400 uppercase tracking-wider block">Verification</span>
-              <span className="text-base font-bold text-emerald-400 font-mono mt-1 block">AST Deterministic</span>
+            <div className="p-4 rounded-xl bg-white dark:bg-[#0C0C10] border border-neutral-200 dark:border-[#1e1e26] shadow-sm">
+              <span className="text-[10px] font-mono text-neutral-500 dark:text-neutral-400 uppercase tracking-wider block">Verification</span>
+              <span className="text-base font-bold text-emerald-600 dark:text-emerald-400 font-mono mt-1 block">PyTorch AST Deterministic</span>
             </div>
-            <div className="p-4 rounded-xl bg-[#0C0C10] border border-[#1e1e26]">
-              <span className="text-[10px] font-mono text-neutral-400 uppercase tracking-wider block">Sandbox Runtime</span>
-              <span className="text-base font-bold text-cyan-400 font-mono mt-1 block">MicroVM Isolated</span>
+            <div className="p-4 rounded-xl bg-white dark:bg-[#0C0C10] border border-neutral-200 dark:border-[#1e1e26] shadow-sm">
+              <span className="text-[10px] font-mono text-neutral-500 dark:text-neutral-400 uppercase tracking-wider block">Sandbox Runtime</span>
+              <span className="text-base font-bold text-blue-600 dark:text-cyan-400 font-mono mt-1 block">CUDA MicroVM Isolated</span>
             </div>
-            <div className="p-4 rounded-xl bg-[#0C0C10] border border-[#1e1e26]">
-              <span className="text-[10px] font-mono text-neutral-400 uppercase tracking-wider block">Mean Patch Latency</span>
-              <span className="text-base font-bold text-white font-mono mt-1 block">420ms / Bug</span>
+            <div className="p-4 rounded-xl bg-white dark:bg-[#0C0C10] border border-neutral-200 dark:border-[#1e1e26] shadow-sm">
+              <span className="text-[10px] font-mono text-neutral-500 dark:text-neutral-400 uppercase tracking-wider block">Mean Patch Latency</span>
+              <span className="text-base font-bold text-neutral-900 dark:text-white font-mono mt-1 block">380ms / Tensor Patch</span>
             </div>
           </div>
         </div>
 
         {/* Live Agent Code Editor Viewport */}
         <div id="editor" className="scroll-mt-28 mb-20">
-          <div className="mb-4 flex flex-col sm:flex-row sm:items-center justify-between gap-2 text-xs text-neutral-400 font-mono">
+          <div className="mb-4 flex flex-col sm:flex-row sm:items-center justify-between gap-2 text-xs font-mono">
             <div className="flex items-center gap-2">
-              <span className="w-2 h-2 rounded-full bg-emerald-400" />
-              <span className="text-white font-bold">LIVE TELEMETRY:</span>
-              <span>Autonomous repository AST traversal &amp; inline diff synthesis</span>
+              <span className="w-2 h-2 rounded-full bg-emerald-500 animate-pulse" />
+              <span className="font-bold text-neutral-900 dark:text-white">LIVE TELEMETRY:</span>
+              <span className="text-neutral-700 dark:text-neutral-300">
+                PyTorch &amp; vLLM computational graph AST inspection &amp; autonomous tensor diff synthesis
+              </span>
             </div>
-            <span className="text-neutral-500">Click any scenario tab to observe agent behavior</span>
+            <span className="text-neutral-600 dark:text-neutral-400">
+              Select any AI scenario tab to observe live tensor patches
+            </span>
           </div>
 
           <DorvikEditorViewport />
