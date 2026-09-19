@@ -100,15 +100,15 @@ export default function BizOSPage() {
         <div className="max-w-4xl mb-16">
           <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-neutral-900 border border-neutral-800 text-neutral-300 text-xs font-mono mb-4 shadow-sm">
             <span className="w-1.5 h-1.5 rounded-full bg-cyan-400 animate-pulse" />
-            <span>AI-POWERED BUSINESS OPERATING SYSTEM</span>
+            <span>AI &amp; BLOCKCHAIN-POWERED BUSINESS OPERATING SYSTEM</span>
           </div>
 
           <h1 className="text-3xl sm:text-5xl lg:text-6xl font-bold tracking-tight text-white leading-tight">
-            Build, Automate, and Operate Your Business with AI.
+            Build, Automate, and Operate Your Business with AI &amp; Blockchain.
           </h1>
 
           <p className="mt-5 text-neutral-400 text-base sm:text-lg leading-relaxed max-w-3xl">
-            Instead of paying for separate CRM, sales, inventory, accounting, and marketing software, BizOS gives you one customizable platform designed for businesses in Bangladesh and globally.
+            Instead of juggling separate CRM, sales, inventory, accounting, and marketing software, BizOS gives you one customizable platform. Integrated with local rails (bKash, Nagad, SSLCOMMERZ) and <strong className="text-white">Blockchain Smart Contracts (Polygon/Base L2)</strong> for instant cross-border settlement with zero bank delays.
           </p>
 
           <div className="mt-8 flex flex-wrap items-center gap-3">
@@ -117,6 +117,13 @@ export default function BizOSPage() {
               className="px-6 py-3 rounded-xl bg-white text-black hover:bg-neutral-200 font-semibold text-xs tracking-tight transition-colors shadow-md"
             >
               Try AI Builder Demo &darr;
+            </a>
+            <a
+              href="#blockchain"
+              className="px-6 py-3 rounded-xl bg-neutral-900 hover:bg-neutral-800 border border-cyan-500/30 text-cyan-300 font-mono text-xs transition-colors flex items-center gap-2"
+            >
+              <span className="w-2 h-2 rounded-full bg-cyan-400" />
+              <span>How Blockchain Works in BizOS &darr;</span>
             </a>
             <a
               href="#waitlist"
@@ -133,11 +140,11 @@ export default function BizOSPage() {
             <span className="px-3 py-1.5 rounded-lg bg-neutral-900 border border-neutral-800 text-neutral-300">
               ✓ bKash &amp; Nagad Ready
             </span>
-            <span className="px-3 py-1.5 rounded-lg bg-neutral-900 border border-neutral-800 text-neutral-300">
-              ✓ Global Stripe &amp; Web3 Rails
+            <span className="px-3 py-1.5 rounded-lg bg-neutral-900 border border-cyan-500/30 text-cyan-300">
+              ✓ Blockchain Smart Contract Escrow (Polygon / Base)
             </span>
             <span className="px-3 py-1.5 rounded-lg bg-neutral-900 border border-neutral-800 text-neutral-300">
-              ✓ Multi-Branch Inventory
+              ✓ Multi-Branch Inventory &amp; POS
             </span>
           </div>
         </div>
@@ -145,24 +152,28 @@ export default function BizOSPage() {
         {/* The Equation Strip */}
         <div className="bg-neutral-900/50 border border-neutral-800 rounded-2xl p-6 sm:p-8 mb-20">
           <div className="text-xs font-mono text-cyan-400 uppercase tracking-wider mb-2 font-semibold">
-            THE BIZOS EQUATION
+            THE 5 PILLARS OF BIZOS
           </div>
-          <div className="grid grid-cols-1 md:grid-cols-4 gap-4 pt-2">
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-3 pt-2">
             <div className="p-4 bg-black/40 rounded-xl border border-neutral-800/80">
-              <span className="text-white font-bold text-sm block mb-1">1. AI Business Builder</span>
-              <p className="text-xs text-neutral-400">Create custom modules and databases from plain natural language prompts.</p>
+              <span className="text-white font-bold text-sm block mb-1">1. AI Builder</span>
+              <p className="text-xs text-neutral-400">Natural language prompts synthesize custom databases, forms, and views.</p>
             </div>
             <div className="p-4 bg-black/40 rounded-xl border border-neutral-800/80">
-              <span className="text-white font-bold text-sm block mb-1">2. Unified Operations</span>
-              <p className="text-xs text-neutral-400">Centralized sales, inventory, CRM, employee tracking, and billing.</p>
+              <span className="text-white font-bold text-sm block mb-1">2. Operations</span>
+              <p className="text-xs text-neutral-400">Unified sales, barcode POS, multi-branch stock, and customer CRM.</p>
             </div>
             <div className="p-4 bg-black/40 rounded-xl border border-neutral-800/80">
-              <span className="text-white font-bold text-sm block mb-1">3. Automation Engine</span>
-              <p className="text-xs text-neutral-400">Automate WhatsApp payment reminders, low-stock reorders, and receipts.</p>
+              <span className="text-white font-bold text-sm block mb-1">3. Automations</span>
+              <p className="text-xs text-neutral-400">Automate WhatsApp payment reminders, reorder alerts, and receipts.</p>
             </div>
             <div className="p-4 bg-black/40 rounded-xl border border-neutral-800/80">
-              <span className="text-white font-bold text-sm block mb-1">4. AI Revenue Assistant</span>
+              <span className="text-white font-bold text-sm block mb-1">4. AI Intelligence</span>
               <p className="text-xs text-neutral-400">Ask strategic questions about your margins, branch profits, and trends.</p>
+            </div>
+            <div className="p-4 bg-black/40 rounded-xl border border-cyan-500/30 bg-cyan-950/10">
+              <span className="text-cyan-300 font-bold text-sm block mb-1">5. Blockchain Escrow</span>
+              <p className="text-xs text-neutral-300">USDT/USDC smart contract settlement on Polygon &amp; Base with immutable audit trails.</p>
             </div>
           </div>
         </div>
@@ -371,6 +382,74 @@ export default function BizOSPage() {
                 Deploy this template &rarr;
               </a>
             </div>
+          </div>
+        </div>
+
+        {/* Dedicated Blockchain Architecture Section */}
+        <div id="blockchain" className="scroll-mt-24 mb-20 bg-[#0C0C12] border border-cyan-500/30 rounded-3xl p-8 sm:p-12 relative overflow-hidden shadow-2xl">
+          <div className="absolute top-0 right-0 w-96 h-96 bg-cyan-500/5 rounded-full blur-3xl pointer-events-none" />
+          
+          <div className="max-w-3xl mb-10 relative z-10">
+            <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-cyan-500/10 border border-cyan-500/30 text-cyan-300 text-xs font-mono mb-4">
+              <span className="w-1.5 h-1.5 rounded-full bg-cyan-400" />
+              <span>THE BIZOS BLOCKCHAIN PROTOCOL</span>
+            </div>
+            <h2 className="text-2xl sm:text-4xl font-bold text-white tracking-tight leading-tight">
+              Why Blockchain? Solving the Global Cross-Border Payment Problem.
+            </h2>
+            <p className="text-neutral-400 text-sm sm:text-base mt-3 leading-relaxed">
+              For businesses in Bangladesh and emerging economies, international SWIFT bank wires take 3–5 days, deduct 4–7% in fees, and suffer from strict banking limits. BizOS integrates smart contracts to enable instant global trade.
+            </p>
+          </div>
+
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-6 relative z-10">
+            <div className="p-6 rounded-2xl bg-black/50 border border-neutral-800">
+              <div className="w-10 h-10 rounded-xl bg-cyan-500/10 border border-cyan-500/30 flex items-center justify-center text-cyan-400 mb-4 font-mono font-bold text-base">
+                01
+              </div>
+              <h3 className="text-base font-bold text-white mb-2">
+                Instant Sub-Cent Settlement (Polygon &amp; Base)
+              </h3>
+              <p className="text-xs text-neutral-400 leading-relaxed">
+                Accept USDT and USDC from clients in the US, Europe, or Middle East. Transactions finalize in 2 seconds with gas fees below $0.01—straight to your business treasury wallet.
+              </p>
+            </div>
+
+            <div className="p-6 rounded-2xl bg-black/50 border border-neutral-800">
+              <div className="w-10 h-10 rounded-xl bg-cyan-500/10 border border-cyan-500/30 flex items-center justify-center text-cyan-400 mb-4 font-mono font-bold text-base">
+                02
+              </div>
+              <h3 className="text-base font-bold text-white mb-2">
+                Milestone Smart Contract Escrow
+              </h3>
+              <p className="text-xs text-neutral-400 leading-relaxed">
+                Clients lock funds in a smart contract. As project milestones are verified and completed, funds are programmatically released with zero chargeback fraud and zero third-party dispute bias.
+              </p>
+            </div>
+
+            <div className="p-6 rounded-2xl bg-black/50 border border-neutral-800">
+              <div className="w-10 h-10 rounded-xl bg-cyan-500/10 border border-cyan-500/30 flex items-center justify-center text-cyan-400 mb-4 font-mono font-bold text-base">
+                03
+              </div>
+              <h3 className="text-base font-bold text-white mb-2">
+                Tamper-Proof Invoices &amp; Audit Trail
+              </h3>
+              <p className="text-xs text-neutral-400 leading-relaxed">
+                Every finalized invoice and payment confirmation is cryptographically hashed on IPFS and registered on-chain. Provides unalterable verification for global audits, taxation, and legal compliance.
+              </p>
+            </div>
+          </div>
+
+          {/* Rail Comparison Strip */}
+          <div className="mt-8 pt-8 border-t border-neutral-800/80 flex flex-col sm:flex-row items-center justify-between gap-4 text-xs font-mono text-neutral-400">
+            <div className="flex flex-wrap items-center gap-3">
+              <span className="text-emerald-400 font-bold">Local Rail:</span>
+              <span>bKash / Nagad / SSLCOMMERZ (BDT)</span>
+              <span className="text-neutral-600">&bull;</span>
+              <span className="text-cyan-400 font-bold">Blockchain Rail:</span>
+              <span>Polygon / Base L2 (USDT / USDC)</span>
+            </div>
+            <span className="text-neutral-500">EVM Smart Contract Compatible</span>
           </div>
         </div>
 

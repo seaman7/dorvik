@@ -51,15 +51,15 @@ export function DorvikBizOSShowcase() {
         <div className="max-w-3xl mb-16">
           <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-neutral-900 border border-neutral-800 text-neutral-300 text-xs font-mono mb-4">
             <span className="w-1.5 h-1.5 rounded-full bg-cyan-400 animate-pulse" />
-            <span>FLAGSHIP PRODUCT &bull; AI BUSINESS OPERATING SYSTEM</span>
+            <span>FLAGSHIP PRODUCT &bull; AI &amp; BLOCKCHAIN BUSINESS OPERATING SYSTEM</span>
           </div>
 
           <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold tracking-tight text-white leading-tight">
-            BizOS: One Operating System for Your Entire Business
+            BizOS: The AI &amp; Blockchain Operating System for Your Business
           </h2>
 
           <p className="mt-4 text-neutral-400 text-base sm:text-lg leading-relaxed">
-            Instead of stitching together 5 separate subscriptions for CRM, inventory, POS, accounting, and marketing—build your own custom business software in seconds using natural language prompts.
+            Instead of stitching together 5 separate subscriptions—build your own custom business software in seconds with AI. Powered by <strong className="text-white">Blockchain Smart Contracts (Polygon/Base)</strong> for instant cross-border settlement and built-in bKash/Nagad for Bangladesh.
           </p>
 
           <div className="mt-6 flex flex-wrap gap-3">
