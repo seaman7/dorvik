@@ -30,6 +30,16 @@ export function DorvikNavbar() {
         {/* Nav Links */}
         <nav className="hidden md:flex items-center gap-6 text-sm font-medium text-neutral-300">
           <Link
+            href="/bizos"
+            className="hover:text-white transition-colors flex items-center gap-1.5 text-white font-semibold"
+          >
+            <span>BizOS</span>
+            <span className="text-[10px] font-mono font-bold bg-cyan-500/20 text-cyan-300 px-1.5 py-0.5 rounded border border-cyan-500/30">
+              PRODUCT
+            </span>
+          </Link>
+
+          <Link
             href="/#case-studies"
             className="hover:text-white transition-colors"
           >

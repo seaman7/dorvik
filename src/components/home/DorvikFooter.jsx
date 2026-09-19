@@ -75,9 +75,17 @@ export function DorvikFooter() {
           {/* Solutions Column */}
           <div>
             <h4 className="text-xs font-mono uppercase tracking-wider text-white font-bold mb-4">
-              Capabilities
+              Products &amp; Capabilities
             </h4>
             <ul className="space-y-2.5 text-xs text-neutral-400">
+              <li>
+                <Link href="/bizos" className="text-white hover:text-cyan-400 font-semibold transition-colors flex items-center gap-1.5">
+                  <span>BizOS (AI Business OS)</span>
+                  <span className="text-[10px] font-mono text-cyan-300 bg-cyan-500/15 px-1 py-0.2 rounded border border-cyan-500/30">
+                    Flagship
+                  </span>
+                </Link>
+              </li>
               <li>
                 <Link href="/#projects" className="hover:text-white transition-colors">
                   Web &amp; Full-Stack Engineering
