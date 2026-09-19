@@ -3,7 +3,7 @@ import { DorvikNavbar } from "@/components/home/DorvikNavbar";
 import { DorvikFooter } from "@/components/home/DorvikFooter";
 
 export const viewport = {
-  themeColor: "#1D0245",
+  themeColor: "#08080A",
   width: "device-width",
   initialScale: 1,
 };
@@ -57,7 +57,7 @@ export const metadata = {
 export default function RootLayout({ children }) {
   return (
     <html lang="en" className="scroll-smooth">
-      <body className="min-h-screen bg-[#1D0245] text-purple-100 antialiased selection:bg-cyan-400 selection:text-[#09051c] font-mono">
+      <body className="min-h-screen bg-[#08080A] text-neutral-200 antialiased selection:bg-cyan-500 selection:text-black font-sans">
         {/* Accessible Skip Link */}
         <a
           href="#editor"

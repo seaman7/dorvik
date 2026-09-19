@@ -11,9 +11,7 @@ const OPEN_POSITIONS = [
     team: "AI & Research",
     location: "Remote (Bangladesh Based)",
     type: "Full-Time",
-    experience: "Senior / Staff",
-    badge: "AI & ML",
-    color: "cyan",
+    level: "Senior / Staff",
     overview:
       "Join as a foundational Machine Learning Engineer designing and fine-tuning specialized code-generation, AST diffing, and bug-localization models. You will build synthetic data pipelines to train models on real-world error traces, regression test synthesis, and autonomous patch verification.",
     whatYouWillDo: [
@@ -36,9 +34,7 @@ const OPEN_POSITIONS = [
     team: "Agent Architecture",
     location: "Remote (Bangladesh Based)",
     type: "Full-Time",
-    experience: "Senior / Lead",
-    badge: "AGENT CORE",
-    color: "orange",
+    level: "Senior / Lead",
     overview:
       "Architect Dorvik's core autonomous SWE agent loop. You will engineer multi-step reasoning, tool-calling pipelines (AST parsers, test runners, git committers), and self-healing error correction mechanisms that resolve production software defects without human intervention.",
     whatYouWillDo: [
@@ -61,9 +57,7 @@ const OPEN_POSITIONS = [
     team: "Infrastructure & Security",
     location: "Remote (Bangladesh Based)",
     type: "Full-Time",
-    experience: "Senior",
-    badge: "INFRASTRUCTURE",
-    color: "emerald",
+    level: "Senior",
     overview:
       "Build high-concurrency, air-gapped sandboxing infrastructure to safely execute untrusted code patches. You will scale our microVM execution engine (Firecracker / Docker / gVisor) to handle thousands of concurrent test runs with bank-grade isolation.",
     whatYouWillDo: [
@@ -86,9 +80,7 @@ const OPEN_POSITIONS = [
     team: "Enterprise Solutions",
     location: "Remote (Bangladesh Based)",
     type: "Full-Time",
-    experience: "Mid / Senior",
-    badge: "ENTERPRISE",
-    color: "purple",
+    level: "Mid / Senior",
     overview:
       "Embed directly with enterprise engineering leadership (Fortune 50 leaders like MetLife and high-growth travel engines like PassNFly) to deploy Dorvik's autonomous agents into their core CI/CD pipelines, monoliths, and proprietary microservices.",
     whatYouWillDo: [
@@ -111,9 +103,7 @@ const OPEN_POSITIONS = [
     team: "Product Engineering",
     location: "Remote (Bangladesh Based)",
     type: "Full-Time",
-    experience: "Mid / Senior",
-    badge: "DEV TOOLS",
-    color: "sky",
+    level: "Mid / Senior",
     overview:
       "Build stunning, lightning-fast interfaces for developer tools. You will create interactive code review visualizers, real-time agent execution timelines, IDE integrations, and collaborative debugging workspaces using Next.js, React 19, and Tailwind CSS.",
     whatYouWillDo: [
@@ -132,47 +122,22 @@ const OPEN_POSITIONS = [
   },
 ];
 
-const VALUES = [
+const HIGHLIGHTS = [
   {
     title: "100% Remote in Bangladesh",
-    desc: "Work from anywhere in Bangladesh with high flexibility and asynchronous engineering respect.",
-    icon: (
-      <svg className="w-5 h-5 text-cyan-400" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
-        <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z" />
-        <circle cx="12" cy="10" r="3" />
-      </svg>
-    ),
+    desc: "Work from anywhere in Bangladesh with flexible hours and asynchronous engineering culture.",
   },
   {
-    title: "Real AI & Deep Moats",
-    desc: "Train specialized models, parse syntax trees, and sandbox microVMs—no shallow API wrappers.",
-    icon: (
-      <svg className="w-5 h-5 text-orange-400" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
-        <polyline points="16 18 22 12 16 6" />
-        <polyline points="8 6 2 12 8 18" />
-      </svg>
-    ),
+    title: "Deep Technical Focus",
+    desc: "Train specialized models, parse abstract syntax trees, and sandbox microVMs. Real systems engineering.",
   },
   {
-    title: "Global Enterprise Scale",
+    title: "Global Production Impact",
     desc: "Your code runs on mission-critical production systems for leaders like MetLife and PassNFly.",
-    icon: (
-      <svg className="w-5 h-5 text-emerald-400" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
-        <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z" />
-        <path d="m9 12 2 2 4-4" />
-      </svg>
-    ),
   },
   {
-    title: "Top 1% Compensation",
-    desc: "Competitive tech market salary, performance bonuses, GPU compute credits, and generous equity.",
-    icon: (
-      <svg className="w-5 h-5 text-purple-400" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
-        <circle cx="12" cy="12" r="10" />
-        <path d="M16 8h-6a2 2 0 1 0 0 4h4a2 2 0 1 1 0 4H8" />
-        <path d="M12 6v2m0 8v2" />
-      </svg>
-    ),
+    title: "Competitive Compensation",
+    desc: "Market-leading compensation, equity ownership, GPU cluster access, and home office stipends.",
   },
 ];
 
@@ -221,78 +186,69 @@ export default function CareersPage() {
   };
 
   return (
-    <div className="font-sans-modern min-h-screen bg-[#08080C] text-slate-100 pt-28 pb-32">
-      {/* Background Ambient Glows */}
-      <div className="absolute top-20 left-1/2 -translate-x-1/2 w-[900px] h-[380px] bg-gradient-to-b from-cyan-500/10 via-purple-600/5 to-transparent rounded-full blur-[150px] pointer-events-none" />
-
-      <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+    <div className="min-h-screen bg-[#08080A] text-neutral-200 pt-24 pb-28 font-sans antialiased">
+      <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Breadcrumb */}
-        <div className="flex items-center gap-2 text-xs font-mono text-slate-400 mb-8">
-          <Link href="/" className="hover:text-cyan-400 transition-colors">
-            HOME
+        <div className="flex items-center gap-2 text-xs font-mono text-neutral-400 mb-8">
+          <Link href="/" className="hover:text-white transition-colors">
+            Home
           </Link>
-          <span className="text-slate-600">/</span>
-          <span className="text-cyan-400 font-semibold">CAREERS</span>
+          <span className="text-neutral-600">/</span>
+          <span className="text-white">Careers</span>
         </div>
 
-        {/* Hero Header */}
-        <div className="text-center max-w-3xl mx-auto mb-16">
-          <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-[#12121e] border border-cyan-500/30 text-cyan-300 text-xs font-mono mb-6 tracking-wide shadow-[0_0_20px_rgba(0,210,239,0.12)]">
-            <span className="w-2 h-2 rounded-full bg-cyan-400 animate-pulse" />
-            <span>WE ARE HIRING &bull; 100% REMOTE (BANGLADESH BASED)</span>
+        {/* Hero Section */}
+        <div className="mb-14">
+          <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-neutral-900 border border-neutral-800 text-neutral-300 text-xs font-mono mb-4">
+            <span className="w-1.5 h-1.5 rounded-full bg-emerald-400" />
+            <span>5 Open Roles &bull; Remote (Bangladesh Based)</span>
           </div>
 
-          <h1 className="text-4xl sm:text-5xl lg:text-6xl font-extrabold tracking-tight text-white leading-tight">
-            Build the Next Frontier of{" "}
-            <span className="bg-gradient-to-r from-cyan-400 via-teal-300 to-orange-400 bg-clip-text text-transparent">
-              Autonomous Software
-            </span>
+          <h1 className="text-3xl sm:text-4xl lg:text-5xl font-bold tracking-tight text-white leading-tight">
+            Careers at Dorvik
           </h1>
 
-          <p className="mt-5 text-slate-300 text-base sm:text-lg leading-relaxed max-w-2xl mx-auto">
-            We are engineering autonomous AI systems that detect, reproduce, and patch production bugs before developers are paged. Work remotely from anywhere in Bangladesh on software trusted by global leaders like MetLife and PassNFly.
+          <p className="mt-4 text-neutral-400 text-base sm:text-lg leading-relaxed max-w-3xl">
+            We are a software engineering and AI systems studio based in Bangladesh. We build high-performance web platforms and autonomous code reliability agents for global enterprise teams like MetLife and PassNFly.
           </p>
 
-          <div className="mt-8 flex flex-wrap items-center justify-center gap-3 text-xs font-mono text-slate-300">
-            <span className="px-3.5 py-1.5 rounded-lg bg-[#141420] border border-white/10 flex items-center gap-2">
-              <span className="text-emerald-400 font-bold">✓</span> 100% Remote across Bangladesh
+          <div className="mt-6 flex flex-wrap gap-2 text-xs text-neutral-400">
+            <span className="px-3 py-1.5 rounded-lg bg-neutral-900 border border-neutral-800 text-neutral-300">
+              100% Remote across Bangladesh
             </span>
-            <span className="px-3.5 py-1.5 rounded-lg bg-[#141420] border border-white/10 flex items-center gap-2">
-              <span className="text-cyan-400 font-bold">✓</span> Real Clients (MetLife, PassNFly)
+            <span className="px-3 py-1.5 rounded-lg bg-neutral-900 border border-neutral-800 text-neutral-300">
+              High-Agency Small Team
             </span>
-            <span className="px-3.5 py-1.5 rounded-lg bg-[#141420] border border-white/10 flex items-center gap-2">
-              <span className="text-orange-400 font-bold">✓</span> Top-Tier Compensation
+            <span className="px-3 py-1.5 rounded-lg bg-neutral-900 border border-neutral-800 text-neutral-300">
+              Direct Engineering Ownership
             </span>
           </div>
         </div>
 
-        {/* 4 Value Pillars */}
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 mb-16">
-          {VALUES.map((val, idx) => (
+        {/* 4 Pillars Strip */}
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-3 mb-12">
+          {HIGHLIGHTS.map((item, idx) => (
             <div
               key={idx}
-              className="bg-[#0f0f18] border border-white/[0.08] hover:border-cyan-500/40 rounded-xl p-5 transition-all duration-200 hover:-translate-y-1 hover:shadow-[0_8px_30px_rgba(0,210,239,0.08)]"
+              className="bg-neutral-900/60 border border-neutral-800/80 rounded-xl p-4 transition-colors hover:border-neutral-700"
             >
-              <div className="w-10 h-10 rounded-lg bg-white/[0.04] border border-white/10 flex items-center justify-center mb-3.5">
-                {val.icon}
-              </div>
-              <h3 className="text-base font-bold text-white mb-1">
-                {val.title}
+              <h3 className="text-sm font-semibold text-white mb-1">
+                {item.title}
               </h3>
-              <p className="text-xs text-slate-400 leading-relaxed">
-                {val.desc}
+              <p className="text-xs text-neutral-400 leading-relaxed">
+                {item.desc}
               </p>
             </div>
           ))}
         </div>
 
-        {/* Role Search & Filter Bar */}
-        <div className="bg-[#11111a] border border-white/[0.1] rounded-2xl p-5 sm:p-6 mb-8 shadow-xl">
-          <div className="flex flex-col md:flex-row md:items-center justify-between gap-4">
+        {/* Filter and Search Bar */}
+        <div className="bg-neutral-900/80 border border-neutral-800 rounded-xl p-4 mb-6">
+          <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3">
             {/* Search Input */}
-            <div className="relative flex-1 max-w-md">
+            <div className="relative flex-1 max-w-sm">
               <svg
-                className="w-4 h-4 text-slate-400 absolute left-3.5 top-1/2 -translate-y-1/2"
+                className="w-4 h-4 text-neutral-500 absolute left-3 top-1/2 -translate-y-1/2"
                 viewBox="0 0 24 24"
                 fill="none"
                 stroke="currentColor"
@@ -303,32 +259,29 @@ export default function CareersPage() {
               </svg>
               <input
                 type="text"
-                placeholder="Search by role title, skill, or department..."
+                placeholder="Search roles or technologies..."
                 value={searchQuery}
                 onChange={(e) => setSearchQuery(e.target.value)}
-                className="w-full pl-10 pr-4 py-2.5 rounded-xl bg-[#171724] border border-white/15 text-white placeholder:text-slate-400 text-sm focus:outline-none focus:border-cyan-400 transition-colors font-sans"
+                className="w-full pl-9 pr-3 py-2 rounded-lg bg-black border border-neutral-800 text-white placeholder:text-neutral-500 text-xs focus:outline-none focus:border-neutral-500 transition-colors"
               />
             </div>
 
-            {/* Position count */}
-            <div className="text-xs font-mono text-slate-300 flex items-center gap-2 self-start md:self-auto">
-              <span>Open Roles:</span>
-              <span className="text-white font-bold bg-white/10 px-2.5 py-1 rounded-md border border-white/15">
-                {filteredJobs.length} Positions Available
-              </span>
+            {/* Total count badge */}
+            <div className="text-xs text-neutral-400 font-mono">
+              <span>{filteredJobs.length} open position{filteredJobs.length === 1 ? "" : "s"}</span>
             </div>
           </div>
 
           {/* Department Filter Buttons */}
-          <div className="flex flex-wrap items-center gap-2 mt-4 pt-4 border-t border-white/[0.08]">
+          <div className="flex flex-wrap items-center gap-1.5 mt-3 pt-3 border-t border-neutral-800/60">
             {teams.map((team) => (
               <button
                 key={team}
                 onClick={() => setSelectedTeam(team)}
-                className={`px-3.5 py-1.5 rounded-lg text-xs font-mono font-medium transition-all ${
+                className={`px-3 py-1 rounded-md text-xs font-medium transition-colors ${
                   selectedTeam === team
-                    ? "bg-cyan-500 text-slate-950 font-bold shadow-[0_0_15px_rgba(0,210,239,0.3)]"
-                    : "bg-[#171724] text-slate-300 hover:text-white hover:bg-[#1e1e30] border border-white/10"
+                    ? "bg-white text-black font-semibold"
+                    : "bg-black text-neutral-400 hover:text-white border border-neutral-800"
                 }`}
               >
                 {team}
@@ -338,11 +291,11 @@ export default function CareersPage() {
         </div>
 
         {/* Roles List */}
-        <div className="space-y-4">
+        <div className="space-y-3">
           {filteredJobs.length === 0 ? (
-            <div className="bg-[#11111a] border border-white/10 rounded-2xl p-12 text-center">
-              <p className="text-slate-300 text-base">
-                No matching open positions found. Try clearing your search query.
+            <div className="bg-neutral-900/40 border border-neutral-800 rounded-xl p-10 text-center">
+              <p className="text-neutral-400 text-sm">
+                No matching open positions found.
               </p>
             </div>
           ) : (
@@ -352,58 +305,56 @@ export default function CareersPage() {
               return (
                 <div
                   key={job.id}
-                  className={`bg-[#101018] border transition-all duration-200 rounded-2xl overflow-hidden shadow-xl ${
-                    isExpanded
-                      ? "border-cyan-500/50 shadow-[0_4px_30px_rgba(0,210,239,0.1)]"
-                      : "border-white/[0.1] hover:border-white/20"
+                  className={`bg-neutral-900/50 border transition-colors rounded-xl overflow-hidden ${
+                    isExpanded ? "border-neutral-700 bg-neutral-900/80" : "border-neutral-800/80 hover:border-neutral-700"
                   }`}
                 >
-                  {/* Job Header Row (Clickable Accordion) */}
+                  {/* Job Header Row */}
                   <div
                     onClick={() => setExpandedJobId(isExpanded ? null : job.id)}
-                    className="p-6 cursor-pointer flex flex-col sm:flex-row sm:items-center justify-between gap-4 select-none bg-[#12121c]/90 hover:bg-[#161624] transition-colors"
+                    className="p-5 cursor-pointer flex flex-col sm:flex-row sm:items-center justify-between gap-4 select-none"
                   >
                     <div className="flex-1">
-                      <div className="flex flex-wrap items-center gap-2.5 mb-2.5">
-                        <span className="text-[11px] font-mono font-bold px-2.5 py-0.5 rounded bg-cyan-500/15 text-cyan-300 border border-cyan-500/30">
-                          {job.badge}
+                      <div className="flex flex-wrap items-center gap-2 mb-1.5">
+                        <span className="text-[11px] font-mono font-medium px-2 py-0.5 rounded bg-neutral-800 text-neutral-300 border border-neutral-700">
+                          {job.team}
                         </span>
-                        <span className="text-xs font-mono text-emerald-300 bg-emerald-500/15 px-2.5 py-0.5 rounded border border-emerald-500/30 flex items-center gap-1.5 font-bold">
+                        <span className="text-xs text-emerald-400 flex items-center gap-1 font-mono">
                           <span className="w-1.5 h-1.5 rounded-full bg-emerald-400 inline-block" />
                           <span>{job.location}</span>
                         </span>
-                        <span className="text-xs font-mono text-slate-400">
-                          &bull; {job.experience}
+                        <span className="text-xs text-neutral-500">
+                          &bull; {job.level}
                         </span>
-                        <span className="text-xs font-mono text-slate-400">
+                        <span className="text-xs text-neutral-500">
                           &bull; {job.type}
                         </span>
                       </div>
 
-                      <h2 className="text-xl sm:text-2xl font-bold text-white tracking-tight">
+                      <h2 className="text-lg font-semibold text-white tracking-tight">
                         {job.title}
                       </h2>
                     </div>
 
-                    <div className="flex items-center gap-3 self-start sm:self-auto">
+                    <div className="flex items-center gap-2.5 self-start sm:self-auto">
                       <button
                         onClick={(e) => {
                           e.stopPropagation();
                           setApplyingJob(job);
                           setSubmitStatus("idle");
                         }}
-                        className="px-5 py-2.5 rounded-xl bg-cyan-500 hover:bg-cyan-400 text-slate-950 font-bold text-xs font-mono tracking-wide transition-all shadow-[0_0_15px_rgba(0,210,239,0.25)]"
+                        className="px-4 py-2 rounded-lg bg-white text-black hover:bg-neutral-200 font-medium text-xs transition-colors"
                       >
-                        Apply Now
+                        Apply
                       </button>
 
                       <button
-                        className="p-2 text-slate-400 hover:text-white rounded-lg hover:bg-white/10 transition-colors"
+                        className="p-1.5 text-neutral-400 hover:text-white rounded-md hover:bg-neutral-800 transition-colors"
                         aria-label="Toggle details"
                       >
                         <svg
-                          className={`w-5 h-5 transition-transform duration-200 ${
-                            isExpanded ? "rotate-180 text-cyan-400" : ""
+                          className={`w-4 h-4 transition-transform duration-200 ${
+                            isExpanded ? "rotate-180" : ""
                           }`}
                           viewBox="0 0 24 24"
                           fill="none"
@@ -418,30 +369,27 @@ export default function CareersPage() {
 
                   {/* Expanded In-Depth Details */}
                   {isExpanded && (
-                    <div className="px-6 sm:px-8 pb-8 pt-5 border-t border-white/[0.08] bg-[#0c0c14]">
-                      {/* About */}
-                      <div className="mb-6">
-                        <h4 className="text-xs font-mono uppercase tracking-wider text-cyan-400 font-bold mb-2">
-                          Role Overview
+                    <div className="px-5 pb-6 pt-2 border-t border-neutral-800/80 bg-black/40">
+                      {/* Overview */}
+                      <div className="mb-5">
+                        <h4 className="text-xs font-mono uppercase tracking-wider text-neutral-400 font-semibold mb-1.5">
+                          About the Role
                         </h4>
-                        <p className="text-sm sm:text-base text-slate-300 leading-relaxed">
+                        <p className="text-sm text-neutral-300 leading-relaxed">
                           {job.overview}
                         </p>
                       </div>
 
                       {/* Responsibilities & Requirements */}
-                      <div className="grid grid-cols-1 md:grid-cols-2 gap-6 pt-5 border-t border-white/[0.08] mb-6">
+                      <div className="grid grid-cols-1 md:grid-cols-2 gap-5 pt-4 border-t border-neutral-800/60 mb-5">
                         <div>
-                          <h4 className="text-xs font-mono uppercase tracking-wider text-white font-bold mb-3 flex items-center gap-2">
-                            <span className="w-2 h-2 rounded-full bg-cyan-400" />
-                            <span>What You Will Build &amp; Ship</span>
+                          <h4 className="text-xs font-mono uppercase tracking-wider text-white font-semibold mb-2.5">
+                            Responsibilities
                           </h4>
-                          <ul className="space-y-2.5 text-xs sm:text-sm text-slate-300">
+                          <ul className="space-y-2 text-xs text-neutral-300">
                             {job.whatYouWillDo.map((item, idx) => (
-                              <li key={idx} className="flex items-start gap-2.5">
-                                <span className="text-cyan-400 font-bold select-none text-base leading-none mt-0.5">
-                                  &bull;
-                                </span>
+                              <li key={idx} className="flex items-start gap-2">
+                                <span className="text-neutral-500 font-bold select-none">&bull;</span>
                                 <span>{item}</span>
                               </li>
                             ))}
@@ -449,16 +397,13 @@ export default function CareersPage() {
                         </div>
 
                         <div>
-                          <h4 className="text-xs font-mono uppercase tracking-wider text-white font-bold mb-3 flex items-center gap-2">
-                            <span className="w-2 h-2 rounded-full bg-orange-400" />
-                            <span>What We Look For</span>
+                          <h4 className="text-xs font-mono uppercase tracking-wider text-white font-semibold mb-2.5">
+                            Qualifications
                           </h4>
-                          <ul className="space-y-2.5 text-xs sm:text-sm text-slate-300">
+                          <ul className="space-y-2 text-xs text-neutral-300">
                             {job.requirements.map((item, idx) => (
-                              <li key={idx} className="flex items-start gap-2.5">
-                                <span className="text-orange-400 font-bold select-none text-base leading-none mt-0.5">
-                                  &bull;
-                                </span>
+                              <li key={idx} className="flex items-start gap-2">
+                                <span className="text-neutral-500 font-bold select-none">&bull;</span>
                                 <span>{item}</span>
                               </li>
                             ))}
@@ -467,23 +412,21 @@ export default function CareersPage() {
                       </div>
 
                       {/* Compensation Bar & Direct Apply Button */}
-                      <div className="pt-4 border-t border-white/[0.08] flex flex-col sm:flex-row sm:items-center justify-between gap-4 bg-[#141422]/70 p-4 rounded-xl border border-white/[0.06]">
-                        <div className="text-xs sm:text-sm text-slate-300">
-                          <span className="text-cyan-400 font-mono font-bold">COMPENSATION &amp; PERKS: </span>
+                      <div className="pt-3 border-t border-neutral-800/60 flex flex-col sm:flex-row sm:items-center justify-between gap-3">
+                        <div className="text-xs text-neutral-400">
+                          <span className="text-neutral-300 font-medium font-mono">Offer: </span>
                           <span>{job.compensation}</span>
                         </div>
 
-                        <div className="flex items-center gap-3">
-                          <button
-                            onClick={() => {
-                              setApplyingJob(job);
-                              setSubmitStatus("idle");
-                            }}
-                            className="px-6 py-2.5 rounded-xl bg-gradient-to-r from-cyan-500 to-blue-600 hover:from-cyan-400 hover:to-blue-500 text-white font-bold text-xs font-mono uppercase tracking-wider shadow-[0_0_20px_rgba(0,210,239,0.3)] transition-all"
-                          >
-                            Apply for this Position &rarr;
-                          </button>
-                        </div>
+                        <button
+                          onClick={() => {
+                            setApplyingJob(job);
+                            setSubmitStatus("idle");
+                          }}
+                          className="px-4 py-2 rounded-lg bg-white text-black hover:bg-neutral-200 font-medium text-xs transition-colors self-start sm:self-auto"
+                        >
+                          Submit Application &rarr;
+                        </button>
                       </div>
                     </div>
                   )}
@@ -493,75 +436,74 @@ export default function CareersPage() {
           )}
         </div>
 
-        {/* General Application Banner */}
-        <div className="mt-16 bg-[#11111a] border border-white/[0.1] rounded-2xl p-8 sm:p-10 text-center max-w-3xl mx-auto shadow-xl">
-          <h3 className="text-2xl font-bold text-white mb-2">
-            Don&apos;t see the exact title you&apos;re looking for?
+        {/* General Application Note */}
+        <div className="mt-12 bg-neutral-900/40 border border-neutral-800 rounded-xl p-6 text-center max-w-2xl mx-auto">
+          <h3 className="text-base font-semibold text-white mb-1">
+            Don&apos;t see the exact role?
           </h3>
-          <p className="text-slate-300 text-sm sm:text-base mb-6 max-w-xl mx-auto leading-relaxed">
-            We are always scouting for top-tier software engineers, AI researchers, and compiler builders across Bangladesh. Send your GitHub and CV directly to our team.
+          <p className="text-neutral-400 text-xs mb-4 leading-relaxed">
+            We are always happy to connect with exceptional engineers in Bangladesh. You can email your resume and GitHub profile directly to our team.
           </p>
           <a
             href="mailto:careers@dorvik.com?subject=General Engineering Application - Bangladesh"
-            className="inline-flex items-center gap-2 px-6 py-3 rounded-xl bg-white/10 hover:bg-white/15 border border-white/20 text-white text-xs font-mono font-bold tracking-wider uppercase transition-colors"
+            className="inline-flex items-center gap-1.5 px-4 py-2 rounded-lg bg-neutral-800 hover:bg-neutral-700 text-white text-xs font-medium transition-colors"
           >
-            <span>Email careers@dorvik.com directly</span>
+            <span>Email careers@dorvik.com</span>
             <span>&rarr;</span>
           </a>
         </div>
 
-        {/* Clean Application Modal with High Contrast */}
+        {/* Clean Application Modal */}
         {applyingJob && (
-          <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/85 backdrop-blur-md">
-            <div className="bg-[#10101a] border border-cyan-500/40 rounded-2xl w-full max-w-lg p-6 sm:p-8 relative shadow-2xl overflow-y-auto max-h-[92vh]">
+          <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/80 backdrop-blur-sm">
+            <div className="bg-[#0D0D11] border border-neutral-800 rounded-2xl w-full max-w-lg p-6 relative shadow-2xl overflow-y-auto max-h-[90vh]">
               {/* Close Button */}
               <button
                 onClick={() => setApplyingJob(null)}
-                className="absolute top-5 right-5 text-slate-400 hover:text-white text-xl font-mono p-1 transition-colors"
+                className="absolute top-5 right-5 text-neutral-400 hover:text-white text-lg p-1 transition-colors"
                 aria-label="Close"
               >
                 ✕
               </button>
 
-              <div className="mb-6">
-                <span className="text-xs font-mono text-cyan-400 uppercase tracking-widest font-bold">
-                  DORVIK ENGINEERING TALENT APPLICATION
+              <div className="mb-5">
+                <span className="text-xs font-mono text-neutral-400 uppercase tracking-wider">
+                  Apply for Position
                 </span>
-                <h3 className="text-xl sm:text-2xl font-black text-white mt-1">
+                <h3 className="text-xl font-bold text-white mt-1">
                   {applyingJob.title}
                 </h3>
-                <div className="flex items-center gap-2 text-xs font-mono text-emerald-400 mt-1">
-                  <span className="w-2 h-2 rounded-full bg-emerald-400" />
-                  <span>100% Remote (Bangladesh Based) &bull; Full-Time</span>
+                <div className="text-xs text-emerald-400 font-mono mt-1">
+                  100% Remote (Bangladesh Based) &bull; Full-Time
                 </div>
               </div>
 
               {submitStatus === "success" ? (
-                <div className="py-10 text-center">
-                  <div className="w-14 h-14 bg-emerald-500/20 border border-emerald-500/40 text-emerald-400 rounded-full mx-auto flex items-center justify-center text-2xl mb-4 font-bold">
+                <div className="py-8 text-center">
+                  <div className="w-12 h-12 bg-emerald-500/10 border border-emerald-500/30 text-emerald-400 rounded-full mx-auto flex items-center justify-center text-xl mb-3 font-bold">
                     ✓
                   </div>
-                  <h4 className="text-xl font-bold text-white mb-2">
-                    Application Successfully Dispatched!
+                  <h4 className="text-lg font-bold text-white mb-1">
+                    Application Received
                   </h4>
-                  <p className="text-sm text-slate-300 leading-relaxed max-w-sm mx-auto mb-6">
-                    Thank you, <strong className="text-white">{formData.fullName}</strong>. Our engineering leads will review your GitHub and portfolio directly and get back to you within 48 hours.
+                  <p className="text-xs text-neutral-300 leading-relaxed max-w-xs mx-auto mb-5">
+                    Thank you, {formData.fullName}. We review all applications directly and will reply within 48 hours.
                   </p>
                   <button
                     onClick={() => {
                       setApplyingJob(null);
                       setSubmitStatus("idle");
                     }}
-                    className="px-6 py-2.5 rounded-lg bg-cyan-500 text-slate-950 font-mono font-bold text-xs uppercase tracking-wider"
+                    className="px-5 py-2 rounded-lg bg-white text-black font-medium text-xs"
                   >
                     Close
                   </button>
                 </div>
               ) : (
-                <form onSubmit={handleFormSubmit} className="space-y-4 text-xs font-sans">
+                <form onSubmit={handleFormSubmit} className="space-y-3.5 text-xs font-sans">
                   <div>
-                    <label className="block text-slate-200 font-bold mb-1 font-mono">
-                      FULL NAME *
+                    <label className="block text-neutral-300 font-medium mb-1">
+                      Full Name *
                     </label>
                     <input
                       type="text"
@@ -569,27 +511,27 @@ export default function CareersPage() {
                       placeholder="e.g. Tanvir Ahmed"
                       value={formData.fullName}
                       onChange={(e) => setFormData({ ...formData, fullName: e.target.value })}
-                      className="w-full bg-[#181826] border border-white/20 rounded-lg px-3.5 py-2.5 text-white placeholder:text-slate-500 text-sm focus:outline-none focus:border-cyan-400 transition-colors"
+                      className="w-full bg-neutral-900 border border-neutral-800 rounded-lg px-3 py-2 text-white placeholder:text-neutral-500 text-xs focus:outline-none focus:border-neutral-500 transition-colors"
                     />
                   </div>
 
                   <div>
-                    <label className="block text-slate-200 font-bold mb-1 font-mono">
-                      EMAIL ADDRESS *
+                    <label className="block text-neutral-300 font-medium mb-1">
+                      Email Address *
                     </label>
                     <input
                       type="email"
                       required
-                      placeholder="tanvir@domain.com"
+                      placeholder="tanvir@example.com"
                       value={formData.email}
                       onChange={(e) => setFormData({ ...formData, email: e.target.value })}
-                      className="w-full bg-[#181826] border border-white/20 rounded-lg px-3.5 py-2.5 text-white placeholder:text-slate-500 text-sm focus:outline-none focus:border-cyan-400 transition-colors"
+                      className="w-full bg-neutral-900 border border-neutral-800 rounded-lg px-3 py-2 text-white placeholder:text-neutral-500 text-xs focus:outline-none focus:border-neutral-500 transition-colors"
                     />
                   </div>
 
                   <div>
-                    <label className="block text-slate-200 font-bold mb-1 font-mono">
-                      PHONE / WHATSAPP NUMBER *
+                    <label className="block text-neutral-300 font-medium mb-1">
+                      Phone / WhatsApp Number *
                     </label>
                     <input
                       type="tel"
@@ -597,27 +539,27 @@ export default function CareersPage() {
                       placeholder="+880 1XXXXXXXXX"
                       value={formData.phone}
                       onChange={(e) => setFormData({ ...formData, phone: e.target.value })}
-                      className="w-full bg-[#181826] border border-white/20 rounded-lg px-3.5 py-2.5 text-white placeholder:text-slate-500 text-sm focus:outline-none focus:border-cyan-400 transition-colors"
+                      className="w-full bg-neutral-900 border border-neutral-800 rounded-lg px-3 py-2 text-white placeholder:text-neutral-500 text-xs focus:outline-none focus:border-neutral-500 transition-colors"
                     />
                   </div>
 
-                  <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                  <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
                     <div>
-                      <label className="block text-slate-200 font-bold mb-1 font-mono">
-                        GITHUB PROFILE
+                      <label className="block text-neutral-300 font-medium mb-1">
+                        GitHub Profile
                       </label>
                       <input
                         type="url"
                         placeholder="https://github.com/..."
                         value={formData.githubUrl}
                         onChange={(e) => setFormData({ ...formData, githubUrl: e.target.value })}
-                        className="w-full bg-[#181826] border border-white/20 rounded-lg px-3.5 py-2.5 text-white placeholder:text-slate-500 text-sm focus:outline-none focus:border-cyan-400 transition-colors"
+                        className="w-full bg-neutral-900 border border-neutral-800 rounded-lg px-3 py-2 text-white placeholder:text-neutral-500 text-xs focus:outline-none focus:border-neutral-500 transition-colors"
                       />
                     </div>
 
                     <div>
-                      <label className="block text-slate-200 font-bold mb-1 font-mono">
-                        LINKEDIN / RESUME LINK *
+                      <label className="block text-neutral-300 font-medium mb-1">
+                        LinkedIn / CV Link *
                       </label>
                       <input
                         type="url"
@@ -627,21 +569,21 @@ export default function CareersPage() {
                         onChange={(e) =>
                           setFormData({ ...formData, portfolioOrLinkedin: e.target.value })
                         }
-                        className="w-full bg-[#181826] border border-white/20 rounded-lg px-3.5 py-2.5 text-white placeholder:text-slate-500 text-sm focus:outline-none focus:border-cyan-400 transition-colors"
+                        className="w-full bg-neutral-900 border border-neutral-800 rounded-lg px-3 py-2 text-white placeholder:text-neutral-500 text-xs focus:outline-none focus:border-neutral-500 transition-colors"
                       />
                     </div>
                   </div>
 
                   <div>
-                    <label className="block text-slate-200 font-bold mb-1 font-mono">
-                      HIGHLIGHT (COMPLEX BUGS OR AGENTS BUILT)
+                    <label className="block text-neutral-300 font-medium mb-1">
+                      Brief Note / Highlights
                     </label>
                     <textarea
                       rows={3}
-                      placeholder="Tell us briefly about the most complex software problem, bug, or agent you have built..."
+                      placeholder="Tell us about the most challenging software problem or project you have built..."
                       value={formData.note}
                       onChange={(e) => setFormData({ ...formData, note: e.target.value })}
-                      className="w-full bg-[#181826] border border-white/20 rounded-lg px-3.5 py-2.5 text-white placeholder:text-slate-500 text-sm focus:outline-none focus:border-cyan-400 transition-colors"
+                      className="w-full bg-neutral-900 border border-neutral-800 rounded-lg px-3 py-2 text-white placeholder:text-neutral-500 text-xs focus:outline-none focus:border-neutral-500 transition-colors"
                     />
                   </div>
 
@@ -649,11 +591,11 @@ export default function CareersPage() {
                     <button
                       type="submit"
                       disabled={submitStatus === "submitting"}
-                      className="w-full py-3.5 rounded-xl bg-cyan-400 hover:bg-cyan-300 text-slate-950 font-bold text-sm tracking-wider uppercase font-mono transition-colors shadow-[0_0_20px_rgba(0,210,239,0.3)]"
+                      className="w-full py-2.5 rounded-lg bg-white text-black hover:bg-neutral-200 font-semibold text-xs transition-colors"
                     >
                       {submitStatus === "submitting"
-                        ? "Transmitting Application..."
-                        : "Submit Application →"}
+                        ? "Submitting Application..."
+                        : "Submit Application"}
                     </button>
                   </div>
                 </form>
