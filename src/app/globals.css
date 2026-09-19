@@ -538,6 +538,74 @@ html[data-theme="light"] .dorvik-ide-root .text-neutral-300 {
   color: #1E293B !important;
 }
 
+/* ========================================================
+   DORVIK JULES LAB RETRO PURPLE UNIVERSE (PROTECTION)
+   ======================================================== */
+.dorvik-jules-lab {
+  background: linear-gradient(180deg, #14002E 0%, #1D0245 50%, #0F0024 100%) !important;
+  color: #FFFFFF !important;
+}
+
+html.light .dorvik-jules-lab,
+html[data-theme="light"] .dorvik-jules-lab {
+  background: linear-gradient(180deg, #14002E 0%, #1D0245 50%, #0F0024 100%) !important;
+  color: #FFFFFF !important;
+}
+
+html.light .dorvik-jules-lab .bg-\[\#09051c\],
+html[data-theme="light"] .dorvik-jules-lab .bg-\[\#09051c\] {
+  background-color: #09051c !important;
+  color: #FFFFFF !important;
+}
+
+html.light .dorvik-jules-lab .bg-\[\#130825\],
+html[data-theme="light"] .dorvik-jules-lab .bg-\[\#130825\] {
+  background-color: #130825 !important;
+  color: #FFFFFF !important;
+}
+
+html.light .dorvik-jules-lab .bg-\[\#22074f\],
+html[data-theme="light"] .dorvik-jules-lab .bg-\[\#22074f\] {
+  background-color: #22074f !important;
+  color: #FFFFFF !important;
+}
+
+html.light .dorvik-jules-lab .bg-\[\#1a0836\],
+html[data-theme="light"] .dorvik-jules-lab .bg-\[\#1a0836\] {
+  background-color: #1a0836 !important;
+  color: #FFFFFF !important;
+}
+
+html.light .dorvik-jules-lab .bg-\[\#100129\],
+html[data-theme="light"] .dorvik-jules-lab .bg-\[\#100129\] {
+  background-color: #100129 !important;
+  color: #FFFFFF !important;
+}
+
+html.light .dorvik-jules-lab .bg-\[\#14022e\],
+html[data-theme="light"] .dorvik-jules-lab .bg-\[\#14022e\] {
+  background-color: #14022e !important;
+  color: #FFFFFF !important;
+}
+
+html.light .dorvik-jules-lab .bg-\[\#1d0342\],
+html[data-theme="light"] .dorvik-jules-lab .bg-\[\#1d0342\] {
+  background-color: #1d0342 !important;
+  color: #FFFFFF !important;
+}
+
+html.light .dorvik-jules-lab h3,
+html.light .dorvik-jules-lab h4,
+html[data-theme="light"] .dorvik-jules-lab h3,
+html[data-theme="light"] .dorvik-jules-lab h4 {
+  color: #FFFFFF !important;
+}
+
+html.light .dorvik-jules-lab p,
+html[data-theme="light"] .dorvik-jules-lab p {
+  color: #D8B4FE !important;
+}
+
 
 
 
