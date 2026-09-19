@@ -4,21 +4,22 @@ import React from "react";
 import Link from "next/link";
 import Image from "next/image";
 
-// Authentic Official Logos for MetLife, PassNFly, and technology partners
+// Authentic Official Enterprise Clients
 const CLIENTS = [
   {
     name: "MetLife",
     category: "Global Enterprise Insurance & FinTech",
-    badge: "FORTUNE 50",
-    description: "Enterprise policy processing & automated regression triage",
+    badge: "FORTUNE 50 PARTNER",
+    description: "Enterprise policy processing, automated AST regression testing, and zero-defect release verification pipelines.",
+    highlight: "74% Faster Triage • Zero Regressions",
     logo: (
-      <div className="flex items-center h-8">
-        {/* Official MetLife Logo (Official Blue/Green Ribbon + White Wordmark) */}
+      <div className="flex items-center h-9">
+        {/* Official MetLife Logo */}
         <Image
           src="/assets/clients/metlife-white.svg"
           alt="MetLife Official Logo"
-          width={125}
-          height={28}
+          width={140}
+          height={32}
           className="h-7 w-auto object-contain"
           priority
         />
@@ -28,82 +29,20 @@ const CLIENTS = [
   {
     name: "PassNFly",
     category: "High-Throughput Global TravelTech",
-    badge: "GLOBAL TRAVEL",
-    description: "Real-time airline check-in microservices & concurrency protection",
+    badge: "TRAVELTECH LEADER",
+    description: "Real-time airline check-in microservices, automated circuit breaker defenses, and high-concurrency API resilience across 200+ airlines.",
+    highlight: "99.99% Availability • 10x Faster MTTR",
     logo: (
-      <div className="flex items-center h-8">
-        {/* Official PassNFly Logo from passnfly.com */}
+      <div className="flex items-center h-9">
+        {/* Official PassNFly Logo */}
         <Image
           src="/assets/clients/passnfly.png"
           alt="PassNFly Official Logo"
-          width={145}
-          height={26}
-          className="h-6 w-auto object-contain brightness-110"
+          width={160}
+          height={28}
+          className="h-7 w-auto object-contain brightness-110"
           priority
         />
-      </div>
-    ),
-  },
-  {
-    name: "Nexis Cloud",
-    category: "Cloud Native Distributed Systems",
-    badge: "SCALE-UP",
-    description: "Zero-downtime containerized pipeline deployment",
-    logo: (
-      <div className="flex items-center gap-2.5">
-        <svg viewBox="0 0 32 32" className="w-7 h-7 flex-shrink-0" fill="none" xmlns="http://www.w3.org/2000/svg">
-          <rect x="4" y="4" width="10" height="10" rx="2" fill="#10B981" />
-          <rect x="18" y="4" width="10" height="10" rx="2" fill="#059669" />
-          <rect x="4" y="18" width="10" height="10" rx="2" fill="#047857" />
-          <rect x="18" y="18" width="10" height="10" rx="2" fill="#34D399" />
-        </svg>
-        <div className="flex flex-col text-left">
-          <span className="font-bold tracking-tight text-white text-lg font-sans leading-none">
-            Nexis<span className="text-emerald-400">Cloud</span>
-          </span>
-          <span className="text-[9px] uppercase tracking-wider text-slate-400 font-mono mt-0.5">Distributed Infra</span>
-        </div>
-      </div>
-    ),
-  },
-  {
-    name: "FinVanguard",
-    category: "Algorithmic Wealth & Asset Tech",
-    badge: "FINTECH",
-    description: "High-frequency trade execution & latency patch agent",
-    logo: (
-      <div className="flex items-center gap-2.5">
-        <svg viewBox="0 0 32 32" className="w-7 h-7 flex-shrink-0" fill="none" xmlns="http://www.w3.org/2000/svg">
-          <path d="M16 3L28 8V16C28 23.5 22.8 28.5 16 30C9.2 28.5 4 23.5 4 16V8L16 3Z" stroke="#8B5CF6" strokeWidth="2.5" fill="#8B5CF6" fillOpacity="0.2" />
-          <path d="M12 16L15 19L21 13" stroke="#A78BFA" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" />
-        </svg>
-        <div className="flex flex-col text-left">
-          <span className="font-bold tracking-tight text-white text-lg font-sans leading-none">
-            Fin<span className="text-purple-400">Vanguard</span>
-          </span>
-          <span className="text-[9px] uppercase tracking-wider text-slate-400 font-mono mt-0.5">Asset Intelligence</span>
-        </div>
-      </div>
-    ),
-  },
-  {
-    name: "AeroCore API",
-    category: "Global Flight & Cargo Telemetry",
-    badge: "AVIATION",
-    description: "Resilient aviation payload orchestration & schema sync",
-    logo: (
-      <div className="flex items-center gap-2.5">
-        <svg viewBox="0 0 32 32" className="w-7 h-7 flex-shrink-0" fill="none" xmlns="http://www.w3.org/2000/svg">
-          <circle cx="16" cy="16" r="12" stroke="#38BDF8" strokeWidth="2" strokeDasharray="3 3" />
-          <circle cx="16" cy="16" r="6" fill="#0284C7" />
-          <path d="M16 4V10M16 22V28M4 16H10M22 16H28" stroke="#38BDF8" strokeWidth="2" strokeLinecap="round" />
-        </svg>
-        <div className="flex flex-col text-left">
-          <span className="font-bold tracking-tight text-white text-lg font-sans leading-none">
-            Aero<span className="text-sky-400">Core</span>
-          </span>
-          <span className="text-[9px] uppercase tracking-wider text-slate-400 font-mono mt-0.5">Flight Telemetry</span>
-        </div>
       </div>
     ),
   },
@@ -205,33 +144,48 @@ export function DorvikClientTrust() {
           <h2 className="text-3xl sm:text-4xl lg:text-5xl font-black tracking-tight text-white leading-tight">
             Trusted by Engineering Leaders at{" "}
             <span className="bg-gradient-to-r from-cyan-400 via-white to-orange-400 bg-clip-text text-transparent">
-              MetLife, PassNFly
-            </span>{" "}
-            & Global Scale-Ups
+              MetLife &amp; PassNFly
+            </span>
           </h2>
 
           <p className="mt-4 text-slate-400 text-base sm:text-lg leading-relaxed font-sans">
-            From Fortune 50 enterprise core policy services to high-concurrency real-time travel engines, 
+            From Fortune 50 enterprise core policy platforms to high-concurrency real-time travel engines, 
             engineering organizations deploy Dorvik to safeguard uptime and eliminate sprint bug fatigue.
           </p>
         </div>
 
-        {/* Client Logos Grid / Showcase */}
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-4 mb-16">
+        {/* Client Logos 2-Column Spotlight Grid */}
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-16 max-w-4xl mx-auto">
           {CLIENTS.map((client, idx) => (
             <div
               key={idx}
-              className="group relative bg-[#0c0c10]/80 hover:bg-[#121218] border border-white/[0.08] hover:border-cyan-500/40 rounded-xl p-5 transition-all duration-300 flex flex-col justify-between hover:shadow-[0_8px_30px_rgba(0,210,239,0.08)] hover:-translate-y-0.5"
+              className="group relative bg-[#0c0c12] hover:bg-[#12121c] border border-white/[0.08] hover:border-cyan-500/40 rounded-2xl p-6 sm:p-7 transition-all duration-300 flex flex-col justify-between hover:shadow-[0_12px_40px_rgba(0,210,239,0.1)] hover:-translate-y-0.5"
             >
-              <div className="flex items-start justify-between gap-2 mb-3">
-                {client.logo}
-                <span className="text-[10px] font-mono px-2 py-0.5 rounded bg-white/[0.05] text-slate-400 border border-white/[0.08] group-hover:border-cyan-500/30 group-hover:text-cyan-300 transition-colors">
-                  {client.badge}
-                </span>
+              <div>
+                <div className="flex items-center justify-between gap-3 mb-4">
+                  {client.logo}
+                  <span className="text-[11px] font-mono font-bold px-2.5 py-1 rounded bg-white/[0.06] text-cyan-300 border border-cyan-500/30">
+                    {client.badge}
+                  </span>
+                </div>
+                <div className="text-xs font-mono text-slate-400 uppercase tracking-wider mb-2">
+                  {client.category}
+                </div>
+                <p className="text-sm text-slate-300 font-sans leading-relaxed">
+                  {client.description}
+                </p>
               </div>
-              <p className="text-xs text-slate-400 font-sans leading-relaxed border-t border-white/[0.05] pt-3 mt-1">
-                {client.description}
-              </p>
+
+              <div className="mt-5 pt-4 border-t border-white/[0.06] flex items-center justify-between text-xs font-mono">
+                <span className="text-emerald-400 font-bold">{client.highlight}</span>
+                <Link
+                  href="#case-studies"
+                  className="text-slate-400 hover:text-white transition-colors flex items-center gap-1 group-hover:text-cyan-400"
+                >
+                  <span>View Case Study</span>
+                  <span>&rarr;</span>
+                </Link>
+              </div>
             </div>
           ))}
         </div>
