@@ -1,43 +1,35 @@
 import React from "react";
-import { DorvikHeroLogo }         from "@/components/home/DorvikHeroLogo";
-import { DorvikEditorViewport }   from "@/components/home/DorvikEditorViewport";
+import { DorvikCleanHero }        from "@/components/home/DorvikCleanHero";
 import { DorvikClientTrust }      from "@/components/home/DorvikClientTrust";
+import { DorvikProblemSolution }  from "@/components/home/DorvikProblemSolution";
+import { DorvikValueProps }       from "@/components/home/DorvikValueProps";
+import { DorvikIndustryGrid }     from "@/components/home/DorvikIndustryGrid";
 import { DorvikCaseStudies }      from "@/components/home/DorvikCaseStudies";
-import { DorvikBizOSShowcase }     from "@/components/home/DorvikBizOSShowcase";
-import { DorvikCoreProjects }     from "@/components/home/DorvikCoreProjects";
-import { DorvikFeatureCallout }   from "@/components/home/DorvikFeatureCallout";
-import { DorvikWorkflowSteps }    from "@/components/home/DorvikWorkflowSteps";
-import { DorvikPricingPlans }     from "@/components/home/DorvikPricingPlans";
+import { DorvikSimpleCTA }        from "@/components/home/DorvikSimpleCTA";
 
 export default function HomePage() {
   return (
-    <div className="flex flex-col w-full">
-      {/* 1. Interactive DORVIK Hero Banner */}
-      <DorvikHeroLogo />
+    <div className="flex flex-col w-full bg-[#08080A]">
+      {/* 1. Crystal-Clear Hero: What is BizOS, what it does, and live realistic dashboard metrics */}
+      <DorvikCleanHero />
 
-      {/* 2. Live Agent Code Editor — Dorvik bot fixing real SWE bugs */}
-      <DorvikEditorViewport />
-
-      {/* 3. Enterprise Social Proof & Metrics: MetLife, PassNFly & Global Partners */}
+      {/* 2. Enterprise Trust: MetLife, PassNFly & Global Production Credibility */}
       <DorvikClientTrust />
 
-      {/* 4. Deep-Dive Case Studies: MetLife & PassNFly Production Impact */}
+      {/* 3. Problem vs Solution: Why businesses need BizOS (Stop juggling 5 tools) */}
+      <DorvikProblemSolution />
+
+      {/* 4. What We Are Building: 4 core capabilities (Billing, Multi-Branch Stock, WhatsApp CRM, AI) */}
+      <DorvikValueProps />
+
+      {/* 5. Industry Solutions: Tailored for Retail, Garments, Clinics, Restaurants, Coaching, Studios */}
+      <DorvikIndustryGrid />
+
+      {/* 6. Production Proof: Deep-Dive Case Studies (MetLife & PassNFly) */}
       <DorvikCaseStudies />
 
-      {/* 5. Flagship Product: BizOS — AI-Powered Business Operating System */}
-      <DorvikBizOSShowcase />
-
-      {/* 6. Core Services: Web Dev, AI Bug Fixer, LLM Training, Computer Vision */}
-      <DorvikCoreProjects />
-
-      {/* 7. What Dorvik Does — pillars + service tiles */}
-      <DorvikFeatureCallout />
-
-      {/* 8. How Dorvik Works — 4-step autonomous pipeline */}
-      <DorvikWorkflowSteps />
-
-      {/* 9. Project Engagement Plans */}
-      <DorvikPricingPlans />
+      {/* 7. Clean Direct Action: Free Workspace Demo & Contact */}
+      <DorvikSimpleCTA />
     </div>
   );
 }
