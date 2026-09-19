@@ -14,13 +14,21 @@ const CLIENTS = [
     highlight: "74% Faster Triage • Zero Regressions",
     logo: (
       <div className="flex items-center h-9">
-        {/* Official MetLife Logo */}
+        {/* Official MetLife Logo: dark logo for light mode, white logo for dark mode */}
+        <Image
+          src="/assets/clients/metlife.svg"
+          alt="MetLife Official Logo"
+          width={140}
+          height={32}
+          className="h-7 w-auto object-contain dark:hidden"
+          priority
+        />
         <Image
           src="/assets/clients/metlife-white.svg"
           alt="MetLife Official Logo"
           width={140}
           height={32}
-          className="h-7 w-auto object-contain"
+          className="h-7 w-auto object-contain hidden dark:block"
           priority
         />
       </div>
@@ -40,7 +48,7 @@ const CLIENTS = [
           alt="PassNFly Official Logo"
           width={160}
           height={28}
-          className="h-7 w-auto object-contain brightness-110"
+          className="h-7 w-auto object-contain brightness-95 dark:brightness-110"
           priority
         />
       </div>
@@ -53,33 +61,37 @@ const METRICS = [
     value: "99.4%",
     label: "First-Pass PR Merge Rate",
     sub: "Autonomous code patches pass CI & test suites on the very first commit",
-    color: "from-cyan-400 to-blue-500",
-    border: "border-cyan-500/30",
-    glow: "shadow-[0_0_24px_rgba(0,210,239,0.12)]",
+    colorLight: "from-cyan-600 to-blue-700",
+    colorDark: "dark:from-cyan-400 dark:to-blue-500",
+    border: "border-cyan-500/20 dark:border-cyan-500/30",
+    glow: "shadow-sm dark:shadow-[0_0_24px_rgba(0,210,239,0.12)]",
   },
   {
     value: "< 14m",
     label: "Mean Time to Resolution",
     sub: "From exception capture in production to ready-to-merge pull request",
-    color: "from-emerald-400 to-teal-500",
-    border: "border-emerald-500/30",
-    glow: "shadow-[0_0_24px_rgba(16,185,129,0.12)]",
+    colorLight: "from-emerald-600 to-teal-700",
+    colorDark: "dark:from-emerald-400 dark:to-teal-500",
+    border: "border-emerald-500/20 dark:border-emerald-500/30",
+    glow: "shadow-sm dark:shadow-[0_0_24px_rgba(16,185,129,0.12)]",
   },
   {
     value: "$1.8M+",
     label: "Engineering Labor Saved",
     sub: "Prevented sprint delays, on-call fatigue, and emergency hotfixes",
-    color: "from-amber-400 to-orange-500",
-    border: "border-amber-500/30",
-    glow: "shadow-[0_0_24px_rgba(249,115,22,0.12)]",
+    colorLight: "from-amber-600 to-orange-700",
+    colorDark: "dark:from-amber-400 dark:to-orange-500",
+    border: "border-amber-500/20 dark:border-amber-500/30",
+    glow: "shadow-sm dark:shadow-[0_0_24px_rgba(249,115,22,0.12)]",
   },
   {
     value: "0 Regressions",
     label: "Synthetic Test Coverage",
     sub: "Every patch includes automatically generated reproduction unit tests",
-    color: "from-fuchsia-400 to-purple-500",
-    border: "border-fuchsia-500/30",
-    glow: "shadow-[0_0_24px_rgba(217,70,239,0.12)]",
+    colorLight: "from-fuchsia-600 to-purple-700",
+    colorDark: "dark:from-fuchsia-400 dark:to-purple-500",
+    border: "border-fuchsia-500/20 dark:border-fuchsia-500/30",
+    glow: "shadow-sm dark:shadow-[0_0_24px_rgba(217,70,239,0.12)]",
   },
 ];
 
@@ -128,23 +140,23 @@ const TRUST_BADGES = [
 
 export function DorvikClientTrust() {
   return (
-    <section id="clients" className="relative w-full py-20 bg-[#060608] border-b border-white/[0.08] overflow-hidden">
+    <section id="clients" className="relative w-full py-20 bg-[#FAFAFC] dark:bg-[#060608] border-b border-neutral-200 dark:border-white/[0.08] transition-colors duration-200 overflow-hidden">
       {/* Background ambient lighting */}
-      <div className="absolute top-1/2 left-1/4 -translate-y-1/2 w-[550px] h-[300px] bg-cyan-600/10 rounded-full blur-[120px] pointer-events-none" />
-      <div className="absolute top-1/2 right-1/4 -translate-y-1/2 w-[450px] h-[300px] bg-orange-600/10 rounded-full blur-[120px] pointer-events-none" />
+      <div className="absolute top-1/2 left-1/4 -translate-y-1/2 w-[550px] h-[300px] bg-cyan-500/5 dark:bg-cyan-600/10 rounded-full blur-[120px] pointer-events-none" />
+      <div className="absolute top-1/2 right-1/4 -translate-y-1/2 w-[450px] h-[300px] bg-orange-500/5 dark:bg-orange-600/10 rounded-full blur-[120px] pointer-events-none" />
 
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         {/* Section Tag & Headline */}
         <div className="max-w-3xl mb-14">
-          <span className="text-[11px] font-mono text-neutral-400 uppercase tracking-widest font-semibold block mb-2">
+          <span className="text-[11px] font-mono text-neutral-500 dark:text-neutral-400 uppercase tracking-widest font-semibold block mb-2">
             PRODUCTION TRACK RECORD
           </span>
 
-          <h2 className="text-3xl sm:text-4xl font-bold tracking-tight text-white leading-tight">
+          <h2 className="text-3xl sm:text-4xl font-bold tracking-tight text-neutral-900 dark:text-white leading-tight">
             Trusted across mission-critical enterprise systems.
           </h2>
 
-          <p className="mt-3 text-sm sm:text-base text-neutral-400 leading-relaxed font-sans">
+          <p className="mt-3 text-sm sm:text-base text-neutral-600 dark:text-neutral-400 leading-relaxed font-sans">
             From Fortune 50 enterprise policy platforms at MetLife to high-concurrency real-time travel engines at PassNFly, Dorvik engineers scalable, zero-defect software.
           </p>
         </div>
@@ -154,28 +166,28 @@ export function DorvikClientTrust() {
           {CLIENTS.map((client, idx) => (
             <div
               key={idx}
-              className="group relative bg-[#0c0c12] hover:bg-[#12121c] border border-white/[0.08] hover:border-cyan-500/40 rounded-2xl p-6 sm:p-7 transition-all duration-300 flex flex-col justify-between hover:shadow-[0_12px_40px_rgba(0,210,239,0.1)] hover:-translate-y-0.5"
+              className="group relative bg-white dark:bg-[#0c0c12] hover:bg-neutral-50 dark:hover:bg-[#12121c] border border-neutral-200 dark:border-white/[0.08] hover:border-cyan-500/40 rounded-2xl p-6 sm:p-7 transition-all duration-300 flex flex-col justify-between shadow-sm hover:shadow-md dark:shadow-none dark:hover:shadow-[0_12px_40px_rgba(0,210,239,0.1)] hover:-translate-y-0.5"
             >
               <div>
                 <div className="flex items-center justify-between gap-3 mb-4">
                   {client.logo}
-                  <span className="text-[11px] font-mono font-bold px-2.5 py-1 rounded bg-white/[0.06] text-cyan-300 border border-cyan-500/30">
+                  <span className="text-[11px] font-mono font-bold px-2.5 py-1 rounded bg-neutral-100 dark:bg-white/[0.06] text-neutral-800 dark:text-cyan-300 border border-neutral-200 dark:border-cyan-500/30">
                     {client.badge}
                   </span>
                 </div>
-                <div className="text-xs font-mono text-slate-400 uppercase tracking-wider mb-2">
+                <div className="text-xs font-mono text-neutral-500 dark:text-slate-400 uppercase tracking-wider mb-2">
                   {client.category}
                 </div>
-                <p className="text-sm text-slate-300 font-sans leading-relaxed">
+                <p className="text-sm text-neutral-700 dark:text-slate-300 font-sans leading-relaxed">
                   {client.description}
                 </p>
               </div>
 
-              <div className="mt-5 pt-4 border-t border-white/[0.06] flex items-center justify-between text-xs font-mono">
-                <span className="text-emerald-400 font-bold">{client.highlight}</span>
+              <div className="mt-5 pt-4 border-t border-neutral-100 dark:border-white/[0.06] flex items-center justify-between text-xs font-mono">
+                <span className="text-emerald-600 dark:text-emerald-400 font-bold">{client.highlight}</span>
                 <Link
                   href="#case-studies"
-                  className="text-slate-400 hover:text-white transition-colors flex items-center gap-1 group-hover:text-cyan-400"
+                  className="text-neutral-500 dark:text-slate-400 hover:text-neutral-900 dark:hover:text-white transition-colors flex items-center gap-1 group-hover:text-cyan-600 dark:group-hover:text-cyan-400"
                 >
                   <span>View Case Study</span>
                   <span>&rarr;</span>
@@ -190,47 +202,47 @@ export function DorvikClientTrust() {
           {METRICS.map((metric, idx) => (
             <div
               key={idx}
-              className={`relative bg-[#0b0b0f] border ${metric.border} ${metric.glow} rounded-2xl p-6 flex flex-col justify-between overflow-hidden group hover:border-white/30 transition-all duration-300`}
+              className={`relative bg-white dark:bg-[#0b0b0f] border border-neutral-200 dark:border-white/10 ${metric.border} ${metric.glow} rounded-2xl p-6 flex flex-col justify-between overflow-hidden group hover:border-neutral-400 dark:hover:border-white/30 transition-all duration-300`}
             >
-              <div className="absolute top-0 right-0 w-24 h-24 bg-white/[0.02] rounded-full blur-xl pointer-events-none group-hover:bg-white/[0.06] transition-colors" />
+              <div className="absolute top-0 right-0 w-24 h-24 bg-neutral-100 dark:bg-white/[0.02] rounded-full blur-xl pointer-events-none group-hover:bg-neutral-200 dark:group-hover:bg-white/[0.06] transition-colors" />
 
               <div>
-                <div className={`text-4xl sm:text-5xl font-black tracking-tight bg-gradient-to-r ${metric.color} bg-clip-text text-transparent font-mono mb-2`}>
+                <div className={`text-4xl sm:text-5xl font-black tracking-tight bg-gradient-to-r ${metric.colorLight} ${metric.colorDark} bg-clip-text text-transparent font-mono mb-2`}>
                   {metric.value}
                 </div>
-                <h3 className="text-white font-bold text-base tracking-tight mb-2">
+                <h3 className="text-neutral-900 dark:text-white font-bold text-base tracking-tight mb-2">
                   {metric.label}
                 </h3>
-                <p className="text-xs text-slate-400 font-sans leading-relaxed">
+                <p className="text-xs text-neutral-600 dark:text-slate-400 font-sans leading-relaxed">
                   {metric.sub}
                 </p>
               </div>
 
-              <div className="mt-4 pt-3 border-t border-white/[0.06] flex items-center justify-between text-[11px] font-mono text-slate-500">
+              <div className="mt-4 pt-3 border-t border-neutral-100 dark:border-white/[0.06] flex items-center justify-between text-[11px] font-mono text-neutral-500 dark:text-slate-500">
                 <span>VERIFIED TELEMETRY</span>
-                <span className="text-emerald-400">● LIVE</span>
+                <span className="text-emerald-600 dark:text-emerald-400 font-semibold">● LIVE</span>
               </div>
             </div>
           ))}
         </div>
 
         {/* Security & Compliance Trust Bar */}
-        <div className="bg-[#09090d] border border-white/[0.08] rounded-2xl p-6 sm:p-8">
-          <div className="flex flex-col lg:flex-row lg:items-center justify-between gap-6 pb-6 border-b border-white/[0.06]">
+        <div className="bg-white dark:bg-[#09090d] border border-neutral-200 dark:border-white/[0.08] rounded-2xl p-6 sm:p-8 shadow-sm">
+          <div className="flex flex-col lg:flex-row lg:items-center justify-between gap-6 pb-6 border-b border-neutral-100 dark:border-white/[0.06]">
             <div>
-              <span className="text-xs font-mono uppercase tracking-widest text-cyan-400">
+              <span className="text-xs font-mono uppercase tracking-widest text-cyan-600 dark:text-cyan-400 font-semibold">
                 ENTERPRISE RIGOR
               </span>
-              <h4 className="text-xl font-bold text-white mt-1">
+              <h4 className="text-xl font-bold text-neutral-900 dark:text-white mt-1">
                 Engineered for Regulated & Mission-Critical Codebases
               </h4>
             </div>
             <Link
               href="/contact"
-              className="inline-flex items-center gap-2 px-5 py-2.5 rounded-lg bg-white/5 hover:bg-white/10 text-white text-sm font-semibold border border-white/10 hover:border-cyan-500/40 transition-all self-start lg:self-auto"
+              className="inline-flex items-center gap-2 px-5 py-2.5 rounded-lg bg-neutral-900 hover:bg-neutral-800 text-white dark:bg-white/5 dark:hover:bg-white/10 dark:text-white text-sm font-semibold border border-neutral-700 dark:border-white/10 hover:border-cyan-500/40 transition-all self-start lg:self-auto shadow-sm"
             >
               <span>Request Enterprise Security Whitepaper</span>
-              <svg className="w-4 h-4 text-cyan-400" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+              <svg className="w-4 h-4 text-cyan-500 dark:text-cyan-400" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
                 <path d="M5 12h14M12 5l7 7-7 7" />
               </svg>
             </Link>
@@ -239,14 +251,14 @@ export function DorvikClientTrust() {
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 pt-6">
             {TRUST_BADGES.map((badge, idx) => (
               <div key={idx} className="flex items-start gap-3.5">
-                <div className="p-2 rounded-lg bg-white/[0.04] border border-white/[0.08] flex-shrink-0 mt-0.5">
+                <div className="p-2 rounded-lg bg-neutral-100 dark:bg-white/[0.04] border border-neutral-200 dark:border-white/[0.08] flex-shrink-0 mt-0.5">
                   {badge.icon}
                 </div>
                 <div>
-                  <div className="text-sm font-bold text-white mb-1">
+                  <div className="text-sm font-bold text-neutral-900 dark:text-white mb-1">
                     {badge.title}
                   </div>
-                  <div className="text-xs text-slate-400 font-sans leading-relaxed">
+                  <div className="text-xs text-neutral-600 dark:text-slate-400 font-sans leading-relaxed">
                     {badge.desc}
                   </div>
                 </div>

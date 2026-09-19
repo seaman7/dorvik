@@ -139,28 +139,28 @@ export function DorvikCaseStudies() {
   const currentStudy = CASE_STUDIES.find((s) => s.id === activeTab) || CASE_STUDIES[0];
 
   return (
-    <section id="case-studies" className="relative w-full py-24 bg-[#08080c] border-b border-white/[0.08] overflow-hidden">
+    <section id="case-studies" className="relative w-full py-24 bg-[#FAFAFC] dark:bg-[#08080c] border-b border-neutral-200 dark:border-white/[0.08] transition-colors duration-200 overflow-hidden">
       {/* Glow effects */}
-      <div className="absolute top-1/3 left-10 w-[500px] h-[500px] bg-cyan-500/5 rounded-full blur-[140px] pointer-events-none" />
-      <div className="absolute bottom-10 right-10 w-[500px] h-[500px] bg-orange-500/5 rounded-full blur-[140px] pointer-events-none" />
+      <div className="absolute top-1/3 left-10 w-[500px] h-[500px] bg-cyan-500/5 dark:bg-cyan-500/5 rounded-full blur-[140px] pointer-events-none" />
+      <div className="absolute bottom-10 right-10 w-[500px] h-[500px] bg-orange-500/5 dark:bg-orange-500/5 rounded-full blur-[140px] pointer-events-none" />
 
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         {/* Section Header */}
         <div className="flex flex-col md:flex-row md:items-end justify-between gap-6 mb-12">
           <div className="max-w-2xl">
-            <span className="text-[11px] font-mono text-neutral-400 uppercase tracking-widest font-semibold block mb-2">
+            <span className="text-[11px] font-mono text-neutral-500 dark:text-neutral-400 uppercase tracking-widest font-semibold block mb-2">
               CASE STUDIES
             </span>
-            <h2 className="text-3xl sm:text-4xl font-bold tracking-tight text-white leading-tight">
+            <h2 className="text-3xl sm:text-4xl font-bold tracking-tight text-neutral-900 dark:text-white leading-tight">
               Production engineering at scale: MetLife &amp; PassNFly
             </h2>
-            <p className="mt-3 text-neutral-400 text-sm sm:text-base leading-relaxed">
+            <p className="mt-3 text-neutral-600 dark:text-neutral-400 text-sm sm:text-base leading-relaxed">
               Explore how global enterprise organizations deploy Dorvik to safeguard mission-critical platforms, eliminate regressions, and protect millions of customer transactions.
             </p>
           </div>
 
           {/* Interactive Client Selector Tabs */}
-          <div className="flex items-center gap-2 p-1.5 rounded-lg bg-[#101016] border border-[#202028] self-start md:self-auto">
+          <div className="flex items-center gap-2 p-1.5 rounded-lg bg-white dark:bg-[#101016] border border-neutral-200 dark:border-[#202028] shadow-sm self-start md:self-auto">
             {CASE_STUDIES.map((study) => (
               <button
                 key={study.id}
@@ -170,11 +170,11 @@ export function DorvikCaseStudies() {
                 }}
                 className={`px-4 py-2 rounded-md text-xs font-semibold tracking-tight transition-all duration-200 flex items-center gap-2 ${
                   activeTab === study.id
-                    ? "bg-[#1e1e28] text-white border border-[#353545]"
-                    : "text-neutral-400 hover:text-white hover:bg-white/[0.04]"
+                    ? "bg-neutral-900 text-white dark:bg-[#1e1e28] dark:text-white border border-neutral-800 dark:border-[#353545] shadow-sm"
+                    : "text-neutral-600 dark:text-neutral-400 hover:text-neutral-900 dark:hover:text-white hover:bg-neutral-100 dark:hover:bg-white/[0.04]"
                 }`}
               >
-                <span className={`w-1.5 h-1.5 rounded-full ${activeTab === study.id ? "bg-cyan-400" : "bg-neutral-600"}`} />
+                <span className={`w-1.5 h-1.5 rounded-full ${activeTab === study.id ? "bg-cyan-500 dark:bg-cyan-400" : "bg-neutral-400 dark:bg-neutral-600"}`} />
                 <span>{study.client}</span>
               </button>
             ))}
@@ -182,24 +182,43 @@ export function DorvikCaseStudies() {
         </div>
 
         {/* Case Study Feature Container */}
-        <div className="bg-[#0b0b10] border border-white/[0.08] rounded-2xl overflow-hidden p-6 sm:p-8 lg:p-10 shadow-2xl">
+        <div className="bg-white dark:bg-[#0b0b10] border border-neutral-200 dark:border-white/[0.08] rounded-2xl overflow-hidden p-6 sm:p-8 lg:p-10 shadow-lg dark:shadow-2xl">
           {/* Top Bar with Badges & Official Logo */}
-          <div className="flex flex-wrap items-center justify-between gap-4 pb-6 border-b border-white/[0.08]">
+          <div className="flex flex-wrap items-center justify-between gap-4 pb-6 border-b border-neutral-200 dark:border-white/[0.08]">
             <div className="flex items-center gap-3.5">
-              <div className="h-8 px-3 rounded-lg bg-white/[0.05] border border-white/10 flex items-center justify-center">
-                <Image
-                  src={currentStudy.logoUrl}
-                  alt={`${currentStudy.client} Official Logo`}
-                  width={currentStudy.id === "metlife" ? 115 : 135}
-                  height={24}
-                  className="h-5 w-auto object-contain"
-                />
+              <div className="h-8 px-3 rounded-lg bg-neutral-100 dark:bg-white/[0.05] border border-neutral-200 dark:border-white/10 flex items-center justify-center">
+                {currentStudy.id === "metlife" ? (
+                  <>
+                    <Image
+                      src="/assets/clients/metlife.svg"
+                      alt="MetLife Official Logo"
+                      width={115}
+                      height={24}
+                      className="h-5 w-auto object-contain dark:hidden"
+                    />
+                    <Image
+                      src="/assets/clients/metlife-white.svg"
+                      alt="MetLife Official Logo"
+                      width={115}
+                      height={24}
+                      className="h-5 w-auto object-contain hidden dark:block"
+                    />
+                  </>
+                ) : (
+                  <Image
+                    src={currentStudy.logoUrl}
+                    alt={`${currentStudy.client} Official Logo`}
+                    width={135}
+                    height={24}
+                    className="h-5 w-auto object-contain brightness-95 dark:brightness-110"
+                  />
+                )}
               </div>
               <span className={`text-xs font-mono font-bold px-3 py-1 rounded-full border ${currentStudy.badgeColor}`}>
                 {currentStudy.industry}
               </span>
-              <span className="text-xs font-mono text-slate-400 hidden sm:flex items-center gap-1.5">
-                <svg className="w-3.5 h-3.5 text-slate-500" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+              <span className="text-xs font-mono text-neutral-500 dark:text-slate-400 hidden sm:flex items-center gap-1.5">
+                <svg className="w-3.5 h-3.5 text-neutral-400 dark:text-slate-500" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
                   <rect width="18" height="18" x="3" y="3" rx="2" />
                   <path d="m9 12 2 2 4-4" />
                 </svg>
@@ -207,15 +226,15 @@ export function DorvikCaseStudies() {
               </span>
             </div>
 
-            <div className="flex items-center gap-2 text-xs font-mono text-slate-400">
-              <span className="w-2 h-2 rounded-full bg-emerald-400 inline-block" />
+            <div className="flex items-center gap-2 text-xs font-mono text-neutral-500 dark:text-slate-400">
+              <span className="w-2 h-2 rounded-full bg-emerald-500 dark:bg-emerald-400 inline-block" />
               <span>OFFICIAL CLIENT ENGAGEMENT</span>
             </div>
           </div>
 
           {/* Headline & 3 Key Stats */}
           <div className="py-8">
-            <h3 className="text-2xl sm:text-3xl font-black text-white tracking-tight mb-8">
+            <h3 className="text-2xl sm:text-3xl font-black text-neutral-900 dark:text-white tracking-tight mb-8">
               {currentStudy.tagline}
             </h3>
 
@@ -223,15 +242,15 @@ export function DorvikCaseStudies() {
               {currentStudy.metrics.map((metric, idx) => (
                 <div
                   key={idx}
-                  className="bg-[#12121a] border border-white/[0.08] hover:border-cyan-500/30 rounded-xl p-5 transition-colors"
+                  className="bg-neutral-50 dark:bg-[#12121a] border border-neutral-200 dark:border-white/[0.08] hover:border-cyan-500/30 rounded-xl p-5 transition-colors shadow-sm"
                 >
-                  <div className="text-3xl sm:text-4xl font-mono font-black text-transparent bg-gradient-to-r from-cyan-400 via-teal-300 to-emerald-400 bg-clip-text">
+                  <div className="text-3xl sm:text-4xl font-mono font-black text-transparent bg-gradient-to-r from-cyan-600 via-teal-600 to-emerald-600 dark:from-cyan-400 dark:via-teal-300 dark:to-emerald-400 bg-clip-text">
                     {metric.value}
                   </div>
-                  <div className="text-sm font-bold text-white mt-1">
+                  <div className="text-sm font-bold text-neutral-900 dark:text-white mt-1">
                     {metric.label}
                   </div>
-                  <div className="text-xs text-slate-400 font-sans mt-1 leading-relaxed">
+                  <div className="text-xs text-neutral-600 dark:text-slate-400 font-sans mt-1 leading-relaxed">
                     {metric.note}
                   </div>
                 </div>
@@ -240,64 +259,83 @@ export function DorvikCaseStudies() {
           </div>
 
           {/* Deep-Dive Grid: Story (Left) + Interactive Code & Logs (Right) */}
-          <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 pt-6 border-t border-white/[0.08]">
+          <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 pt-6 border-t border-neutral-200 dark:border-white/[0.08]">
             {/* Story & Technical Breakdown (Left 6 Cols) */}
             <div className="lg:col-span-6 flex flex-col justify-between space-y-6">
               <div className="space-y-6">
                 <div>
-                  <h4 className="text-xs font-mono uppercase tracking-widest text-orange-400 flex items-center gap-2 mb-2">
-                    <span className="w-1.5 h-1.5 rounded-full bg-orange-400" />
+                  <h4 className="text-xs font-mono uppercase tracking-widest text-orange-600 dark:text-orange-400 flex items-center gap-2 mb-2 font-semibold">
+                    <span className="w-1.5 h-1.5 rounded-full bg-orange-500 dark:bg-orange-400" />
                     <span>01. The Engineering Challenge</span>
                   </h4>
-                  <p className="text-sm sm:text-base text-slate-300 leading-relaxed font-sans bg-[#121218]/60 p-4 rounded-xl border border-white/[0.04]">
+                  <p className="text-sm sm:text-base text-neutral-700 dark:text-slate-300 leading-relaxed font-sans bg-neutral-50 dark:bg-[#121218]/60 p-4 rounded-xl border border-neutral-200 dark:border-white/[0.04]">
                     {currentStudy.challenge}
                   </p>
                 </div>
 
                 <div>
-                  <h4 className="text-xs font-mono uppercase tracking-widest text-cyan-400 flex items-center gap-2 mb-2">
-                    <span className="w-1.5 h-1.5 rounded-full bg-cyan-400" />
+                  <h4 className="text-xs font-mono uppercase tracking-widest text-cyan-600 dark:text-cyan-400 flex items-center gap-2 mb-2 font-semibold">
+                    <span className="w-1.5 h-1.5 rounded-full bg-cyan-500 dark:bg-cyan-400" />
                     <span>02. Dorvik Autonomous Intervention</span>
                   </h4>
-                  <p className="text-sm sm:text-base text-slate-300 leading-relaxed font-sans bg-[#121218]/60 p-4 rounded-xl border border-white/[0.04]">
+                  <p className="text-sm sm:text-base text-neutral-700 dark:text-slate-300 leading-relaxed font-sans bg-neutral-50 dark:bg-[#121218]/60 p-4 rounded-xl border border-neutral-200 dark:border-white/[0.04]">
                     {currentStudy.solution}
                   </p>
                 </div>
 
                 <div>
-                  <h4 className="text-xs font-mono uppercase tracking-widest text-emerald-400 flex items-center gap-2 mb-2">
-                    <span className="w-1.5 h-1.5 rounded-full bg-emerald-400" />
+                  <h4 className="text-xs font-mono uppercase tracking-widest text-emerald-600 dark:text-emerald-400 flex items-center gap-2 mb-2 font-semibold">
+                    <span className="w-1.5 h-1.5 rounded-full bg-emerald-500 dark:bg-emerald-400" />
                     <span>03. Business & Developer Impact</span>
                   </h4>
-                  <p className="text-sm sm:text-base text-slate-300 leading-relaxed font-sans bg-[#121218]/60 p-4 rounded-xl border border-white/[0.04]">
+                  <p className="text-sm sm:text-base text-neutral-700 dark:text-slate-300 leading-relaxed font-sans bg-neutral-50 dark:bg-[#121218]/60 p-4 rounded-xl border border-neutral-200 dark:border-white/[0.04]">
                     {currentStudy.results}
                   </p>
                 </div>
               </div>
 
               {/* Verified Executive Testimonial */}
-              <div className="mt-4 p-5 rounded-xl bg-gradient-to-br from-[#13131e] to-[#0d0d14] border border-cyan-500/20 relative">
-                <svg className="w-8 h-8 text-cyan-500/20 absolute top-4 right-4" viewBox="0 0 24 24" fill="currentColor">
+              <div className="mt-4 p-5 rounded-xl bg-neutral-50 dark:bg-gradient-to-br dark:from-[#13131e] dark:to-[#0d0d14] border border-neutral-200 dark:border-cyan-500/20 relative shadow-sm">
+                <svg className="w-8 h-8 text-neutral-300 dark:text-cyan-500/20 absolute top-4 right-4" viewBox="0 0 24 24" fill="currentColor">
                   <path d="M14.017 21v-7.391c0-5.704 3.731-9.57 8.983-10.609l.995 2.151c-2.432.917-3.995 3.638-3.995 5.849h4v10h-9.983zm-14.017 0v-7.391c0-5.704 3.748-9.57 9-10.609l.996 2.151c-2.433.917-3.996 3.638-3.996 5.849h3.983v10h-9.983z" />
                 </svg>
-                <p className="text-sm text-slate-200 italic font-sans leading-relaxed mb-4">
+                <p className="text-sm text-neutral-800 dark:text-slate-200 italic font-sans leading-relaxed mb-4">
                   &ldquo;{currentStudy.testimonial.quote}&rdquo;
                 </p>
                 <div className="flex items-center gap-3">
-                  <div className="h-9 px-2.5 rounded-lg bg-white/[0.06] border border-white/10 flex items-center justify-center flex-shrink-0">
-                    <Image
-                      src={currentStudy.logoUrl}
-                      alt={`${currentStudy.client} Official Logo`}
-                      width={90}
-                      height={20}
-                      className="h-4 w-auto object-contain"
-                    />
+                  <div className="h-9 px-2.5 rounded-lg bg-neutral-100 dark:bg-white/[0.06] border border-neutral-200 dark:border-white/10 flex items-center justify-center flex-shrink-0">
+                    {currentStudy.id === "metlife" ? (
+                      <>
+                        <Image
+                          src="/assets/clients/metlife.svg"
+                          alt="MetLife Official Logo"
+                          width={90}
+                          height={20}
+                          className="h-4 w-auto object-contain dark:hidden"
+                        />
+                        <Image
+                          src="/assets/clients/metlife-white.svg"
+                          alt="MetLife Official Logo"
+                          width={90}
+                          height={20}
+                          className="h-4 w-auto object-contain hidden dark:block"
+                        />
+                      </>
+                    ) : (
+                      <Image
+                        src={currentStudy.logoUrl}
+                        alt={`${currentStudy.client} Official Logo`}
+                        width={90}
+                        height={20}
+                        className="h-4 w-auto object-contain"
+                      />
+                    )}
                   </div>
                   <div>
-                    <div className="text-xs font-bold text-white">
+                    <div className="text-xs font-bold text-neutral-900 dark:text-white">
                       {currentStudy.testimonial.author}
                     </div>
-                    <div className="text-[11px] text-slate-400">
+                    <div className="text-[11px] text-neutral-500 dark:text-slate-400">
                       {currentStudy.testimonial.role} &bull; {currentStudy.testimonial.company}
                     </div>
                   </div>
@@ -307,24 +345,26 @@ export function DorvikCaseStudies() {
 
             {/* Live Interactive Code & Patch Inspector (Right 6 Cols) */}
             <div className="lg:col-span-6 flex flex-col">
-              <div className="bg-[#050508] rounded-xl border border-white/[0.1] overflow-hidden flex flex-col h-full shadow-xl">
+              <div className="bg-white dark:bg-[#050508] rounded-xl border border-neutral-200 dark:border-white/[0.1] overflow-hidden flex flex-col h-full shadow-md dark:shadow-xl">
                 {/* Editor Header & Tabs */}
-                <div className="bg-[#0d0d12] px-4 py-3 border-b border-white/[0.08] flex items-center justify-between flex-wrap gap-2">
+                <div className="bg-neutral-100 dark:bg-[#0d0d12] px-4 py-3 border-b border-neutral-200 dark:border-white/[0.08] flex items-center justify-between flex-wrap gap-2">
                   <div className="flex items-center gap-2">
                     <span className="w-2.5 h-2.5 rounded-full bg-red-500/80 inline-block" />
                     <span className="w-2.5 h-2.5 rounded-full bg-amber-500/80 inline-block" />
                     <span className="w-2.5 h-2.5 rounded-full bg-emerald-500/80 inline-block" />
-                    <span className="ml-2 font-mono text-xs text-slate-300">
+                    <span className="ml-2 font-mono text-xs text-neutral-800 dark:text-slate-300 font-semibold">
                       {currentStudy.codeSnippet.title}
                     </span>
                   </div>
 
                   {/* Toggle Modes */}
-                  <div className="flex items-center gap-1 bg-[#161620] p-1 rounded-lg border border-white/5 text-xs font-mono">
+                  <div className="flex items-center gap-1 bg-white dark:bg-[#161620] p-1 rounded-lg border border-neutral-200 dark:border-white/5 text-xs font-mono shadow-inner">
                     <button
                       onClick={() => setCodeMode("fixed")}
                       className={`px-2.5 py-1 rounded transition-colors ${
-                        codeMode === "fixed" ? "bg-cyan-500/20 text-cyan-300 font-bold" : "text-slate-400 hover:text-white"
+                        codeMode === "fixed"
+                          ? "bg-emerald-500/15 text-emerald-700 dark:bg-cyan-500/20 dark:text-cyan-300 font-bold"
+                          : "text-neutral-600 dark:text-slate-400 hover:text-neutral-900 dark:hover:text-white"
                       }`}
                     >
                       Dorvik Patch
@@ -332,7 +372,9 @@ export function DorvikCaseStudies() {
                     <button
                       onClick={() => setCodeMode("bug")}
                       className={`px-2.5 py-1 rounded transition-colors ${
-                        codeMode === "bug" ? "bg-red-500/20 text-red-300 font-bold" : "text-slate-400 hover:text-white"
+                        codeMode === "bug"
+                          ? "bg-rose-500/15 text-rose-700 dark:bg-red-500/20 dark:text-red-300 font-bold"
+                          : "text-neutral-600 dark:text-slate-400 hover:text-neutral-900 dark:hover:text-white"
                       }`}
                     >
                       Original Bug
@@ -340,7 +382,9 @@ export function DorvikCaseStudies() {
                     <button
                       onClick={() => setCodeMode("logs")}
                       className={`px-2.5 py-1 rounded transition-colors ${
-                        codeMode === "logs" ? "bg-purple-500/20 text-purple-300 font-bold" : "text-slate-400 hover:text-white"
+                        codeMode === "logs"
+                          ? "bg-purple-500/15 text-purple-700 dark:bg-purple-500/20 dark:text-purple-300 font-bold"
+                          : "text-neutral-600 dark:text-slate-400 hover:text-neutral-900 dark:hover:text-white"
                       }`}
                     >
                       Agent Logs
@@ -349,24 +393,24 @@ export function DorvikCaseStudies() {
                 </div>
 
                 {/* Bug Context Bar */}
-                <div className="bg-[#09090f] px-4 py-2 border-b border-white/[0.06] text-xs font-mono text-slate-400 flex items-center justify-between">
+                <div className="bg-neutral-50 dark:bg-[#09090f] px-4 py-2 border-b border-neutral-200 dark:border-white/[0.06] text-xs font-mono text-neutral-600 dark:text-slate-400 flex items-center justify-between">
                   <span className="truncate pr-2">
-                    <span className="text-amber-400 font-bold">DETECTED: </span>
+                    <span className="text-amber-600 dark:text-amber-400 font-bold">DETECTED: </span>
                     {currentStudy.codeSnippet.bugDescription}
                   </span>
-                  <span className="text-emerald-400 flex-shrink-0">● CI PASSED</span>
+                  <span className="text-emerald-600 dark:text-emerald-400 flex-shrink-0 font-semibold">● CI PASSED</span>
                 </div>
 
                 {/* Code / Logs Viewport */}
-                <div className="p-4 flex-1 font-mono text-xs overflow-x-auto leading-relaxed">
+                <div className="p-4 flex-1 font-mono text-xs overflow-x-auto leading-relaxed bg-[#FAFAFD] dark:bg-transparent">
                   {codeMode === "fixed" && (
-                    <pre className="text-emerald-300 whitespace-pre">
+                    <pre className="text-emerald-800 dark:text-emerald-300 whitespace-pre">
                       <code>{currentStudy.codeSnippet.fixedCode}</code>
                     </pre>
                   )}
 
                   {codeMode === "bug" && (
-                    <pre className="text-red-300 whitespace-pre">
+                    <pre className="text-rose-800 dark:text-red-300 whitespace-pre">
                       <code>{currentStudy.codeSnippet.bugCode}</code>
                     </pre>
                   )}
@@ -375,8 +419,8 @@ export function DorvikCaseStudies() {
                     <div className="space-y-1.5 py-1">
                       {currentStudy.codeSnippet.logs.map((log, i) => (
                         <div key={i} className="flex items-start gap-2">
-                          <span className="text-slate-600 select-none">&gt;</span>
-                          <span className={i === currentStudy.codeSnippet.logs.length - 1 ? "text-cyan-400 font-bold" : "text-slate-400"}>
+                          <span className="text-neutral-400 dark:text-slate-600 select-none">&gt;</span>
+                          <span className={i === currentStudy.codeSnippet.logs.length - 1 ? "text-cyan-600 dark:text-cyan-400 font-bold" : "text-neutral-700 dark:text-slate-400"}>
                             {log}
                           </span>
                         </div>
@@ -386,16 +430,16 @@ export function DorvikCaseStudies() {
                 </div>
 
                 {/* Bottom Verification Footer */}
-                <div className="bg-[#0b0b12] p-3 border-t border-white/[0.08] flex items-center justify-between text-xs font-mono text-slate-400">
+                <div className="bg-neutral-50 dark:bg-[#0b0b12] p-3 border-t border-neutral-200 dark:border-white/[0.08] flex items-center justify-between text-xs font-mono text-neutral-600 dark:text-slate-400">
                   <div className="flex items-center gap-2">
-                    <svg className="w-4 h-4 text-emerald-400" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+                    <svg className="w-4 h-4 text-emerald-600 dark:text-emerald-400" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
                       <polyline points="20 6 9 17 4 12" />
                     </svg>
-                    <span className="text-white">Pull Request Auto-Created & Tested</span>
+                    <span className="text-neutral-900 dark:text-white font-medium">Pull Request Auto-Created & Tested</span>
                   </div>
                   <Link
                     href="/contact"
-                    className="text-cyan-400 hover:text-cyan-300 font-bold hover:underline inline-flex items-center gap-1"
+                    className="text-cyan-600 dark:text-cyan-400 hover:text-cyan-700 dark:hover:text-cyan-300 font-bold hover:underline inline-flex items-center gap-1"
                   >
                     <span>Request Similar Setup</span>
                     <span>&rarr;</span>

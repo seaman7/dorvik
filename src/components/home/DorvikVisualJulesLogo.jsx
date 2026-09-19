@@ -2,32 +2,31 @@
 
 import React, { useEffect, useRef, useState } from "react";
 
-// The authentic Dorvik Visual Live Logo ASCII Art (Google Jules style)
+// The authentic Dorbik Visual Live Logo ASCII Art (Google Jules style)
 const LOGO_LINES = [
-  { indent: 9, text: ":xx;" },
-  { indent: 8, text: "XMM0                          :M.W" },
-  { indent: 10, text: "M                           :MMW" },
-  { indent: 8, text: "0MMx   ,MMM     XMMc   :MMW    .dXMMMMKl   0,0W.MMMMW," },
-  { indent: 8, text: "0MMx   ,MMM     XMMc   :.Mw@  ,WMN;  .cWMX   MMM:    '" },
-  { indent: 8, text: "QMMx   ,MMM     XMMc   :MMW  KQMMNKKKKKWM. :  lX.M.NKO.." },
-  { indent: 8, text: "0MMx   .MMMc   :MMMc   :MMW   lMMN,. ...        .';dMMW" },
-  { indent: 8, text: "0MMx    lWMMWNWMMMMc   :MMW    :XMM...NMN.  .NMN.OONMWN" },
-  { indent: 8, text: "0M.d       ,.lc,  ,::.   .::;     .;clc.'     .':clc.'" },
-  { indent: 6, text: "KK.M.X." },
-  { indent: 6, text: ";cl:'" },
+  { indent: 6, text: "        :xx;                                                               :xx;" },
+  { indent: 6, text: "        XMM0                                                               :M.W" },
+  { indent: 0, text: "0MMMMKl   M       .dXMMMMKl    ,MMMMX:    0MMMMMKl   :xx;  0MM0             :M.W   MMW" },
+  { indent: 0, text: "0MMc :MM0        ,WMN;  .cWMX  ,MMM  XMMc 0MMc :MM0  XMM0  0MMc :M.W       :MMW" },
+  { indent: 0, text: "0MMc  0MM        0MM:    :MMM  ,MMMMMNXo  0MMMMMNKl   M    0MMl :MMW       :MMW" },
+  { indent: 0, text: "0MMc  0MM        0MM:    :MMM  ,MMM  XMMc 0MMc :MM0  0MMx  0MM0.dXMM       :MMW" },
+  { indent: 0, text: "0MMc :MM0        ;WMN;  .cWMX  ,MMM   XMM 0MMc :MM0  0MMx  0MMXMMMM:       :MMW" },
+  { indent: 0, text: "0MMMMKl           .dXMMMMKl    ,MMM   XMM 0MMMMMKl   0M.d  0MMc  XMMc      :MMW" },
+  { indent: 0, text: " .::;               .::;        .::.   .:: .::;     KK.M.X 0MM:   ;cl:     .::;" },
+  { indent: 0, text: "                                                    ;cl:'" },
 ];
 
 // Initial floating Jules glyphs matching the screenshot
 const INITIAL_FLOATING_GLYPHS = [
-  { char: "X", xRatio: 0.08, yRatio: 0.49, color: "#F0C642", baseVx: 0.2, baseVy: -0.15, size: 16 },
-  { char: "M", xRatio: 0.79, yRatio: 0.05, color: "#F0C642", baseVx: -0.1, baseVy: 0.2, size: 14 },
-  { char: "M", xRatio: 0.72, yRatio: 0.18, color: "#E1308D", baseVx: 0.15, baseVy: 0.1, size: 15 },
-  { char: ":", xRatio: 0.96, yRatio: 0.38, color: "#E1308D", baseVx: -0.2, baseVy: -0.1, size: 15 },
-  { char: "o", xRatio: 0.93, yRatio: 0.58, color: "#818CF8", baseVx: -0.15, baseVy: 0.15, size: 14 },
-  { char: "M", xRatio: 0.83, yRatio: 0.64, color: "#E1308D", baseVx: 0.2, baseVy: -0.15, size: 14 },
-  { char: "M", xRatio: 0.68, yRatio: 0.76, color: "#F0C642", baseVx: -0.1, baseVy: 0.2, size: 15 },
-  { char: "c", xRatio: 0.53, yRatio: 0.85, color: "#F0C642", baseVx: 0.18, baseVy: -0.1, size: 15 },
-  { char: "W", xRatio: 0.71, yRatio: 0.89, color: "#818CF8", baseVx: -0.15, baseVy: -0.15, size: 14 },
+  { char: "D", xRatio: 0.08, yRatio: 0.49, color: "#F0C642", baseVx: 0.2, baseVy: -0.15, size: 16 },
+  { char: "M", xRatio: 0.79, yRatio: 0.08, color: "#F0C642", baseVx: -0.1, baseVy: 0.2, size: 14 },
+  { char: "B", xRatio: 0.88, yRatio: 0.22, color: "#E1308D", baseVx: 0.15, baseVy: 0.1, size: 15 },
+  { char: "K", xRatio: 0.94, yRatio: 0.42, color: "#E1308D", baseVx: -0.2, baseVy: -0.1, size: 15 },
+  { char: "o", xRatio: 0.91, yRatio: 0.65, color: "#818CF8", baseVx: -0.15, baseVy: 0.15, size: 14 },
+  { char: "R", xRatio: 0.82, yRatio: 0.72, color: "#E1308D", baseVx: 0.2, baseVy: -0.15, size: 14 },
+  { char: "X", xRatio: 0.68, yRatio: 0.78, color: "#F0C642", baseVx: -0.1, baseVy: 0.2, size: 15 },
+  { char: "c", xRatio: 0.52, yRatio: 0.86, color: "#F0C642", baseVx: 0.18, baseVy: -0.1, size: 15 },
+  { char: "W", xRatio: 0.73, yRatio: 0.89, color: "#818CF8", baseVx: -0.15, baseVy: -0.15, size: 14 },
 ];
 
 export function DorvikVisualJulesLogo({ className = "" }) {
@@ -106,15 +105,15 @@ export function DorvikVisualJulesLogo({ className = "" }) {
       ctx.fillStyle = gradient;
       ctx.fillRect(0, 0, width, height);
 
-      // Calculate font size to fit container width
-      const baseFontSize = Math.min(13.5, Math.max(8.5, width / 54));
+      // Calculate font size to fit container width (84 characters)
+      const baseFontSize = Math.min(12.5, Math.max(7.5, width / 72));
       ctx.font = `600 ${baseFontSize}px "Roboto Mono", "Geist Mono", monospace`;
 
-      const charWidth = baseFontSize * 0.62;
-      const lineHeight = baseFontSize * 1.35;
-      const logoTotalWidth = 62 * charWidth;
-      const startX = Math.max(16, (width - logoTotalWidth) / 2);
-      const startY = 42;
+      const charWidth = baseFontSize * 0.61;
+      const lineHeight = baseFontSize * 1.32;
+      const logoTotalWidth = 84 * charWidth;
+      const startX = Math.max(8, (width - logoTotalWidth) / 2);
+      const startY = 36;
 
       // Draw Main ASCII Art Logo
       LOGO_LINES.forEach((line, lineIdx) => {
@@ -130,13 +129,11 @@ export function DorvikVisualJulesLogo({ className = "" }) {
           // Authentic Jules color mapping for specific highlight characters
           if (ch === "@") {
             ctx.fillStyle = "#00D2EF"; // Cyan
-          } else if (ch === "0" && lineIdx === 3 && charIdx > 35) {
+          } else if (ch === "0" && (charIdx > 60 || (lineIdx === 2 && charIdx === 0))) {
             ctx.fillStyle = "#E1308D"; // Magenta
-          } else if (ch === "K" && lineIdx === 5 && charIdx > 20 && charIdx < 28) {
+          } else if (ch === "K" && (lineIdx === 2 || lineIdx === 4 || lineIdx === 7)) {
             ctx.fillStyle = "#E1308D"; // Magenta
-          } else if (ch === "M" && lineIdx === 7 && charIdx > 13 && charIdx < 18) {
-            ctx.fillStyle = "#E1308D"; // Magenta
-          } else if (ch === "N" && lineIdx === 7 && charIdx > 48) {
+          } else if (ch === "N" && lineIdx === 4) {
             ctx.fillStyle = "#E1308D"; // Magenta
           } else if (ch === "x" || ch === "X" || ch === "M") {
             ctx.fillStyle = "#D0B9FF"; // Soft lavender / purple
@@ -190,7 +187,7 @@ export function DorvikVisualJulesLogo({ className = "" }) {
       ctx.font = `500 ${Math.max(11, baseFontSize * 0.95)}px "Roboto Mono", monospace`;
       const subWidth = ctx.measureText(subText).width;
       const subX = (width - subWidth) / 2;
-      const subY = startY + 12 * lineHeight;
+      const subY = startY + 11.2 * lineHeight;
 
       ctx.fillStyle = "#F3F4F6";
       ctx.fillText(subText, subX, subY);

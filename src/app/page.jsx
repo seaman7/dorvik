@@ -9,7 +9,7 @@ import { DorvikSimpleCTA }        from "@/components/home/DorvikSimpleCTA";
 
 export default function HomePage() {
   return (
-    <div className="flex flex-col w-full bg-[#08080A]">
+    <div className="flex flex-col w-full bg-[#FAFAFC] dark:bg-[#08080A] transition-colors duration-200">
       {/* 1. Crystal-Clear Hero: What is BizOS, what it does, and live realistic dashboard metrics */}
       <DorvikCleanHero />
 
