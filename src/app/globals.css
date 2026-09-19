@@ -43,6 +43,25 @@
   }
 }
 
+/* High-Readability Modern Sans-Serif Typography for Careers & Product Pages */
+.font-sans-modern {
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif !important;
+}
+.font-sans-modern p,
+.font-sans-modern span:not(.font-mono),
+.font-sans-modern h1,
+.font-sans-modern h2,
+.font-sans-modern h3,
+.font-sans-modern h4,
+.font-sans-modern li,
+.font-sans-modern input,
+.font-sans-modern textarea,
+.font-sans-modern label,
+.font-sans-modern button:not(.font-mono) {
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif !important;
+}
+
+
 /* Jules Stepped Pixel Polygon Corners */
 .rounded-pixel-sm {
   clip-path: polygon(
