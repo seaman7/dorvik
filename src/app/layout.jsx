@@ -58,7 +58,7 @@ export const metadata = {
 export default function RootLayout({ children }) {
   return (
     <html lang="en" className="scroll-smooth">
-      <body className="min-h-screen bg-[#08080A] text-neutral-200 antialiased selection:bg-cyan-500 selection:text-black font-sans transition-colors duration-200">
+      <body className="min-h-screen bg-[#FAFAFC] dark:bg-[#08080A] text-neutral-900 dark:text-neutral-200 antialiased selection:bg-cyan-500 selection:text-black font-sans transition-colors duration-200">
         <ThemeProvider>
           {/* Accessible Skip Link */}
           <a

@@ -1,6 +1,8 @@
 @import url('https://fonts.googleapis.com/css2?family=Roboto+Mono:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400&family=Geist+Mono:wght@400;500;600;700&family=Inter:wght@400;500;600;700;800;900&display=swap');
 @import "tailwindcss";
 
+@custom-variant dark (&:where([data-theme=dark], [data-theme=dark] *, .dark, .dark *));
+
 @layer base {
   :root {
     --bg-jules: #1D0245;
@@ -306,17 +308,25 @@ html[data-theme="light"] nav a:hover {
 }
 
 /* Surface Cards in Light Mode */
+html.light .bg-\[\#050508\],
 html.light .bg-\[\#0C0C10\],
 html.light .bg-\[\#0E0E12\],
 html.light .bg-\[\#0B0B0E\],
 html.light .bg-\[\#080809\],
 html.light .bg-\[\#08080A\],
 html.light .bg-\[\#101016\],
+html.light .bg-\[\#111116\],
 html.light .bg-\[\#121216\],
+html.light .bg-\[\#12131A\],
+html.light .bg-\[\#12131C\],
 html.light .bg-\[\#131317\],
 html.light .bg-\[\#141418\],
 html.light .bg-\[\#1a1a22\],
 html.light .bg-\[\#0C0C12\],
+html.light .bg-\[\#0D0D11\],
+html.light .bg-\[\#130825\],
+html.light .bg-\[\#22074f\],
+html.light .bg-\[\#09051c\],
 html.light .bg-black,
 html.light .bg-black\/40,
 html.light .bg-black\/50,
@@ -328,24 +338,83 @@ html.light .bg-neutral-900\/40,
 html.light .bg-neutral-900\/50,
 html.light .bg-neutral-900\/60,
 html.light .bg-neutral-900\/90,
+html.light .bg-neutral-950,
+html[data-theme="light"] .bg-\[\#050508\],
 html[data-theme="light"] .bg-\[\#0C0C10\],
 html[data-theme="light"] .bg-\[\#0E0E12\],
 html[data-theme="light"] .bg-\[\#0B0B0E\],
 html[data-theme="light"] .bg-\[\#080809\],
 html[data-theme="light"] .bg-\[\#08080A\],
 html[data-theme="light"] .bg-\[\#101016\],
+html[data-theme="light"] .bg-\[\#111116\],
 html[data-theme="light"] .bg-\[\#121216\],
+html[data-theme="light"] .bg-\[\#12131A\],
+html[data-theme="light"] .bg-\[\#12131C\],
 html[data-theme="light"] .bg-\[\#131317\],
 html[data-theme="light"] .bg-\[\#141418\],
 html[data-theme="light"] .bg-\[\#1a1a22\],
 html[data-theme="light"] .bg-\[\#0C0C12\],
+html[data-theme="light"] .bg-\[\#0D0D11\],
+html[data-theme="light"] .bg-\[\#130825\],
+html[data-theme="light"] .bg-\[\#22074f\],
+html[data-theme="light"] .bg-\[\#09051c\],
+html[data-theme="light"] .bg-black,
 html[data-theme="light"] .bg-neutral-900,
 html[data-theme="light"] .bg-neutral-900\/40,
 html[data-theme="light"] .bg-neutral-900\/50,
 html[data-theme="light"] .bg-neutral-900\/60,
-html[data-theme="light"] .bg-neutral-900\/90 {
+html[data-theme="light"] .bg-neutral-900\/90,
+html[data-theme="light"] .bg-neutral-950 {
   background-color: #FFFFFF !important;
   color: #18181B !important;
+}
+
+/* Light Theme Footer System (Fixes bottom black screen) */
+html.light footer,
+html[data-theme="light"] footer {
+  background-color: #FAFAFC !important;
+  border-top: 1px solid #E4E4E7 !important;
+  color: #3F3F46 !important;
+}
+
+html.light footer .bg-\[\#050508\],
+html[data-theme="light"] footer .bg-\[\#050508\],
+html.light footer .bg-\[\#0C0C12\],
+html[data-theme="light"] footer .bg-\[\#0C0C12\] {
+  background-color: #FFFFFF !important;
+}
+
+html.light footer .border-white\/\[0\.08\],
+html.light footer .border-white\/10,
+html.light footer .border-white\/15,
+html[data-theme="light"] footer .border-white\/\[0\.08\],
+html[data-theme="light"] footer .border-white\/10,
+html[data-theme="light"] footer .border-white\/15 {
+  border-color: #E4E4E7 !important;
+}
+
+html.light footer h2,
+html.light footer h3,
+html.light footer h4,
+html[data-theme="light"] footer h2,
+html[data-theme="light"] footer h3,
+html[data-theme="light"] footer h4 {
+  color: #09090B !important;
+}
+
+html.light footer p,
+html[data-theme="light"] footer p {
+  color: #52525B !important;
+}
+
+html.light footer a:not(.btn-light-refined),
+html[data-theme="light"] footer a:not(.btn-light-refined) {
+  color: #52525B !important;
+}
+
+html.light footer a:not(.btn-light-refined):hover,
+html[data-theme="light"] footer a:not(.btn-light-refined):hover {
+  color: #09090B !important;
 }
 
 /* Light Theme Borders */

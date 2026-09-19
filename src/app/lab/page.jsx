@@ -6,20 +6,20 @@ import { DorvikEditorViewport, DorvikPixelFox } from "@/components/home/DorvikEd
 
 export default function DorvikLabPage() {
   return (
-    <div className="min-h-screen bg-[#080809] text-neutral-200 pt-28 sm:pt-36 pb-28 font-sans antialiased">
+    <div className="min-h-screen bg-[#FAFAFC] dark:bg-[#080809] text-neutral-900 dark:text-neutral-200 pt-28 sm:pt-36 pb-28 font-sans antialiased transition-colors">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Navigation Breadcrumbs */}
-        <div className="flex items-center gap-2 text-xs font-mono text-neutral-400 mb-8">
-          <Link href="/" className="hover:text-white transition-colors">
+        <div className="flex items-center gap-2 text-xs font-mono text-neutral-600 dark:text-neutral-400 mb-8">
+          <Link href="/" className="hover:text-neutral-900 dark:hover:text-white transition-colors">
             Home
           </Link>
-          <span className="text-neutral-600">/</span>
-          <span className="text-cyan-400 font-semibold">DORVIK Lab</span>
+          <span className="text-neutral-400 dark:text-neutral-600">/</span>
+          <span className="text-blue-600 dark:text-cyan-400 font-semibold">DORVIK Lab</span>
         </div>
 
         {/* Lab Hero Header */}
         <div className="max-w-4xl mb-12">
-          <div className="inline-flex items-center gap-2.5 px-3.5 py-1.5 rounded-full bg-neutral-100 dark:bg-[#12131A] border border-neutral-200 dark:border-[#222432] mb-5 text-xs font-mono text-neutral-800 dark:text-neutral-300 shadow-sm">
+          <div className="inline-flex items-center gap-2.5 px-3.5 py-1.5 rounded-full bg-white dark:bg-[#12131A] border border-neutral-200 dark:border-[#222432] mb-5 text-xs font-mono text-neutral-800 dark:text-neutral-300 shadow-sm transition-colors">
             <div className="w-5 h-5 shrink-0">
               <DorvikPixelFox className="w-full h-full" />
             </div>
@@ -99,56 +99,56 @@ export default function DorvikLabPage() {
         </div>
 
         {/* Technical Architecture Breakdown */}
-        <div className="bg-[#0C0C10] border border-[#1e1e26] rounded-2xl p-8 sm:p-12 mb-20 shadow-xl">
+        <div className="bg-white dark:bg-[#0C0C10] border border-neutral-200 dark:border-[#1e1e26] rounded-2xl p-8 sm:p-12 mb-20 shadow-sm dark:shadow-xl transition-colors">
           <div className="max-w-2xl mb-10">
-            <span className="text-[11px] font-mono text-neutral-400 uppercase tracking-widest font-semibold block mb-2">
+            <span className="text-[11px] font-mono text-neutral-500 dark:text-neutral-400 uppercase tracking-widest font-semibold block mb-2">
               AGENT ARCHITECTURE
             </span>
-            <h2 className="text-2xl sm:text-3xl font-bold text-white tracking-tight">
+            <h2 className="text-2xl sm:text-3xl font-bold text-neutral-900 dark:text-white tracking-tight">
               Deterministic Neuro-Symbolic Code Synthesis
             </h2>
-            <p className="text-xs sm:text-sm text-neutral-400 mt-2 leading-relaxed">
+            <p className="text-xs sm:text-sm text-neutral-600 dark:text-neutral-400 mt-2 leading-relaxed">
               Unlike stochastic LLM text wrappers, Dorvik combines symbolic compiler-level AST analysis with sandboxed execution to guarantee zero hallucinations and zero regressions.
             </p>
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-4 gap-4">
-            <div className="p-5 rounded-xl bg-[#111116] border border-[#1e1e26]">
-              <div className="text-xs font-mono font-bold text-cyan-400 mb-3">
+            <div className="p-5 rounded-xl bg-[#F8FAFC] dark:bg-[#111116] border border-neutral-200 dark:border-[#1e1e26] transition-colors shadow-xs">
+              <div className="text-xs font-mono font-bold text-blue-600 dark:text-cyan-400 mb-3">
                 01 &bull; Static Analysis
               </div>
-              <h3 className="text-sm font-bold text-white mb-1">AST Graph Traversal</h3>
-              <p className="text-xs text-neutral-400 leading-relaxed">
+              <h3 className="text-sm font-bold text-neutral-900 dark:text-white mb-1">AST Graph Traversal</h3>
+              <p className="text-xs text-neutral-600 dark:text-neutral-400 leading-relaxed">
                 Parses repository into abstract syntax graphs to isolate dependency trees, typing mismatches, and tainted variable scope.
               </p>
             </div>
 
-            <div className="p-5 rounded-xl bg-[#111116] border border-[#1e1e26]">
-              <div className="text-xs font-mono font-bold text-cyan-400 mb-3">
+            <div className="p-5 rounded-xl bg-[#F8FAFC] dark:bg-[#111116] border border-neutral-200 dark:border-[#1e1e26] transition-colors shadow-xs">
+              <div className="text-xs font-mono font-bold text-blue-600 dark:text-cyan-400 mb-3">
                 02 &bull; Isolation
               </div>
-              <h3 className="text-sm font-bold text-white mb-1">MicroVM Sandboxing</h3>
-              <p className="text-xs text-neutral-400 leading-relaxed">
+              <h3 className="text-sm font-bold text-neutral-900 dark:text-white mb-1">MicroVM Sandboxing</h3>
+              <p className="text-xs text-neutral-600 dark:text-neutral-400 leading-relaxed">
                 Spins up isolated Firecracker microVMs in sub-seconds to run failing test suites and verify bug reproduction.
               </p>
             </div>
 
-            <div className="p-5 rounded-xl bg-[#111116] border border-[#1e1e26]">
-              <div className="text-xs font-mono font-bold text-cyan-400 mb-3">
+            <div className="p-5 rounded-xl bg-[#F8FAFC] dark:bg-[#111116] border border-neutral-200 dark:border-[#1e1e26] transition-colors shadow-xs">
+              <div className="text-xs font-mono font-bold text-blue-600 dark:text-cyan-400 mb-3">
                 03 &bull; Patching
               </div>
-              <h3 className="text-sm font-bold text-white mb-1">Surgical Diff Gen</h3>
-              <p className="text-xs text-neutral-400 leading-relaxed">
-                Produces minimal git diffs adhering strictly to the repository&apos;s code style, linter rules, and TypeScript interfaces.
+              <h3 className="text-sm font-bold text-neutral-900 dark:text-white mb-1">Surgical Diff Gen</h3>
+              <p className="text-xs text-neutral-600 dark:text-neutral-400 leading-relaxed">
+                Produces minimal git diffs adhering strictly to the repository&apos;s code style, linter rules, and typing interfaces.
               </p>
             </div>
 
-            <div className="p-5 rounded-xl bg-[#111116] border border-[#1e1e26]">
-              <div className="text-xs font-mono font-bold text-cyan-400 mb-3">
+            <div className="p-5 rounded-xl bg-[#F8FAFC] dark:bg-[#111116] border border-neutral-200 dark:border-[#1e1e26] transition-colors shadow-xs">
+              <div className="text-xs font-mono font-bold text-blue-600 dark:text-cyan-400 mb-3">
                 04 &bull; Validation
               </div>
-              <h3 className="text-sm font-bold text-white mb-1">Regression Harness</h3>
-              <p className="text-xs text-neutral-400 leading-relaxed">
+              <h3 className="text-sm font-bold text-neutral-900 dark:text-white mb-1">Regression Harness</h3>
+              <p className="text-xs text-neutral-600 dark:text-neutral-400 leading-relaxed">
                 Re-executes the full test suite in parallel. If all checks pass, opens a verified Pull Request with full context.
               </p>
             </div>
@@ -157,10 +157,10 @@ export default function DorvikLabPage() {
 
         {/* Call to Action for Tech Teams */}
         <div className="text-center max-w-xl mx-auto">
-          <h3 className="text-xl font-bold text-white mb-2">
+          <h3 className="text-xl font-bold text-neutral-900 dark:text-white mb-2">
             Deploy the Dorvik Agent in Your Engineering CI/CD
           </h3>
-          <p className="text-xs sm:text-sm text-neutral-400 mb-6 leading-relaxed">
+          <p className="text-xs sm:text-sm text-neutral-600 dark:text-neutral-400 mb-6 leading-relaxed">
             We partner with software engineering organizations to deploy autonomous bug-fixing agents directly into GitHub, GitLab, and Bitbucket pipelines.
           </p>
           <Link
