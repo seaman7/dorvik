@@ -33,6 +33,13 @@ export function DorvikNavbar() {
       {/* Nav Links & Social Channels */}
       <div className="flex flex-row items-center gap-2 sm:gap-3 md:gap-4">
         <Link
+          href="/#case-studies"
+          className="hidden md:inline-flex items-center text-xs md:text-sm font-bold text-purple-200 hover:text-cyan-400 px-2.5 py-1.5 transition-colors border border-transparent hover:border-purple-600 font-mono"
+        >
+          Case Studies
+        </Link>
+
+        <Link
           href="/#projects"
           className="hidden lg:inline-flex items-center text-xs md:text-sm font-bold text-purple-200 hover:text-white px-2.5 py-1.5 transition-colors border border-transparent hover:border-purple-600 font-mono"
         >

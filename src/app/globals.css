@@ -153,3 +153,24 @@
 .jules-scroll::-webkit-scrollbar-track {
   background: #09051c;
 }
+
+/* Infinite Marquee Animation */
+@keyframes client-marquee {
+  0% {
+    transform: translateX(0%);
+  }
+  100% {
+    transform: translateX(-50%);
+  }
+}
+
+.animate-client-marquee {
+  display: flex;
+  width: max-content;
+  animation: client-marquee 32s linear infinite;
+}
+
+.animate-client-marquee:hover {
+  animation-play-state: paused;
+}
+

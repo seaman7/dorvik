@@ -1,6 +1,8 @@
 import React from "react";
 import { DorvikHeroLogo }         from "@/components/home/DorvikHeroLogo";
 import { DorvikEditorViewport }   from "@/components/home/DorvikEditorViewport";
+import { DorvikClientTrust }      from "@/components/home/DorvikClientTrust";
+import { DorvikCaseStudies }      from "@/components/home/DorvikCaseStudies";
 import { DorvikCoreProjects }     from "@/components/home/DorvikCoreProjects";
 import { DorvikFeatureCallout }   from "@/components/home/DorvikFeatureCallout";
 import { DorvikWorkflowSteps }    from "@/components/home/DorvikWorkflowSteps";
@@ -15,16 +17,22 @@ export default function HomePage() {
       {/* 2. Live Agent Code Editor — Dorvik bot fixing real SWE bugs */}
       <DorvikEditorViewport />
 
-      {/* 3. Core Services: Web Dev, AI Bug Fixer, LLM Training, Computer Vision */}
+      {/* 3. Enterprise Social Proof & Metrics: MetLife, PassNFly & Global Partners */}
+      <DorvikClientTrust />
+
+      {/* 4. Deep-Dive Case Studies: MetLife & PassNFly Production Impact */}
+      <DorvikCaseStudies />
+
+      {/* 5. Core Services: Web Dev, AI Bug Fixer, LLM Training, Computer Vision */}
       <DorvikCoreProjects />
 
-      {/* 4. What Dorvik Does — pillars + service tiles */}
+      {/* 6. What Dorvik Does — pillars + service tiles */}
       <DorvikFeatureCallout />
 
-      {/* 5. How Dorvik Works — 4-step autonomous pipeline */}
+      {/* 7. How Dorvik Works — 4-step autonomous pipeline */}
       <DorvikWorkflowSteps />
 
-      {/* 6. Project Engagement Plans */}
+      {/* 8. Project Engagement Plans */}
       <DorvikPricingPlans />
     </div>
   );
