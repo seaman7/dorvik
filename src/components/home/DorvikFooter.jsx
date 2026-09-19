@@ -92,8 +92,11 @@ export function DorvikFooter() {
                 </Link>
               </li>
               <li>
-                <Link href="/#projects" className="hover:text-white transition-colors">
-                  Autonomous Bug Fixer Agent
+                <Link href="/lab" className="text-white hover:text-purple-400 font-semibold transition-colors flex items-center gap-1.5">
+                  <span>Dorvik Lab (AI Bug Fixer)</span>
+                  <span className="text-[10px] font-mono text-purple-300 bg-purple-500/15 px-1 py-0.2 rounded border border-purple-500/30">
+                    R&amp;D
+                  </span>
                 </Link>
               </li>
               <li>

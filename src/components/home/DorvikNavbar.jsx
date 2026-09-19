@@ -40,6 +40,16 @@ export function DorvikNavbar() {
           </Link>
 
           <Link
+            href="/lab"
+            className="hover:text-white transition-colors flex items-center gap-1.5 text-neutral-200"
+          >
+            <span>Lab</span>
+            <span className="text-[10px] font-mono font-bold bg-purple-500/20 text-purple-300 px-1.5 py-0.5 rounded border border-purple-500/30">
+              AI AGENT
+            </span>
+          </Link>
+
+          <Link
             href="/#case-studies"
             className="hover:text-white transition-colors"
           >
