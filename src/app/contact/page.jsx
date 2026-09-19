@@ -3,7 +3,7 @@
 import React, { useState, useEffect, Suspense } from "react";
 import Link from "next/link";
 import { useSearchParams } from "next/navigation";
-import { DorvikPixelFox } from "@/components/home/DorvikEditorViewport";
+import { DorvikVisualJulesLogo } from "@/components/home/DorvikVisualJulesLogo";
 
 function ContactForm() {
   const searchParams = useSearchParams();
@@ -214,45 +214,8 @@ export default function ContactPage() {
 
         {/* Channels & Operational Info */}
         <div className="lg:col-span-5 space-y-6">
-          {/* Visual Dorvik Logo & Agent Emblem (Google Jules Style) */}
-          <div className="pattern-square-light p-3 pb-4 rounded-pixel-lg bg-[#22074f] border-2 border-purple-800 shadow-xl">
-            <div className="bg-[#130825] p-6 rounded-pixel-sm border-2 border-purple-700 flex flex-col items-center text-center relative overflow-hidden">
-              {/* Retro-modern ambient glow */}
-              <div className="absolute -top-10 -right-10 w-32 h-32 bg-cyan-500/15 rounded-full blur-2xl pointer-events-none" />
-              <div className="absolute -bottom-10 -left-10 w-32 h-32 bg-fuchsia-500/15 rounded-full blur-2xl pointer-events-none" />
-
-              {/* Jules-Style Mascot Avatar Frame */}
-              <div className="relative mb-4 group">
-                <div className="w-20 h-20 bg-[#09051c] border-2 border-cyan-400 rounded-pixel-sm flex items-center justify-center shadow-[0_0_24px_rgba(0,210,239,0.4)] relative z-10 transition-transform group-hover:scale-105">
-                  <div className="w-14 h-14 animate-agent-idle">
-                    <DorvikPixelFox className="w-full h-full" />
-                  </div>
-                </div>
-                {/* Live Status Pulse */}
-                <span className="absolute -bottom-1 -right-1 w-4 h-4 rounded-full bg-emerald-400 border-2 border-[#130825] flex items-center justify-center z-20">
-                  <span className="w-2 h-2 rounded-full bg-white animate-ping" />
-                </span>
-              </div>
-
-              {/* Jules Style Thought / Dispatch Bubble */}
-              <div className="px-3 py-1 bg-white text-purple-950 text-[11px] font-mono font-black rounded-pixel-sm shadow-lg border-b-2 border-fuchsia-400 mb-3 flex items-center gap-2">
-                <span className="w-2 h-2 bg-emerald-500 inline-block animate-pulse" />
-                <span>Dorvik Fox: Ready for Dispatch</span>
-              </div>
-
-              <h3 className="text-white text-base md:text-lg font-black tracking-wider uppercase font-mono">
-                DORVIK ENGINEERING LABS
-              </h3>
-              <p className="text-purple-300 text-xs mt-1 max-w-xs leading-relaxed font-mono">
-                Autonomous AI agents, PyTorch fine-tuning &amp; high-scale custom web systems.
-              </p>
-
-              <div className="mt-4 pt-3 border-t border-purple-800/80 w-full flex items-center justify-between text-[10px] font-mono text-cyan-300">
-                <span className="font-bold">OFFICIAL LOGO &bull; EST. 2024</span>
-                <span className="text-emerald-400">ONLINE</span>
-              </div>
-            </div>
-          </div>
+          {/* Visual Dorvik Live Logo (Google Jules style) */}
+          <DorvikVisualJulesLogo className="shadow-2xl" />
 
           <div className="pattern-square-light p-3 pb-4 rounded-pixel-lg bg-[#22074f] border-2 border-purple-800 shadow-xl">
             <div className="bg-[#130825] p-6 rounded-pixel-sm border-2 border-purple-700 space-y-4">
