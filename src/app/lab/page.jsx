@@ -52,23 +52,30 @@ export default function DorvikLabPage() {
             </Link>
           </div>
 
-          {/* High-Density Senior Engineering Benchmark Strip */}
-          <div className="mt-10 grid grid-cols-2 sm:grid-cols-4 gap-3">
-            <div className="p-4 rounded-xl bg-white dark:bg-[#0C0C10] border border-neutral-200 dark:border-[#1e1e26] shadow-sm">
-              <span className="text-[10px] font-mono text-neutral-500 dark:text-neutral-400 uppercase tracking-wider block">Benchmark Score</span>
-              <span className="text-base font-bold text-neutral-900 dark:text-white font-mono mt-1 block">SWE-bench 78.4%</span>
+          {/* Banner: Use our Fox Bug Fixer for your software! */}
+          <div className="mt-10 p-5 sm:p-6 rounded-2xl border transition-colors shadow-sm bg-white dark:bg-[#0C0C10] border-neutral-200 dark:border-[#1e1e26] flex flex-col sm:flex-row sm:items-center justify-between gap-5">
+            <div className="flex items-center gap-4">
+              <div className="w-14 h-14 p-2 rounded-2xl bg-orange-50 dark:bg-orange-500/10 border border-orange-200 dark:border-orange-500/30 flex items-center justify-center shrink-0 shadow-inner">
+                <DorvikPixelFox className="w-10 h-10" />
+              </div>
+              <div>
+                <h3 className="text-lg sm:text-xl font-bold text-neutral-900 dark:text-white tracking-tight">
+                  Use our Fox Bug Fixer for your software!
+                </h3>
+                <p className="text-xs sm:text-sm text-neutral-600 dark:text-neutral-400 mt-1 max-w-xl leading-relaxed">
+                  Autonomously detects runtime crashes, fixes memory leaks, and opens verified pull requests on your Python and AI repositories.
+                </p>
+              </div>
             </div>
-            <div className="p-4 rounded-xl bg-white dark:bg-[#0C0C10] border border-neutral-200 dark:border-[#1e1e26] shadow-sm">
-              <span className="text-[10px] font-mono text-neutral-500 dark:text-neutral-400 uppercase tracking-wider block">Verification</span>
-              <span className="text-base font-bold text-emerald-600 dark:text-emerald-400 font-mono mt-1 block">PyTorch AST Deterministic</span>
-            </div>
-            <div className="p-4 rounded-xl bg-white dark:bg-[#0C0C10] border border-neutral-200 dark:border-[#1e1e26] shadow-sm">
-              <span className="text-[10px] font-mono text-neutral-500 dark:text-neutral-400 uppercase tracking-wider block">Sandbox Runtime</span>
-              <span className="text-base font-bold text-blue-600 dark:text-cyan-400 font-mono mt-1 block">CUDA MicroVM Isolated</span>
-            </div>
-            <div className="p-4 rounded-xl bg-white dark:bg-[#0C0C10] border border-neutral-200 dark:border-[#1e1e26] shadow-sm">
-              <span className="text-[10px] font-mono text-neutral-500 dark:text-neutral-400 uppercase tracking-wider block">Mean Patch Latency</span>
-              <span className="text-base font-bold text-neutral-900 dark:text-white font-mono mt-1 block">380ms / Tensor Patch</span>
+
+            <div className="flex items-center gap-3 shrink-0">
+              <Link
+                href="/contact"
+                className="px-5 py-2.5 rounded-lg btn-light-refined text-xs font-semibold tracking-tight flex items-center gap-2 shadow-sm"
+              >
+                <span>Deploy Fox on Your Repo</span>
+                <span>&rarr;</span>
+              </Link>
             </div>
           </div>
         </div>

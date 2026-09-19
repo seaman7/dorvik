@@ -617,11 +617,22 @@ export function DorvikEditorViewport() {
                 ))}
               </div>
             </div>
+
+            {/* Direct Action: Use our Fox Bug Fixer for your software! */}
+            <div className={`mt-5 pt-3 border-t ${isLight ? "border-[#E2E8F0]" : "border-[#1F2128]"}`}>
+              <a
+                href="/contact"
+                className="w-full py-2.5 px-3 rounded-lg text-xs font-mono font-bold flex items-center justify-center gap-2 transition-all shadow-md bg-gradient-to-r from-orange-500 to-amber-500 hover:from-orange-600 hover:to-amber-600 text-white active:scale-[0.99]"
+              >
+                <span>Use our Fox Bug Fixer for your software!</span>
+                <span>&rarr;</span>
+              </a>
+            </div>
           </div>
 
           {/* Micro Telemetry Footer */}
           <div
-            className={`mt-6 pt-3 border-t flex items-center justify-between text-[11px] font-mono ${
+            className={`mt-4 pt-2.5 border-t flex items-center justify-between text-[11px] font-mono ${
               isLight
                 ? "border-[#E2E8F0] text-[#64748B]"
                 : "border-[#1F2128] text-neutral-400"
