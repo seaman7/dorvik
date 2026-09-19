@@ -9,7 +9,7 @@ const OPEN_POSITIONS = [
     id: "mle-code-intelligence",
     title: "Machine Learning Engineer (Code Intelligence & LLMs)",
     department: "AI & Research",
-    location: "Remote (Global) / San Francisco / London",
+    location: "Remote (Bangladesh Based)",
     type: "Full-Time",
     experience: "Senior / Staff",
     badgeColor: "border-cyan-500/30 text-cyan-400 bg-cyan-500/10",
@@ -32,7 +32,7 @@ const OPEN_POSITIONS = [
     id: "founding-agent-engineer",
     title: "Founding AI Agent Systems Engineer",
     department: "Agent Architecture",
-    location: "Remote / Hybrid (NYC or London)",
+    location: "Remote (Bangladesh Based)",
     type: "Full-Time",
     experience: "Senior / Lead",
     badgeColor: "border-orange-500/30 text-orange-400 bg-orange-500/10",
@@ -55,7 +55,7 @@ const OPEN_POSITIONS = [
     id: "distributed-infra-engineer",
     title: "Senior Distributed Systems & Sandbox Engineer",
     department: "Infrastructure & Security",
-    location: "Remote (US / EU)",
+    location: "Remote (Bangladesh Based)",
     type: "Full-Time",
     experience: "Senior",
     badgeColor: "border-emerald-500/30 text-emerald-400 bg-emerald-500/10",
@@ -78,7 +78,7 @@ const OPEN_POSITIONS = [
     id: "forward-deployed-engineer",
     title: "Forward Deployed Engineer (Enterprise AI)",
     department: "Enterprise Solutions",
-    location: "Hybrid (New York / London) or Remote",
+    location: "Remote (Bangladesh Based)",
     type: "Full-Time",
     experience: "Mid / Senior",
     badgeColor: "border-purple-500/30 text-purple-400 bg-purple-500/10",
@@ -101,7 +101,7 @@ const OPEN_POSITIONS = [
     id: "fullstack-product-engineer",
     title: "Senior Full-Stack Product Engineer (Developer Experience)",
     department: "Product Engineering",
-    location: "Remote (Global)",
+    location: "Remote (Bangladesh Based)",
     type: "Full-Time",
     experience: "Mid / Senior",
     badgeColor: "border-sky-500/30 text-sky-400 bg-sky-500/10",
@@ -227,7 +227,7 @@ export default function CareersPage() {
 
           <div className="mt-8 flex flex-wrap items-center justify-center gap-4 text-xs font-mono text-slate-400">
             <span className="px-3 py-1.5 rounded-lg bg-[#0f0f16] border border-white/10 flex items-center gap-2">
-              <span className="text-emerald-400 font-bold">✓</span> 100% Remote-First
+              <span className="text-emerald-400 font-bold">✓</span> 100% Remote (Bangladesh Based)
             </span>
             <span className="px-3 py-1.5 rounded-lg bg-[#0f0f16] border border-white/10 flex items-center gap-2">
               <span className="text-cyan-400 font-bold">✓</span> High-Agency Small Teams
