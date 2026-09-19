@@ -2,11 +2,13 @@
 
 import React, { useState } from "react";
 import Link from "next/link";
+import Image from "next/image";
 
 const CASE_STUDIES = [
   {
     id: "metlife",
     client: "MetLife",
+    logoUrl: "/assets/clients/metlife-white.svg",
     tagline: "Enterprise Policy Modernization & Regression-Free Releases",
     industry: "Enterprise InsurTech & FinTech",
     badgeColor: "border-cyan-500/30 text-cyan-400 bg-cyan-500/10",
@@ -66,6 +68,7 @@ describe("computePolicySurplus (Synthetic)", () => {
   {
     id: "passnfly",
     client: "PassNFly",
+    logoUrl: "/assets/clients/passnfly.png",
     tagline: "Resilient Microservices for 2.5M+ Real-Time Flight Check-Ins",
     industry: "High-Throughput Global TravelTech",
     badgeColor: "border-orange-500/30 text-orange-400 bg-orange-500/10",
@@ -184,13 +187,22 @@ export function DorvikCaseStudies() {
 
         {/* Case Study Feature Container */}
         <div className="bg-[#0b0b10] border border-white/[0.08] rounded-2xl overflow-hidden p-6 sm:p-8 lg:p-10 shadow-2xl">
-          {/* Top Bar with Badges */}
+          {/* Top Bar with Badges & Official Logo */}
           <div className="flex flex-wrap items-center justify-between gap-4 pb-6 border-b border-white/[0.08]">
-            <div className="flex items-center gap-3">
+            <div className="flex items-center gap-3.5">
+              <div className="h-8 px-3 rounded-lg bg-white/[0.05] border border-white/10 flex items-center justify-center">
+                <Image
+                  src={currentStudy.logoUrl}
+                  alt={`${currentStudy.client} Official Logo`}
+                  width={currentStudy.id === "metlife" ? 115 : 135}
+                  height={24}
+                  className="h-5 w-auto object-contain"
+                />
+              </div>
               <span className={`text-xs font-mono font-bold px-3 py-1 rounded-full border ${currentStudy.badgeColor}`}>
                 {currentStudy.industry}
               </span>
-              <span className="text-xs font-mono text-slate-400 flex items-center gap-1.5">
+              <span className="text-xs font-mono text-slate-400 hidden sm:flex items-center gap-1.5">
                 <svg className="w-3.5 h-3.5 text-slate-500" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
                   <rect width="18" height="18" x="3" y="3" rx="2" />
                   <path d="m9 12 2 2 4-4" />
@@ -201,7 +213,7 @@ export function DorvikCaseStudies() {
 
             <div className="flex items-center gap-2 text-xs font-mono text-slate-400">
               <span className="w-2 h-2 rounded-full bg-emerald-400 inline-block" />
-              <span>PRODUCTION VALIDATED</span>
+              <span>OFFICIAL CLIENT ENGAGEMENT</span>
             </div>
           </div>
 
@@ -276,8 +288,14 @@ export function DorvikCaseStudies() {
                   &ldquo;{currentStudy.testimonial.quote}&rdquo;
                 </p>
                 <div className="flex items-center gap-3">
-                  <div className="w-9 h-9 rounded-full bg-cyan-500/20 border border-cyan-500/30 flex items-center justify-center font-bold text-cyan-300 text-xs font-mono">
-                    {currentStudy.client.slice(0, 2).toUpperCase()}
+                  <div className="h-9 px-2.5 rounded-lg bg-white/[0.06] border border-white/10 flex items-center justify-center flex-shrink-0">
+                    <Image
+                      src={currentStudy.logoUrl}
+                      alt={`${currentStudy.client} Official Logo`}
+                      width={90}
+                      height={20}
+                      className="h-4 w-auto object-contain"
+                    />
                   </div>
                   <div>
                     <div className="text-xs font-bold text-white">

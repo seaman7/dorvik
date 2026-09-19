@@ -2,8 +2,9 @@
 
 import React from "react";
 import Link from "next/link";
+import Image from "next/image";
 
-// High-fidelity SVG Logos for MetLife, PassNFly, and strategic technology partners
+// Authentic Official Logos for MetLife, PassNFly, and technology partners
 const CLIENTS = [
   {
     name: "MetLife",
@@ -11,19 +12,16 @@ const CLIENTS = [
     badge: "FORTUNE 50",
     description: "Enterprise policy processing & automated regression triage",
     logo: (
-      <div className="flex items-center gap-2.5">
-        {/* MetLife Iconic Interlocking Ribbon Glyph */}
-        <svg viewBox="0 0 32 32" className="w-8 h-8 flex-shrink-0" fill="none" xmlns="http://www.w3.org/2000/svg">
-          <path d="M4 8L14 26H22L12 8H4Z" fill="#00D2EF" fillOpacity="0.9" />
-          <path d="M14 8L24 26H28L18 8H14Z" fill="#2563EB" />
-          <path d="M10 8L20 26" stroke="#FFFFFF" strokeWidth="1.5" strokeLinecap="round" strokeOpacity="0.6" />
-        </svg>
-        <div className="flex flex-col text-left">
-          <span className="font-bold tracking-tight text-white text-xl font-sans leading-none">
-            Met<span className="text-[#00D2EF]">Life</span>
-          </span>
-          <span className="text-[9px] uppercase tracking-wider text-slate-400 font-mono mt-0.5">Enterprise Insurance</span>
-        </div>
+      <div className="flex items-center h-8">
+        {/* Official MetLife Logo (Official Blue/Green Ribbon + White Wordmark) */}
+        <Image
+          src="/assets/clients/metlife-white.svg"
+          alt="MetLife Official Logo"
+          width={125}
+          height={28}
+          className="h-7 w-auto object-contain"
+          priority
+        />
       </div>
     ),
   },
@@ -33,24 +31,16 @@ const CLIENTS = [
     badge: "GLOBAL TRAVEL",
     description: "Real-time airline check-in microservices & concurrency protection",
     logo: (
-      <div className="flex items-center gap-2.5">
-        {/* PassNFly Supersonic Jet / Origami Flight Glyph */}
-        <svg viewBox="0 0 32 32" className="w-8 h-8 flex-shrink-0" fill="none" xmlns="http://www.w3.org/2000/svg">
-          <path d="M3 16L29 4L18 28L14 18L3 16Z" fill="url(#passnfly-grad)" />
-          <path d="M14 18L29 4" stroke="#FFFFFF" strokeWidth="1.5" strokeLinecap="round" strokeOpacity="0.8" />
-          <defs>
-            <linearGradient id="passnfly-grad" x1="3" y1="4" x2="29" y2="28" gradientUnits="userSpaceOnUse">
-              <stop stopColor="#F97316" />
-              <stop offset="1" stopColor="#EC4899" />
-            </linearGradient>
-          </defs>
-        </svg>
-        <div className="flex flex-col text-left">
-          <span className="font-bold tracking-tight text-white text-xl font-sans leading-none">
-            Pass<span className="text-[#F97316]">N</span>Fly
-          </span>
-          <span className="text-[9px] uppercase tracking-wider text-slate-400 font-mono mt-0.5">Smart Travel Automation</span>
-        </div>
+      <div className="flex items-center h-8">
+        {/* Official PassNFly Logo from passnfly.com */}
+        <Image
+          src="/assets/clients/passnfly.png"
+          alt="PassNFly Official Logo"
+          width={145}
+          height={26}
+          className="h-6 w-auto object-contain brightness-110"
+          priority
+        />
       </div>
     ),
   },
