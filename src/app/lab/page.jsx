@@ -2,7 +2,7 @@
 
 import React from "react";
 import Link from "next/link";
-import { DorvikEditorViewport } from "@/components/home/DorvikEditorViewport";
+import { DorvikEditorViewport, DorvikPixelFox } from "@/components/home/DorvikEditorViewport";
 
 export default function DorvikLabPage() {
   return (
@@ -19,9 +19,14 @@ export default function DorvikLabPage() {
 
         {/* Lab Hero Header */}
         <div className="max-w-4xl mb-12">
-          <span className="text-[11px] font-mono text-neutral-400 uppercase tracking-widest font-semibold block mb-3">
-            DORVIK R&amp;D LAB &bull; CODE INTELLIGENCE
-          </span>
+          <div className="inline-flex items-center gap-2.5 px-3.5 py-1.5 rounded-full bg-[#12131A] border border-[#222432] mb-5 text-xs font-mono text-neutral-300 shadow-sm">
+            <div className="w-5 h-5 shrink-0">
+              <DorvikPixelFox className="w-full h-full" />
+            </div>
+            <span className="text-orange-400 font-bold">Dorvik Pixel Fox</span>
+            <span className="text-neutral-600">&bull;</span>
+            <span className="text-cyan-400">Autonomous SWE Agent v2.4</span>
+          </div>
 
           <h1 className="text-4xl sm:text-5xl lg:text-6xl font-bold tracking-tight text-white leading-tight">
             Autonomous SWE Agent: The AI Bug Fixer &amp; Code Builder

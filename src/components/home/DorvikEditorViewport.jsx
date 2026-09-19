@@ -2,7 +2,51 @@
 
 import React, { useState, useEffect } from "react";
 
-// Dorvik's 4 real-world SWE agent scenarios
+// Dorvik Pixel Fox mascot SVG (pixel-perfect, crispEdges)
+export function DorvikPixelFox({ className = "w-8 h-8" }) {
+  return (
+    <svg
+      xmlns="http://www.w3.org/2000/svg"
+      viewBox="0 0 32 32"
+      className={`${className} dorvik-fox-svg drop-shadow-[0_2px_10px_rgba(249,115,22,0.45)]`}
+      shapeRendering="crispEdges"
+      style={{ imageRendering: "pixelated" }}
+    >
+      {/* Left ear */}
+      <rect fill="#f97316" x="4" y="0" width="6" height="7" />
+      <rect fill="#fff7ed" x="5" y="1" width="3" height="4" />
+      {/* Right ear */}
+      <rect fill="#f97316" x="22" y="0" width="6" height="7" />
+      <rect fill="#fff7ed" x="23" y="1" width="3" height="4" />
+      {/* Head */}
+      <rect fill="#f97316" x="4" y="6" width="24" height="12" />
+      {/* Eye whites */}
+      <rect fill="#ffffff" x="7" y="8" width="6" height="5" />
+      <rect fill="#ffffff" x="19" y="8" width="6" height="5" />
+      {/* Cyan pupils */}
+      <rect fill="#00D2EF" x="9" y="9" width="3" height="3" />
+      <rect fill="#00D2EF" x="21" y="9" width="3" height="3" />
+      {/* Iris dots */}
+      <rect fill="#09051c" x="10" y="10" width="1" height="1" />
+      <rect fill="#09051c" x="22" y="10" width="1" height="1" />
+      {/* Muzzle */}
+      <rect fill="#fff7ed" x="7" y="14" width="7" height="5" />
+      <rect fill="#fff7ed" x="18" y="14" width="7" height="5" />
+      <rect fill="#1e1b4b" x="14" y="14" width="4" height="2" />
+      {/* Body */}
+      <rect fill="#ea580c" x="6" y="18" width="20" height="9" />
+      <rect fill="#fff7ed" x="11" y="19" width="10" height="7" />
+      {/* Tail */}
+      <rect fill="#f97316" x="24" y="20" width="8" height="8" />
+      <rect fill="#fff7ed" x="26" y="26" width="6" height="2" />
+      {/* Legs */}
+      <rect fill="#ea580c" x="8" y="28" width="5" height="4" />
+      <rect fill="#ea580c" x="19" y="28" width="5" height="4" />
+    </svg>
+  );
+}
+
+// Dorvik's 3 real-world SWE agent scenarios
 const SCENARIOS = [
   {
     id: "state-machine",
@@ -40,7 +84,7 @@ const SCENARIOS = [
     edits: [
       {
         targetLineIndex: 6,
-        thought: "Injecting deterministic StateMachine configuration & state schema...",
+        thought: "Injecting deterministic StateMachine schema & transition guards...",
         statusText: "AST Synthesis: Binding XState machine transitions...",
         replacementLines: [
           { num: 7, text: "+   private machine = createMachine({", type: "add" },
@@ -52,7 +96,7 @@ const SCENARIOS = [
       },
       {
         targetLineIndex: 16,
-        thought: "Replacing untyped index lookup with state machine transition guard...",
+        thought: "Replacing untyped dictionary lookup with state machine transition...",
         statusText: "Control Flow: Injecting typed transition telemetry...",
         replacementLines: [
           { num: 17, text: "+     await telemetry.track('step_advance', { uid: this.user.id });", type: "add" },
@@ -61,7 +105,7 @@ const SCENARIOS = [
       },
       {
         targetLineIndex: 22,
-        thought: "Purging synchronous window.alert to unblock main browser thread...",
+        thought: "Purging synchronous alert() to eliminate main thread blocking...",
         statusText: "Clean-up: Replacing legacy alert with NotificationBroker...",
         replacementLines: [
           { num: 23, text: "-     alert('Welcome ' + this.user.name);", type: "delete" },
@@ -155,7 +199,7 @@ const SCENARIOS = [
     edits: [
       {
         targetLineIndex: 8,
-        thought: "Detecting unclosed socket connection causing browser memory exhaustion...",
+        thought: "Detecting unclosed socket connection causing browser memory leak...",
         statusText: "AST Inspection: Synthesizing return cleanup function...",
         replacementLines: [
           { num: 9, text: "+   return () => {", type: "add" },
@@ -178,9 +222,10 @@ export function DorvikEditorViewport() {
   const [selectedIdx, setSelectedIdx] = useState(0);
   const [currentLines, setCurrentLines] = useState(SCENARIOS[0].initialLines);
   const [activeStep, setActiveStep] = useState(0);
+  const [activeLineNum, setActiveLineNum] = useState(1);
+  const [agentState, setAgentState] = useState("thinking"); // 'thinking' | 'editing' | 'idle'
   const [thought, setThought] = useState("");
-  const [statusMsg, setStatusMsg] = useState("Agent Standby");
-  const [activeTab, setActiveTab] = useState("editor"); // 'editor' | 'terminal'
+  const [statusMsg, setStatusMsg] = useState("Dorvik Fox: Parsing repository AST...");
 
   const scenario = SCENARIOS[selectedIdx];
 
@@ -188,8 +233,10 @@ export function DorvikEditorViewport() {
     let isMounted = true;
     setCurrentLines(scenario.initialLines);
     setActiveStep(0);
+    setActiveLineNum(1);
+    setAgentState("thinking");
     setThought("Analyzing repository abstract syntax tree...");
-    setStatusMsg("Dorvik Agent: Parsing AST...");
+    setStatusMsg("Dorvik Fox: Parsing AST...");
 
     const runEdits = async () => {
       await new Promise((r) => setTimeout(r, 600));
@@ -200,22 +247,26 @@ export function DorvikEditorViewport() {
         if (!isMounted) return;
 
         setActiveStep(i + 1);
+        setActiveLineNum(edit.targetLineIndex);
+        setAgentState("thinking");
         setThought(edit.thought);
         setStatusMsg(edit.statusText);
 
         await new Promise((r) => setTimeout(r, 1100));
         if (!isMounted) return;
 
+        setAgentState("editing");
         setCurrentLines((prev) => {
           const next = [...prev];
           next.splice(edit.targetLineIndex, 1, ...edit.replacementLines);
           return next.map((l, idx) => ({ ...l, num: idx + 1 }));
         });
 
-        await new Promise((r) => setTimeout(r, 800));
+        await new Promise((r) => setTimeout(r, 900));
         if (!isMounted) return;
       }
 
+      setAgentState("idle");
       setThought("");
       setStatusMsg("✓ Verified: Patch compiles cleanly in isolated MicroVM container");
     };
@@ -226,6 +277,9 @@ export function DorvikEditorViewport() {
       isMounted = false;
     };
   }, [selectedIdx]);
+
+  // Calculate character vertical position based on active line (24px per line + 16px top offset)
+  const characterY = Math.max(12, 16 + activeLineNum * 24);
 
   return (
     <div className="w-full bg-[#0B0C10] border border-[#1F2128] rounded-xl shadow-2xl overflow-hidden font-sans">
@@ -241,11 +295,14 @@ export function DorvikEditorViewport() {
 
           <div className="h-4 w-[1px] bg-[#22242D] mx-1" />
 
-          {/* Active File Tab */}
-          <div className="flex items-center gap-2 px-3 py-1 rounded bg-[#16181F] border border-[#262833] text-xs font-mono text-white">
+          {/* Active File Tab with Dorvik Fox emblem */}
+          <div className="flex items-center gap-2 px-2.5 py-1 rounded bg-[#16181F] border border-[#262833] text-xs font-mono text-white">
+            <div className="w-4 h-4 shrink-0">
+              <DorvikPixelFox className="w-full h-full" />
+            </div>
             <span className="text-cyan-400 font-bold">TS</span>
             <span>{scenario.file}</span>
-            <span className="w-1.5 h-1.5 rounded-full bg-cyan-400" />
+            <span className="w-1.5 h-1.5 rounded-full bg-cyan-400 animate-pulse" />
           </div>
         </div>
 
@@ -253,65 +310,120 @@ export function DorvikEditorViewport() {
         <div className="flex items-center gap-3 text-xs font-mono text-neutral-400">
           <span className="hidden sm:inline-flex items-center gap-1.5 text-emerald-400">
             <span className="w-1.5 h-1.5 rounded-full bg-emerald-400" />
-            <span>Sandbox Active</span>
+            <span>MicroVM Active</span>
           </span>
           <span className="text-neutral-600 hidden sm:inline">|</span>
-          <span className="text-neutral-400">Dorvik SWE Agent v2.4</span>
+          <span className="text-neutral-300 font-semibold flex items-center gap-1.5">
+            <span className="text-orange-400">Dorvik Pixel Fox</span>
+            <span className="text-cyan-400 text-[10px] px-1.5 py-0.5 rounded bg-cyan-950/60 border border-cyan-500/30">v2.4</span>
+          </span>
         </div>
       </div>
 
       {/* Main Grid: Code Editor on Left, Agent Diagnostics on Right */}
-      <div className="grid grid-cols-1 lg:grid-cols-12 min-h-[500px]">
+      <div className="grid grid-cols-1 lg:grid-cols-12 min-h-[520px]">
         {/* Code Diff Canvas (Left 8 cols) */}
-        <div className="lg:col-span-8 bg-[#090A0E] p-4 sm:p-6 border-b lg:border-b-0 lg:border-r border-[#1F2128] flex flex-col justify-between">
-          <div>
-            {/* Live Agent Reasoning Toast */}
-            {thought && (
-              <div className="mb-4 p-2.5 rounded-lg bg-[#14161F] border border-cyan-500/30 flex items-center justify-between text-xs font-mono text-cyan-300 shadow-lg">
-                <div className="flex items-center gap-2">
-                  <span className="font-bold text-white uppercase text-[10px] bg-cyan-500/20 px-1.5 py-0.5 rounded">
-                    Step {activeStep}/{scenario.edits.length}
-                  </span>
-                  <span>{thought}</span>
-                </div>
-                <span className="text-[10px] text-neutral-400">Autonomous AST Transform</span>
-              </div>
-            )}
-
-            {/* Monaco-style Code Diff Canvas */}
-            <div className="font-mono text-xs sm:text-[13px] leading-6 overflow-x-auto select-text">
-              {currentLines.map((line) => (
+        <div className="lg:col-span-8 bg-[#090A0E] p-4 sm:p-6 border-b lg:border-b-0 lg:border-r border-[#1F2128] flex flex-col justify-between relative overflow-hidden">
+          <div className="relative min-h-[440px]">
+            {/* DORVIK PIXEL FOX MASCOT — Smoothly glides along lines in the left gutter */}
+            <div
+              className="absolute left-1 sm:left-2 z-30 pointer-events-none transition-all duration-700 ease-out flex items-center"
+              style={{
+                top: `${characterY}px`,
+              }}
+            >
+              <div className="relative flex items-center">
+                {/* Fox Character Avatar */}
                 <div
-                  key={`${line.num}-${line.text}`}
-                  className={`flex items-center px-2 py-0.5 rounded-sm transition-colors ${
-                    line.type === "add"
-                      ? "bg-emerald-950/30 text-emerald-300 border-l-2 border-emerald-400"
-                      : line.type === "delete"
-                      ? "bg-red-950/30 text-red-400 border-l-2 border-red-500 line-through opacity-70"
-                      : line.type === "comment"
-                      ? "text-neutral-500 italic"
-                      : "text-neutral-300 hover:bg-white/[0.02]"
+                  className={`w-9 h-9 sm:w-11 sm:h-11 shrink-0 ${
+                    agentState === "thinking"
+                      ? "animate-agent-thinking scale-110"
+                      : agentState === "editing"
+                      ? "animate-pulse scale-105"
+                      : "animate-agent-idle"
                   }`}
                 >
-                  <span className="w-8 shrink-0 text-right pr-4 text-neutral-600 select-none text-[11px]">
-                    {line.num}
-                  </span>
-                  <span className="whitespace-pre">{line.text}</span>
+                  <DorvikPixelFox className="w-full h-full" />
                 </div>
-              ))}
+
+                {/* Floating Thought / Reasoning Bubble */}
+                {thought && (
+                  <div className="ml-2.5 px-3 py-1.5 rounded-lg bg-[#141622] border border-cyan-500/50 shadow-2xl text-xs font-mono text-cyan-300 flex items-center gap-2 whitespace-nowrap z-40 backdrop-blur-md">
+                    <span className="w-2 h-2 rounded-full bg-cyan-400 animate-ping shrink-0" />
+                    <span className="font-semibold text-white">{thought}</span>
+                    <span className="text-[10px] text-cyan-400/80 border-l border-cyan-500/30 pl-2">
+                      Step {activeStep}/{scenario.edits.length}
+                    </span>
+                  </div>
+                )}
+              </div>
+            </div>
+
+            {/* Monaco-style Code Diff Canvas with Gutter for the Fox */}
+            <div className="font-mono text-xs sm:text-[13px] leading-6 overflow-x-auto select-text pl-12 sm:pl-14">
+              {currentLines.map((line, idx) => {
+                const isActive = activeLineNum === idx && agentState !== "idle";
+                return (
+                  <div
+                    key={`${line.num}-${line.text}`}
+                    className={`flex items-center px-2 py-0.5 rounded-sm transition-colors ${
+                      isActive
+                        ? "bg-cyan-950/30 border-l-2 border-cyan-400"
+                        : line.type === "add"
+                        ? "bg-emerald-950/30 text-emerald-300 border-l-2 border-emerald-400"
+                        : line.type === "delete"
+                        ? "bg-red-950/30 text-red-400 border-l-2 border-red-500 line-through opacity-70"
+                        : line.type === "comment"
+                        ? "text-neutral-500 italic"
+                        : "text-neutral-300 hover:bg-white/[0.02]"
+                    }`}
+                  >
+                    <span className="w-8 shrink-0 text-right pr-4 text-neutral-600 select-none text-[11px]">
+                      {line.num}
+                    </span>
+                    <span className="whitespace-pre">{line.text}</span>
+                  </div>
+                );
+              })}
             </div>
           </div>
 
           {/* Bottom Status Ribbon */}
-          <div className="mt-6 pt-3 border-t border-[#1C1D24] flex items-center justify-between text-xs font-mono text-neutral-400">
-            <span className="truncate">{statusMsg}</span>
-            <span className="shrink-0 text-neutral-500">UTF-8 &bull; TypeScript</span>
+          <div className="mt-4 pt-3 border-t border-[#1C1D24] flex items-center justify-between text-xs font-mono text-neutral-400">
+            <div className="flex items-center gap-2 truncate">
+              <span className="w-2 h-2 rounded-full bg-cyan-400" />
+              <span className="truncate text-neutral-300">{statusMsg}</span>
+            </div>
+            <span className="shrink-0 text-neutral-500 hidden sm:inline">UTF-8 &bull; TypeScript AST</span>
           </div>
         </div>
 
-        {/* Right Side: Scenario Selector & Live Agent Execution Trace (4 cols) */}
+        {/* Right Side: Fox Agent Card, Scenario Selector & Live Agent Execution Trace */}
         <div className="lg:col-span-4 bg-[#0D0E13] p-5 flex flex-col justify-between">
           <div>
+            {/* Dorvik Pixel Fox Agent Engine Badge */}
+            <div className="p-3.5 mb-5 rounded-xl bg-[#12131C] border border-[#222534] flex items-center gap-3.5 shadow-lg">
+              <div className="w-12 h-12 p-1.5 rounded-xl bg-gradient-to-br from-orange-500/20 to-cyan-500/10 border border-orange-500/40 shrink-0 flex items-center justify-center shadow-inner">
+                <DorvikPixelFox className="w-9 h-9" />
+              </div>
+              <div className="min-w-0 flex-1 font-mono">
+                <div className="flex items-center justify-between">
+                  <span className="text-xs font-bold text-white tracking-wide">Dorvik Pixel Fox</span>
+                  <span className="text-[10px] text-cyan-400 px-1.5 py-0.5 rounded bg-cyan-950/60 border border-cyan-500/30">SWE Agent</span>
+                </div>
+                <div className="flex items-center gap-1.5 mt-1 text-[11px] text-neutral-400">
+                  <span className="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-pulse" />
+                  <span className="truncate">
+                    {agentState === "editing"
+                      ? "Patching AST node..."
+                      : agentState === "thinking"
+                      ? "Traversing AST graph..."
+                      : "Verified in MicroVM"}
+                  </span>
+                </div>
+              </div>
+            </div>
+
             <div className="text-[11px] font-mono text-neutral-400 uppercase tracking-wider font-semibold mb-3">
               Select Bug Scenario
             </div>
