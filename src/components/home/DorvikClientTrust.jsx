@@ -135,22 +135,17 @@ export function DorvikClientTrust() {
 
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         {/* Section Tag & Headline */}
-        <div className="text-center max-w-3xl mx-auto mb-14">
-          <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-emerald-500/10 border border-emerald-500/20 text-emerald-400 text-xs font-mono mb-4 tracking-wider uppercase">
-            <span className="w-2 h-2 rounded-full bg-emerald-400 animate-ping inline-block" />
-            <span>Proven In High-Stakes Production</span>
-          </div>
+        <div className="max-w-3xl mb-14">
+          <span className="text-[11px] font-mono text-neutral-400 uppercase tracking-widest font-semibold block mb-2">
+            PRODUCTION TRACK RECORD
+          </span>
 
-          <h2 className="text-3xl sm:text-4xl lg:text-5xl font-black tracking-tight text-white leading-tight">
-            Trusted by Engineering Leaders at{" "}
-            <span className="bg-gradient-to-r from-cyan-400 via-white to-orange-400 bg-clip-text text-transparent">
-              MetLife &amp; PassNFly
-            </span>
+          <h2 className="text-3xl sm:text-4xl font-bold tracking-tight text-white leading-tight">
+            Trusted across mission-critical enterprise systems.
           </h2>
 
-          <p className="mt-4 text-slate-400 text-base sm:text-lg leading-relaxed font-sans">
-            From Fortune 50 enterprise core policy platforms to high-concurrency real-time travel engines, 
-            engineering organizations deploy Dorvik to safeguard uptime and eliminate sprint bug fatigue.
+          <p className="mt-3 text-sm sm:text-base text-neutral-400 leading-relaxed font-sans">
+            From Fortune 50 enterprise policy platforms at MetLife to high-concurrency real-time travel engines at PassNFly, Dorvik engineers scalable, zero-defect software.
           </p>
         </div>
 

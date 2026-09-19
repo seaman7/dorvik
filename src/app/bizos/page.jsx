@@ -98,10 +98,9 @@ export default function BizOSPage() {
 
         {/* Hero Section */}
         <div className="max-w-4xl mb-16">
-          <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-neutral-900 border border-neutral-800 text-neutral-300 text-xs font-mono mb-4 shadow-sm">
-            <span className="w-1.5 h-1.5 rounded-full bg-cyan-400 animate-pulse" />
-            <span>AI &amp; BLOCKCHAIN-POWERED BUSINESS OPERATING SYSTEM</span>
-          </div>
+          <span className="text-[11px] font-mono text-neutral-400 uppercase tracking-widest font-semibold block mb-3">
+            BIZOS ARCHITECTURE
+          </span>
 
           <h1 className="text-3xl sm:text-5xl lg:text-6xl font-bold tracking-tight text-white leading-tight">
             Build, Automate, and Operate Your Business with AI &amp; Blockchain.

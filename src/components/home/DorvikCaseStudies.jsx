@@ -148,23 +148,19 @@ export function DorvikCaseStudies() {
         {/* Section Header */}
         <div className="flex flex-col md:flex-row md:items-end justify-between gap-6 mb-12">
           <div className="max-w-2xl">
-            <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-cyan-500/10 border border-cyan-500/20 text-cyan-400 text-xs font-mono mb-4 tracking-wider uppercase">
-              <span className="w-1.5 h-1.5 rounded-full bg-cyan-400" />
-              <span>Enterprise Case Studies</span>
-            </div>
-            <h2 className="text-3xl sm:text-4xl lg:text-5xl font-black tracking-tight text-white leading-tight">
-              Real Impact for{" "}
-              <span className="bg-gradient-to-r from-cyan-400 to-orange-400 bg-clip-text text-transparent">
-                MetLife & PassNFly
-              </span>
+            <span className="text-[11px] font-mono text-neutral-400 uppercase tracking-widest font-semibold block mb-2">
+              CASE STUDIES
+            </span>
+            <h2 className="text-3xl sm:text-4xl font-bold tracking-tight text-white leading-tight">
+              Production engineering at scale: MetLife &amp; PassNFly
             </h2>
-            <p className="mt-3 text-slate-400 text-base leading-relaxed">
-              Explore how global enterprise organizations deploy Dorvik&apos;s autonomous engineering agent to eliminate production outages and protect millions of user transactions.
+            <p className="mt-3 text-neutral-400 text-sm sm:text-base leading-relaxed">
+              Explore how global enterprise organizations deploy Dorvik to safeguard mission-critical platforms, eliminate regressions, and protect millions of customer transactions.
             </p>
           </div>
 
           {/* Interactive Client Selector Tabs */}
-          <div className="flex items-center gap-2 p-1.5 rounded-xl bg-[#101016] border border-white/10 self-start md:self-auto">
+          <div className="flex items-center gap-2 p-1.5 rounded-lg bg-[#101016] border border-[#202028] self-start md:self-auto">
             {CASE_STUDIES.map((study) => (
               <button
                 key={study.id}
@@ -172,13 +168,13 @@ export function DorvikCaseStudies() {
                   setActiveTab(study.id);
                   setCodeMode("fixed");
                 }}
-                className={`px-5 py-2.5 rounded-lg text-sm font-bold tracking-tight transition-all duration-200 flex items-center gap-2.5 ${
+                className={`px-4 py-2 rounded-md text-xs font-semibold tracking-tight transition-all duration-200 flex items-center gap-2 ${
                   activeTab === study.id
-                    ? "bg-[#181824] text-white border border-cyan-500/40 shadow-[0_0_20px_rgba(0,210,239,0.15)]"
-                    : "text-slate-400 hover:text-white hover:bg-white/[0.04]"
+                    ? "bg-[#1e1e28] text-white border border-[#353545]"
+                    : "text-neutral-400 hover:text-white hover:bg-white/[0.04]"
                 }`}
               >
-                <span className={`w-2 h-2 rounded-full ${activeTab === study.id ? "bg-cyan-400 animate-pulse" : "bg-slate-600"}`} />
+                <span className={`w-1.5 h-1.5 rounded-full ${activeTab === study.id ? "bg-cyan-400" : "bg-neutral-600"}`} />
                 <span>{study.client}</span>
               </button>
             ))}

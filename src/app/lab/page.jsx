@@ -19,10 +19,9 @@ export default function DorvikLabPage() {
 
         {/* Lab Hero Header */}
         <div className="max-w-4xl mb-12">
-          <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-neutral-900 border border-neutral-800 text-neutral-300 text-xs font-mono mb-4 shadow-sm">
-            <span className="w-2 h-2 rounded-full bg-cyan-400 animate-pulse" />
-            <span>DORVIK R&amp;D LAB &bull; AUTONOMOUS AI BUG FIXER &amp; CODE AGENT</span>
-          </div>
+          <span className="text-[11px] font-mono text-neutral-400 uppercase tracking-widest font-semibold block mb-3">
+            DORVIK R&amp;D LAB &bull; CODE INTELLIGENCE
+          </span>
 
           <h1 className="text-4xl sm:text-5xl lg:text-6xl font-bold tracking-tight text-white leading-tight">
             Autonomous SWE Agent: The AI Bug Fixer &amp; Code Builder

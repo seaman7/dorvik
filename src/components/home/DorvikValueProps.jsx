@@ -3,109 +3,120 @@
 import React from "react";
 import Link from "next/link";
 
-const VALUE_PILLARS = [
+const CAPABILITY_MODULES = [
   {
-    step: "01",
-    title: "Multi-Rail Billing & Invoicing",
-    subtitle: "Local BDT, Global Fiat, & Blockchain Rails",
+    category: "Financial Engine",
+    title: "Multi-Rail Invoicing & Settlement",
     description:
-      "Generate clean invoices in seconds. Bangladeshi customers pay via bKash and Nagad; international clients pay via Credit Card or instant USDT on Polygon with zero bank wire delay.",
-    tags: ["bKash & Nagad QR", "Stripe Cards", "Polygon USDT Escrow", "PDF Receipts"],
+      "A unified billing infrastructure that natively accepts bKash, Nagad, and credit cards for local buyers, while providing Polygon & Base smart contract escrow for cross-border clients without SWIFT wire delays.",
+    specs: [
+      { label: "Local Settlement", value: "Instant via Merchant Webhook" },
+      { label: "Blockchain Rail", value: "Polygon / Base (USDT & USDC)" },
+      { label: "Compliance", value: "Automated VAT & Digital PDF Memos" },
+    ],
   },
   {
-    step: "02",
-    title: "Multi-Branch Inventory & POS",
-    subtitle: "Real-time stock across every shop & warehouse",
+    category: "Store & Warehouse",
+    title: "Distributed Multi-Branch Inventory",
     description:
-      "Track every unit in real-time. Transfer products between branches, scan barcodes at the cash counter, and get instant automated alerts before any popular item runs out.",
-    tags: ["Barcode POS", "Inter-branch Transfers", "Low-Stock Reorder", "Dead-Stock Alert"],
+      "Real-time stock synchronization across all physical retail stores, central godowns, and online storefronts. Eliminates stockouts with automated inter-branch transfer manifests and barcode checkout.",
+    specs: [
+      { label: "POS Engine", value: "Sub-second barcode scan & thermal print" },
+      { label: "Stock Balancing", value: "Automated inter-outlet transfer notes" },
+      { label: "Reorder Triggers", value: "Predictive minimum threshold alerts" },
+    ],
   },
   {
-    step: "03",
-    title: "Automated WhatsApp CRM",
-    subtitle: "Turn one-time buyers into repeat customers",
+    category: "Customer Engagement",
+    title: "Automated WhatsApp Operations",
     description:
-      "Send digital invoices, order tracking updates, and friendly payment reminders straight to your customer's WhatsApp automatically—without manual typing.",
-    tags: ["WhatsApp Invoices", "Payment Chaser", "Customer History", "VIP Segments"],
+      "Direct integration with WhatsApp Business API. Automatically sends branded PDF invoices upon purchase, dispatches tracking details, and executes polite, scheduled payment reminders for outstanding credit.",
+    specs: [
+      { label: "Delivery Speed", value: "Instant dispatch upon POS transaction" },
+      { label: "Payment Links", value: "1-click dynamic bKash & card URL" },
+      { label: "Credit Control", value: "Automated aging-balance reminder flows" },
+    ],
   },
   {
-    step: "04",
-    title: "AI Business Assistant",
-    subtitle: "Ask questions, get instant business answers",
+    category: "Executive Intelligence",
+    title: "Conversational Business Analytics",
     description:
-      "Ask in plain English or Bengali: 'Which branch made the highest profit this week?' or 'Which product is not selling?' Get instant charts and actionable answers.",
-    tags: ["Natural Language Queries", "Profit Margins", "Daily Digest", "Decision Support"],
+      "Query your entire transactional database in plain Bengali or English. Ask about branch profitability, sluggish inventory, or customer acquisition costs without building complex SQL queries.",
+    specs: [
+      { label: "Data Source", value: "Real-time PostgreSQL JSONB records" },
+      { label: "Reporting", value: "Automated daily P&L and cash-flow digest" },
+      { label: "Insights", value: "Branch margin & dead-stock alerts" },
+    ],
   },
 ];
 
 export function DorvikValueProps() {
   return (
-    <section className="w-full bg-[#08080A] text-neutral-200 py-20 border-b border-neutral-800/80 font-sans">
+    <section className="w-full bg-[#080809] text-neutral-200 py-24 border-b border-[#1b1b20] font-sans">
       <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="max-w-2xl mb-16">
-          <span className="text-xs font-mono text-cyan-400 uppercase tracking-wider font-semibold">
-            WHAT YOU GET &bull; CORE CAPABILITIES
+        <div className="max-w-3xl mb-14">
+          <span className="text-[11px] font-mono text-neutral-400 uppercase tracking-widest font-semibold block mb-2">
+            CORE CAPABILITIES
           </span>
-          <h2 className="text-3xl sm:text-4xl font-bold text-white mt-2 tracking-tight">
-            Four Core Tools. One Clean System.
+          <h2 className="text-3xl sm:text-4xl font-bold tracking-tight text-white">
+            Engineered as a cohesive operating system.
           </h2>
-          <p className="text-neutral-400 text-sm sm:text-base mt-3 leading-relaxed">
-            Everything your business needs to sell, fulfill, collect payments, and grow—without the bloat.
+          <p className="mt-3 text-sm sm:text-base text-neutral-400 leading-relaxed max-w-2xl">
+            Each module functions independently or connects seamlessly to form an end-to-end commerce and financial backbone for your enterprise.
           </p>
         </div>
 
         <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-          {VALUE_PILLARS.map((pillar) => (
+          {CAPABILITY_MODULES.map((mod, idx) => (
             <div
-              key={pillar.step}
-              className="p-6 sm:p-8 rounded-2xl bg-[#0C0C12] border border-neutral-800 hover:border-neutral-700 transition-colors flex flex-col justify-between"
+              key={idx}
+              className="p-6 sm:p-8 rounded-xl bg-[#0C0C10] border border-[#1e1e26] hover:border-[#2b2b36] transition-colors flex flex-col justify-between"
             >
               <div>
                 <div className="flex items-center justify-between mb-4">
-                  <span className="text-xs font-mono font-bold text-cyan-400 bg-cyan-500/10 px-2.5 py-1 rounded border border-cyan-500/20">
-                    {pillar.step}
+                  <span className="text-[11px] font-mono font-medium text-neutral-400 uppercase tracking-wider">
+                    {mod.category}
                   </span>
-                  <span className="text-xs font-mono text-neutral-500">
-                    BizOS Module
+                  <span className="text-[10px] font-mono text-neutral-500">
+                    Module 0{idx + 1}
                   </span>
                 </div>
 
-                <h3 className="text-xl font-bold text-white mb-1">
-                  {pillar.title}
+                <h3 className="text-lg font-bold text-white mb-2">
+                  {mod.title}
                 </h3>
-                <p className="text-xs text-neutral-400 font-medium mb-3">
-                  {pillar.subtitle}
-                </p>
-                <p className="text-xs sm:text-sm text-neutral-300 leading-relaxed mb-6">
-                  {pillar.description}
+                <p className="text-xs sm:text-sm text-neutral-400 leading-relaxed mb-6">
+                  {mod.description}
                 </p>
               </div>
 
-              <div className="flex flex-wrap gap-1.5 pt-4 border-t border-neutral-800/80">
-                {pillar.tags.map((tag, idx) => (
-                  <span
-                    key={idx}
-                    className="text-[11px] font-mono px-2 py-0.5 rounded bg-black/60 border border-neutral-800 text-neutral-400"
-                  >
-                    {tag}
-                  </span>
+              {/* Technical Spec List */}
+              <div className="pt-4 border-t border-[#1a1a22] space-y-2">
+                {mod.specs.map((spec, sIdx) => (
+                  <div key={sIdx} className="flex items-center justify-between text-xs">
+                    <span className="text-neutral-500 font-mono text-[11px]">{spec.label}</span>
+                    <span className="text-neutral-300 font-medium">{spec.value}</span>
+                  </div>
                 ))}
               </div>
             </div>
           ))}
         </div>
 
-        {/* CTA Strip */}
-        <div className="mt-12 bg-neutral-900/40 border border-neutral-800 rounded-2xl p-6 flex flex-col sm:flex-row items-center justify-between gap-4">
-          <div>
-            <h4 className="text-sm font-bold text-white">Need a custom workflow for your business?</h4>
-            <p className="text-xs text-neutral-400 mt-0.5">BizOS molds to your exact workflow using natural language prompts.</p>
+        {/* Technical Callout Strip */}
+        <div className="mt-10 p-5 rounded-xl bg-[#0E0E14] border border-[#1e1e26] flex flex-col sm:flex-row items-center justify-between gap-4">
+          <div className="flex items-center gap-3">
+            <span className="text-xs font-mono text-neutral-400">Custom Integration:</span>
+            <span className="text-xs text-neutral-300">
+              Need custom ERP connectors or proprietary accounting APIs? Dorvik engineers custom adapters for enterprise setups.
+            </span>
           </div>
+
           <Link
-            href="/bizos"
-            className="px-5 py-2.5 rounded-xl bg-white text-black hover:bg-neutral-200 font-semibold text-xs transition-colors shrink-0"
+            href="/contact"
+            className="text-xs font-mono text-white hover:underline shrink-0"
           >
-            Explore Interactive Demo &rarr;
+            Inquire with Engineering &rarr;
           </Link>
         </div>
       </div>

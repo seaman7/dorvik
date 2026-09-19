@@ -3,124 +3,91 @@
 import React from "react";
 import Link from "next/link";
 
+const COMPARISON_ROWS = [
+  {
+    feature: "Inventory & Outlets",
+    legacy: "Separate Excel sheets per branch. Manual stock counting at end-of-day. Frequent overselling.",
+    bizos: "Unified real-time ledger. Automatic branch stock transfer notes and low-stock reorder triggers.",
+  },
+  {
+    feature: "Local Payment Reconciliation",
+    legacy: "Cashiers check personal phones for bKash SMS. Manual transaction ID entry prone to fraud.",
+    bizos: "Direct merchant webhook API. Dynamic QR on counter POS automatically marks invoices as PAID.",
+  },
+  {
+    feature: "Unpaid Invoices & Overdue Cash",
+    legacy: "Manual WhatsApp calls and awkward follow-ups. Invoices easily forgotten or delayed for weeks.",
+    bizos: "Scheduled polite WhatsApp bot dispatching 1-click payment links directly to client phones.",
+  },
+  {
+    feature: "International & Export Billing",
+    legacy: "3–5 business day SWIFT bank wires. 4% to 7% eaten by intermediary banks and forex margins.",
+    bizos: "Polygon / Base smart contract escrow. Settle in USDT/USDC within seconds at sub-cent gas fees.",
+  },
+  {
+    feature: "Software Cost & Overhead",
+    legacy: "$120–$300/month across 4 separate software subscriptions that don't speak to each other.",
+    bizos: "Single unified workspace tailored to your business model with zero redundant subscriptions.",
+  },
+];
+
 export function DorvikProblemSolution() {
   return (
-    <section className="w-full bg-[#08080A] text-neutral-200 py-20 border-b border-neutral-800/80 font-sans">
+    <section className="w-full bg-[#080809] text-neutral-200 py-24 border-b border-[#1b1b20] font-sans">
       <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Section Header */}
-        <div className="text-center max-w-2xl mx-auto mb-16">
-          <span className="text-xs font-mono text-cyan-400 uppercase tracking-wider font-semibold">
-            WHY BIZOS? &bull; THE DIFFERENCE
+        <div className="max-w-3xl mb-14">
+          <span className="text-[11px] font-mono text-neutral-400 uppercase tracking-widest font-semibold block mb-2">
+            OPERATIONAL ARCHITECTURE
           </span>
-          <h2 className="text-3xl sm:text-4xl font-bold text-white mt-2 tracking-tight">
-            Stop Juggling 5 Disconnected Tools.
+          <h2 className="text-3xl sm:text-4xl font-bold tracking-tight text-white">
+            Why traditional business software fails growing companies.
           </h2>
-          <p className="text-neutral-400 text-sm sm:text-base mt-3 leading-relaxed">
-            Most businesses lose hours every day switching between messy spreadsheets, separate billing apps, and manual WhatsApp follow-ups. BizOS fixes this.
+          <p className="mt-3 text-sm sm:text-base text-neutral-400 leading-relaxed max-w-2xl">
+            Legacy tools are built for Western enterprises with credit-card heavy workflows. BizOS is engineered from day one for modern multi-channel retail, local mobile banking, and cross-border trade.
           </p>
         </div>
 
-        {/* Side-by-Side Comparison */}
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-          {/* The Old Painful Way */}
-          <div className="p-6 sm:p-8 rounded-2xl bg-red-950/10 border border-red-900/30 relative">
-            <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-red-500/10 border border-red-500/20 text-red-400 text-xs font-mono mb-4">
-              <span>✕ The Old Fragmented Way</span>
-            </div>
-
-            <h3 className="text-xl font-bold text-white mb-4">
-              Disconnected, Slow, &amp; Expensive
-            </h3>
-
-            <ul className="space-y-4 text-xs sm:text-sm text-neutral-300">
-              <li className="flex items-start gap-3">
-                <span className="text-red-400 font-bold shrink-0 mt-0.5">✕</span>
-                <div>
-                  <strong className="text-white block">Multiple costly subscriptions:</strong>
-                  Paying for separate POS, CRM, accounting, and inventory tools that don&apos;t sync.
-                </div>
-              </li>
-
-              <li className="flex items-start gap-3">
-                <span className="text-red-400 font-bold shrink-0 mt-0.5">✕</span>
-                <div>
-                  <strong className="text-white block">Manual bKash payment verification:</strong>
-                  Staff waste time checking personal phones for transaction IDs and missing payments.
-                </div>
-              </li>
-
-              <li className="flex items-start gap-3">
-                <span className="text-red-400 font-bold shrink-0 mt-0.5">✕</span>
-                <div>
-                  <strong className="text-white block">Unpaid invoices fall through the cracks:</strong>
-                  No automated system to chase late client payments without awkward phone calls.
-                </div>
-              </li>
-
-              <li className="flex items-start gap-3">
-                <span className="text-red-400 font-bold shrink-0 mt-0.5">✕</span>
-                <div>
-                  <strong className="text-white block">Cross-border payment friction:</strong>
-                  Waiting 5 business days for bank SWIFT wires with 5% to 7% eaten in fees and forex.
-                </div>
-              </li>
-            </ul>
+        {/* Clean Comparative Table (Staff Designer / Linear Style) */}
+        <div className="bg-[#0C0C10] border border-[#1e1e26] rounded-xl overflow-hidden shadow-xl">
+          <div className="grid grid-cols-12 bg-[#101015] border-b border-[#1e1e26] py-3.5 px-6 text-[11px] font-mono uppercase tracking-wider text-neutral-400">
+            <div className="col-span-12 sm:col-span-3 font-semibold text-neutral-300">Operational Area</div>
+            <div className="hidden sm:block sm:col-span-4 text-neutral-400">Fragmented Legacy Tools</div>
+            <div className="hidden sm:block sm:col-span-5 text-white font-semibold">BizOS Unified Architecture</div>
           </div>
 
-          {/* The BizOS Solution */}
-          <div className="p-6 sm:p-8 rounded-2xl bg-emerald-950/10 border border-emerald-500/30 relative shadow-xl">
-            <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-emerald-500/10 border border-emerald-500/30 text-emerald-400 text-xs font-mono mb-4">
-              <span>✓ The BizOS Solution</span>
-            </div>
-
-            <h3 className="text-xl font-bold text-white mb-4">
-              Everything in One Simple Operating System
-            </h3>
-
-            <ul className="space-y-4 text-xs sm:text-sm text-neutral-300">
-              <li className="flex items-start gap-3">
-                <span className="text-emerald-400 font-bold shrink-0 mt-0.5">✓</span>
-                <div>
-                  <strong className="text-white block">One customized workspace:</strong>
-                  Inventory, sales, customer CRM, and billing live together—tailored to your exact business.
+          <div className="divide-y divide-[#171720]">
+            {COMPARISON_ROWS.map((row, idx) => (
+              <div
+                key={idx}
+                className="grid grid-cols-12 py-5 px-6 gap-4 sm:gap-6 hover:bg-[#0f0f14] transition-colors text-xs"
+              >
+                <div className="col-span-12 sm:col-span-3 font-medium text-white flex items-center">
+                  <span>{row.feature}</span>
                 </div>
-              </li>
 
-              <li className="flex items-start gap-3">
-                <span className="text-emerald-400 font-bold shrink-0 mt-0.5">✓</span>
-                <div>
-                  <strong className="text-white block">Automatic payment matching:</strong>
-                  Customers pay via bKash, Nagad, or cards; invoices automatically mark as PAID instantly.
+                <div className="col-span-12 sm:col-span-4 text-neutral-400 leading-relaxed sm:pr-4">
+                  <span className="sm:hidden font-mono text-[10px] uppercase text-neutral-400 block mb-1">
+                    Legacy Way:
+                  </span>
+                  {row.legacy}
                 </div>
-              </li>
 
-              <li className="flex items-start gap-3">
-                <span className="text-emerald-400 font-bold shrink-0 mt-0.5">✓</span>
-                <div>
-                  <strong className="text-white block">Automated WhatsApp payment chaser:</strong>
-                  Polite, scheduled reminders sent automatically to clients with an instant payment link.
+                <div className="col-span-12 sm:col-span-5 text-neutral-200 leading-relaxed font-normal bg-[#13131a]/60 sm:bg-transparent p-3 sm:p-0 rounded-lg sm:rounded-none border sm:border-0 border-[#202028]">
+                  <span className="sm:hidden font-mono text-[10px] uppercase text-emerald-400 block mb-1">
+                    BizOS Solution:
+                  </span>
+                  <span className="text-white font-medium">{row.bizos}</span>
                 </div>
-              </li>
-
-              <li className="flex items-start gap-3">
-                <span className="text-cyan-400 font-bold shrink-0 mt-0.5">✓</span>
-                <div>
-                  <strong className="text-white block">Instant Blockchain escrow:</strong>
-                  Receive international payments in USDT/USDC in 2 seconds with zero banking hold-ups.
-                </div>
-              </li>
-            </ul>
+              </div>
+            ))}
           </div>
         </div>
 
-        {/* Quick CTA */}
-        <div className="mt-12 text-center">
-          <Link
-            href="/bizos"
-            className="text-xs font-mono text-neutral-400 hover:text-white transition-colors inline-flex items-center gap-1.5 border-b border-neutral-700 pb-0.5"
-          >
-            <span>See the full feature breakdown for your business</span>
-            <span>&rarr;</span>
+        <div className="mt-8 flex items-center justify-between text-xs text-neutral-400 font-mono">
+          <span>Designed for Bangladesh SMBs &bull; Export Houses &bull; Global Agencies</span>
+          <Link href="/bizos" className="text-white hover:underline">
+            Read technical whitepaper &rarr;
           </Link>
         </div>
       </div>
