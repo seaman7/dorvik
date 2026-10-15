@@ -1,83 +1,88 @@
 import "./globals.css";
 import { ThemeProvider } from "@/components/theme/ThemeProvider";
-import { DorvikNavbar } from "@/components/home/DorvikNavbar";
-import { DorvikFooter } from "@/components/home/DorvikFooter";
+import { Navbar } from "@/components/layout/Navbar";
+import { Footer } from "@/components/layout/Footer";
+import { SITE_CONFIG } from "@/lib/siteConfig";
 
 export const viewport = {
-  themeColor: "#08080A",
+  themeColor: "#fbf9f4",
   width: "device-width",
   initialScale: 1,
 };
 
 export const metadata = {
   title: {
-    default: "DORVIK — Autonomous AI & Cloud Infrastructure Agent",
-    template: "%s | DORVIK",
+    default: "Dorvik — AI Data, Custom Software & Managed Compute",
+    template: "%s | Dorvik",
   },
   description:
-    "Dorvik is an autonomous AI & infrastructure agent that handles the complex cloud, GPU, and engineering tasks you don't want to do.",
+    "Bangladesh-based technology engineering partner delivering high-accuracy AI training data, computer vision and OCR solutions, custom software automation, and managed GPU cloud deployments.",
   keywords: [
-    "DORVIK",
-    "Autonomous Agent",
     "Dorvik",
-    "AI Agent",
-    "GPU Orchestration",
-    "WareTwin",
-    "H100 Clusters",
-    "Cloud Infrastructure",
-    "Gemini 3 Pro",
-    "Claude 3.7",
+    "Dorvik AI Services",
+    "AI Data Annotation",
+    "Image Annotation Bangladesh",
+    "Bangla Audio Transcription",
+    "Computer Vision Engineering",
+    "OCR Extraction",
+    "Custom Software Development",
+    "Business Automation",
+    "Managed GPU Deployment",
+    "BizOS",
+    "EduOS",
+    "Technology Company Bangladesh",
   ],
-  authors: [{ name: "DORVIK Engineering Labs" }],
-  creator: "DORVIK",
-  publisher: "DORVIK",
-  metadataBase: new URL("https://dorvik.com"),
+  authors: [{ name: "Dorvik AI Services" }],
+  creator: "Dorvik",
+  publisher: "Dorvik AI Services",
+  metadataBase: new URL(SITE_CONFIG.baseUrl),
   alternates: {
-    canonical: "https://dorvik.com",
+    canonical: "/",
   },
   openGraph: {
-    title: "DORVIK — Autonomous AI & Cloud Infrastructure Agent",
+    title: "Dorvik — AI Data, Custom Software & Managed Compute",
     description:
-      "Autonomous agent for high-throughput GPU orchestration, digital twin simulations, and automated code migrations.",
-    url: "https://dorvik.com",
-    siteName: "DORVIK",
+      "High-accuracy AI training data, computer vision, custom software automation, and managed GPU cloud deployments for growing teams.",
+    url: SITE_CONFIG.baseUrl,
+    siteName: "Dorvik",
     locale: "en_US",
     type: "website",
   },
   twitter: {
     card: "summary_large_image",
-    title: "DORVIK — Autonomous AI & Cloud Infrastructure Agent",
+    title: "Dorvik — AI Data, Custom Software & Managed Compute",
     description:
-      "Dorvik handles the complex engineering tasks you don't want to do.",
+      "Practical engineering for growing technical teams: AI data annotation, computer vision, bespoke software, and managed GPU deployments.",
   },
   icons: {
-    icon: "/dorvik-logo.png",
+    icon: "/favicon.svg",
+    apple: "/dorvik-logo.png",
   },
 };
 
 export default function RootLayout({ children }) {
   return (
-    <html lang="en" className="scroll-smooth">
-      <body className="min-h-screen bg-[#FAFAFC] dark:bg-[#08080A] text-neutral-900 dark:text-neutral-200 antialiased selection:bg-cyan-500 selection:text-black font-sans transition-colors duration-200">
+    <html lang="en" className="scroll-smooth light" data-theme="light">
+      <body className="min-h-screen bg-[#fbf9f4] text-[#293830] antialiased selection:bg-[#d9f99d] selection:text-[#14382c] font-sans flex flex-col">
         <ThemeProvider>
           {/* Accessible Skip Link */}
           <a
             href="#main-content"
-            className="sr-only focus:not-sr-only focus:fixed focus:top-4 focus:left-4 focus:z-50 focus:px-4 focus:py-2 focus:bg-white focus:text-black focus:outline-none font-bold"
+            className="sr-only focus:not-sr-only focus:fixed focus:top-4 focus:left-4 focus:z-50 focus:px-4 focus:py-2 focus:bg-[#14382c] focus:text-white focus:outline-none font-semibold rounded-md shadow-lg"
           >
-            Skip to content
+            Skip to main content
           </a>
 
-          {/* Dorvik Navigation Bar */}
-          <DorvikNavbar />
+          {/* Site Navigation */}
+          <Navbar />
 
-          {/* Main Content */}
-          <main id="main-content" className="relative z-10 min-h-screen flex flex-col">
+          {/* Main Content Area */}
+          <main id="main-content" className="flex-1 focus:outline-none">
             {children}
           </main>
 
-          {/* Dorvik Footer */}
-          <DorvikFooter />
+          {/* Site Footer */}
+          <Footer />
         </ThemeProvider>
       </body>
     </html>

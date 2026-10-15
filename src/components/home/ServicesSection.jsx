@@ -1,185 +1,113 @@
-"use client";
+import Link from "next/link";
+import { ArrowUpRight, Database, Cpu, Terminal, Server, Check } from "lucide-react";
+import { CORE_SERVICES } from "@/lib/servicesData";
 
-import React from "react";
-import {
-  BrainCircuit,
-  Eye,
-  Database,
-  Code2,
-  Smartphone,
-  Server,
-  ArrowUpRight,
-} from "lucide-react";
-import { Container } from "@/components/ui/Container";
-import { SectionHeading } from "@/components/ui/SectionHeading";
-
-const SERVICES = [
-  {
-    index: "01",
-    title: "AI & Machine Learning",
-    icon: BrainCircuit,
-    description:
-      "Build intelligent systems with machine learning, generative AI, predictive analytics and model-driven automation.",
-    examples: [
-      "Machine learning models",
-      "Generative AI",
-      "RAG applications",
-      "Predictive analytics",
-      "Model fine-tuning",
-      "AI workflow automation",
-    ],
-  },
-  {
-    index: "02",
-    title: "Computer Vision",
-    icon: Eye,
-    description:
-      "Turn visual data into actionable intelligence through computer vision and real-time perception systems.",
-    examples: [
-      "Object detection",
-      "Object tracking",
-      "Image classification",
-      "OpenCV solutions",
-      "Video analytics",
-      "Robotics and drone vision",
-    ],
-  },
-  {
-    index: "03",
-    title: "Data Annotation & Dataset Engineering",
-    icon: Database,
-    description:
-      "Create cleaner, better-structured datasets for reliable AI model development and evaluation.",
-    examples: [
-      "Image annotation",
-      "Video annotation",
-      "Bounding boxes",
-      "Segmentation",
-      "Dataset cleaning",
-      "YOLO & COCO exports",
-      "Quality assurance",
-    ],
-  },
-  {
-    index: "04",
-    title: "Custom Software Development",
-    icon: Code2,
-    description:
-      "Build secure, scalable software tailored to your business processes and operational needs.",
-    examples: [
-      "SaaS platforms",
-      "Business systems",
-      "Internal tools",
-      "Workflow automation",
-      "Admin dashboards",
-      "API-driven applications",
-    ],
-  },
-  {
-    index: "05",
-    title: "Web & Mobile Applications",
-    icon: Smartphone,
-    description:
-      "Design and develop fast, intuitive digital experiences for web, mobile and connected platforms.",
-    examples: [
-      "Corporate websites",
-      "Web applications",
-      "E-commerce platforms",
-      "Cross-platform mobile apps",
-      "Customer portals",
-      "Product interfaces",
-    ],
-  },
-  {
-    index: "06",
-    title: "Cloud, Backend & APIs",
-    icon: Server,
-    description:
-      "Engineer reliable backend systems, APIs and cloud deployments that support long-term growth.",
-    examples: [
-      "REST and GraphQL APIs",
-      "Backend architecture",
-      "Database systems",
-      "Docker deployments",
-      "CI/CD pipelines",
-      "Cloud infrastructure",
-      "Monitoring",
-    ],
-  },
-];
+const SERVICE_ICONS = {
+  "data-annotation": Database,
+  "ai-engineering": Cpu,
+  "software-development": Terminal,
+  "gpu-cloud": Server,
+};
 
 export function ServicesSection() {
   return (
-    <section id="services" className="py-20 sm:py-28 border-b border-[#DEDED8] bg-[#F7F7F3]">
-      <Container size="wide">
-        <SectionHeading
-          eyebrow="WHAT WE DO"
-          heading="From intelligent models to complete digital products."
-          description="We help businesses design, build and deploy technology that solves meaningful problems."
-        />
+    <section className="py-20 bg-[#fbf9f4]">
+      <div className="dv-container">
+        {/* Section Header */}
+        <div className="flex flex-col md:flex-row md:items-end justify-between gap-6 mb-12">
+          <div>
+            <div className="dv-eyebrow mb-2">
+              <span className="dv-eyebrow-dot" />
+              <span>Core Technology Offerings</span>
+            </div>
+            <h2 className="dv-section-title">
+              What we engineer for clients.
+            </h2>
+          </div>
+          <Link href="/services" className="dv-link-arrow">
+            <span>Explore all service specifications</span>
+            <ArrowUpRight size={16} />
+          </Link>
+        </div>
 
-        {/* 6 Premium Service Cards in Refined Border Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-px bg-[#DEDED8] border border-[#DEDED8]">
-          {SERVICES.map((service) => {
-            const Icon = service.icon;
+        {/* 2x2 Services Grid */}
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+          {CORE_SERVICES.map((service) => {
+            const Icon = SERVICE_ICONS[service.id] || Terminal;
+
             return (
-              <div
-                key={service.index}
-                className="group relative bg-[#FFFFFF] p-8 sm:p-9 flex flex-col justify-between transition-all duration-200 hover:bg-[#FAF9F5] focus-within:ring-2 focus-within:ring-[#1D4ED8]"
+              <article
+                key={service.id}
+                className="dv-card flex flex-col justify-between group hover:border-[#14382c] transition-all duration-200"
               >
-                {/* Card Top: Index and Minimal Icon */}
-                <div>
-                  <div className="flex items-center justify-between pb-6 border-b border-[#E8E8E2]">
-                    <span className="font-mono text-xs font-semibold tracking-wider text-[#6B6B6B] group-hover:text-[#1D4ED8] transition-colors">
-                      // {service.index}
-                    </span>
-                    <div className="w-10 h-10 rounded-sm bg-[#F7F7F3] border border-[#DEDED8] flex items-center justify-center text-[#111111] group-hover:text-[#1D4ED8] group-hover:border-[#1D4ED8]/30 transition-all">
-                      <Icon className="w-5 h-5 stroke-[1.5]" />
+                <div className="space-y-4">
+                  {/* Top Bar with Number & Icon */}
+                  <div className="flex items-center justify-between pb-4 border-b border-[#eee8dc]">
+                    <div className="flex items-center gap-3">
+                      <div className="w-10 h-10 rounded-lg bg-[#edf5f1] text-[#14382c] flex items-center justify-center group-hover:bg-[#14382c] group-hover:text-white transition-colors">
+                        <Icon size={20} />
+                      </div>
+                      <span className="text-xs font-mono font-bold text-[#798a80]">
+                        {service.number} / CORE SERVICE
+                      </span>
                     </div>
+                    <span className="text-[11px] font-mono font-semibold px-2.5 py-0.5 rounded-full bg-[#f4efe4] text-[#14382c]">
+                      {service.eyebrow}
+                    </span>
                   </div>
 
-                  {/* Title & Description */}
-                  <h3 className="mt-6 text-xl sm:text-2xl font-medium text-[#111111] tracking-tight group-hover:text-[#1D4ED8] transition-colors">
-                    {service.title}
-                  </h3>
-                  <p className="mt-3 text-sm text-[#6B6B6B] leading-relaxed">
-                    {service.description}
+                  {/* Heading & Tagline */}
+                  <div>
+                    <h3 className="text-xl font-bold text-[#14382c] group-hover:text-[#0c241c] transition-colors">
+                      {service.title}
+                    </h3>
+                    <p className="text-xs text-[#596a60] font-medium mt-1">
+                      {service.tagline}
+                    </p>
+                  </div>
+
+                  <p className="text-sm text-[#4a5c51] leading-relaxed">
+                    {service.shortDescription}
                   </p>
 
-                  {/* Examples List */}
-                  <div className="mt-6 pt-5 border-t border-[#E8E8E2]">
-                    <p className="text-[10px] font-mono uppercase tracking-wider text-[#8E8E88] mb-3">
-                      CAPABILITIES &amp; DELIVERABLES
-                    </p>
-                    <ul className="grid grid-cols-2 gap-x-2 gap-y-1.5 text-xs text-[#4A4A4A]">
-                      {service.examples.map((ex) => (
-                        <li key={ex} className="flex items-center gap-1.5 truncate">
-                          <span className="w-1 h-1 rounded-full bg-[#111111] group-hover:bg-[#1D4ED8] transition-colors shrink-0" />
-                          <span className="truncate">{ex}</span>
+                  {/* Capabilities Bulleted List */}
+                  <div className="pt-2 border-t border-[#f4efe4] space-y-2">
+                    <span className="text-[11px] font-mono uppercase text-[#798a80] block font-semibold">
+                      Key Capabilities:
+                    </span>
+                    <ul className="space-y-1.5 text-xs text-[#4a5c51]">
+                      {service.capabilities.slice(0, 3).map((item) => (
+                        <li key={item} className="flex items-start gap-2">
+                          <Check size={14} className="text-[#84cc16] shrink-0 mt-0.5" />
+                          <span>{item}</span>
                         </li>
                       ))}
                     </ul>
                   </div>
                 </div>
 
-                {/* Card Bottom CTA Link */}
-                <div className="mt-8 pt-4 border-t border-[#E8E8E2] flex items-center justify-between">
-                  <span className="text-xs font-medium text-[#111111] group-hover:text-[#1D4ED8] transition-colors">
-                    Discuss this service
-                  </span>
-                  <a
-                    href="#contact"
-                    className="p-1 text-[#111111] group-hover:text-[#1D4ED8] group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-all focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-[#1D4ED8]"
-                    aria-label={`Inquire about ${service.title}`}
+                {/* Footer Action */}
+                <div className="pt-6 mt-6 border-t border-[#eee8dc] flex items-center justify-between">
+                  <Link
+                    href={`/services/${service.slug}`}
+                    className="inline-flex items-center gap-1.5 text-xs font-semibold text-[#14382c] hover:text-[#0c241c] hover:underline"
                   >
-                    <ArrowUpRight className="w-4 h-4" />
-                  </a>
+                    <span>View full service scope</span>
+                    <ArrowUpRight size={14} />
+                  </Link>
+
+                  <Link
+                    href={service.cta.href}
+                    className="text-xs font-semibold px-3 py-1.5 bg-[#edf5f1] hover:bg-[#14382c] text-[#14382c] hover:text-white rounded-md transition-colors"
+                  >
+                    {service.cta.label.split(" ")[0]}
+                  </Link>
                 </div>
-              </div>
+              </article>
             );
           })}
         </div>
-      </Container>
+      </div>
     </section>
   );
 }

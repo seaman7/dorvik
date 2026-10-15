@@ -1,9 +1,11 @@
+import { SITE_CONFIG } from "@/lib/siteConfig";
+
 export default function robots() {
   return {
     rules: {
       userAgent: "*",
       allow: "/",
     },
-    sitemap: "https://dorvik.com/sitemap.xml",
+    sitemap: `${SITE_CONFIG.baseUrl}/sitemap.xml`,
   };
 }

@@ -1,50 +1,16 @@
 "use client";
 
-import React, { createContext, useContext, useEffect, useState } from "react";
+import { createContext, useContext, useEffect } from 'react';
 
-const ThemeContext = createContext({
-  theme: "dark",
-  toggleTheme: () => {},
-});
-
+// Retain the context for older components while the site uses one light theme.
+const ThemeContext = createContext({ theme: 'light', mounted: true });
 export function ThemeProvider({ children }) {
-  const [theme, setTheme] = useState("dark");
-  const [mounted, setMounted] = useState(false);
-
   useEffect(() => {
-    setMounted(true);
-    const savedTheme = localStorage.getItem("dorvik-theme") || "dark";
-    setTheme(savedTheme);
-    applyTheme(savedTheme);
+    document.documentElement.classList.remove('dark');
+    document.documentElement.classList.add('light');
+    document.documentElement.dataset.theme = 'light';
+    try { localStorage.removeItem('dorvik-theme'); } catch {}
   }, []);
-
-  const applyTheme = (t) => {
-    const root = document.documentElement;
-    if (t === "light") {
-      root.classList.add("light");
-      root.classList.remove("dark");
-      root.setAttribute("data-theme", "light");
-    } else {
-      root.classList.add("dark");
-      root.classList.remove("light");
-      root.setAttribute("data-theme", "dark");
-    }
-  };
-
-  const toggleTheme = () => {
-    const nextTheme = theme === "dark" ? "light" : "dark";
-    setTheme(nextTheme);
-    localStorage.setItem("dorvik-theme", nextTheme);
-    applyTheme(nextTheme);
-  };
-
-  return (
-    <ThemeContext.Provider value={{ theme, toggleTheme, mounted }}>
-      {children}
-    </ThemeContext.Provider>
-  );
+  return <ThemeContext.Provider value={{ theme: 'light', mounted: true }}>{children}</ThemeContext.Provider>;
 }
-
-export function useTheme() {
-  return useContext(ThemeContext);
-}
+export function useTheme() { return useContext(ThemeContext); }
